@@ -1,0 +1,169 @@
+"use client";
+
+import dynamic from "next/dynamic";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { FALLBACK_MODEL, getComponent } from "@/lib/components";
+import { useExplorer } from "@/lib/store";
+
+function HotspotHint({ label }: { label: string }) {
+  const nextHotspot = useExplorer((s) => s.nextHotspot);
+  const prevHotspot = useExplorer((s) => s.prevHotspot);
+
+  return (
+    <div className="absolute inset-x-0 bottom-4 z-20 flex items-center justify-center gap-2">
+      <button
+        type="button"
+        aria-label="Previous hotspot"
+        onClick={prevHotspot}
+        className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface/80 text-muted backdrop-blur-sm transition-colors hover:border-accent/40 hover:text-foreground"
+      >
+        <ChevronLeft className="h-4 w-4" strokeWidth={1.8} />
+      </button>
+      <span className="rounded-full border border-line bg-surface/70 px-3.5 py-1.5 text-[11.5px] text-muted backdrop-blur-sm">
+        {label}
+      </span>
+      <button
+        type="button"
+        aria-label="Next hotspot"
+        onClick={nextHotspot}
+        className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface/80 text-muted backdrop-blur-sm transition-colors hover:border-accent/40 hover:text-foreground"
+      >
+        <ChevronRight className="h-4 w-4" strokeWidth={1.8} />
+      </button>
+    </div>
+  );
+}
+
+const ComponentViewer = dynamic(
+  () =>
+    import("@/components/viewer/ComponentViewer").then((m) => m.ComponentViewer),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-full w-full items-center justify-center">
+        <div className="flex flex-col items-center gap-3">
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-line-strong border-t-accent" />
+          <p className="text-[12px] text-muted-2">Loading interactive 3D model…</p>
+        </div>
+      </div>
+    ),
+  }
+);
+
+const MotherboardViewer = dynamic(
+  () =>
+    import("@/components/motherboard/MotherboardViewer").then(
+      (m) => m.MotherboardViewer
+    ),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-full w-full items-center justify-center">
+        <div className="flex flex-col items-center gap-3">
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-line-strong border-t-accent" />
+          <p className="text-[12px] text-muted-2">Loading interactive model…</p>
+        </div>
+      </div>
+    ),
+  }
+);
+
+const MouseViewer = dynamic(
+  () => import("@/components/mouse/MouseViewer").then((m) => m.MouseViewer),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-full w-full items-center justify-center">
+        <div className="flex flex-col items-center gap-3">
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-line-strong border-t-accent" />
+          <p className="text-[12px] text-muted-2">Loading interactive model…</p>
+        </div>
+      </div>
+    ),
+  }
+);
+
+const SystemUnitViewer = dynamic(
+  () =>
+    import("@/components/systemunit/SystemUnitViewer").then(
+      (m) => m.SystemUnitViewer
+    ),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-full w-full items-center justify-center">
+        <div className="flex flex-col items-center gap-3">
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-line-strong border-t-accent" />
+          <p className="text-[12px] text-muted-2">Loading interactive model…</p>
+        </div>
+      </div>
+    ),
+  }
+);
+
+const MonitorViewer = dynamic(
+  () => import("@/components/monitor/MonitorViewer").then((m) => m.MonitorViewer),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-full w-full items-center justify-center">
+        <div className="flex flex-col items-center gap-3">
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-line-strong border-t-accent" />
+          <p className="text-[12px] text-muted-2">Loading interactive model…</p>
+        </div>
+      </div>
+    ),
+  }
+);
+
+export function Viewer() {
+  const selectedId = useExplorer((s) => s.selectedId);
+  const path = getComponent(selectedId)?.model ?? FALLBACK_MODEL;
+
+  if (selectedId === "case") {
+    return (
+      <div className="relative h-full w-full overflow-hidden">
+        <SystemUnitViewer mode="embedded" />
+        <HotspotHint label="Click a numbered hotspot to explore the system unit." />
+      </div>
+    );
+  }
+
+  if (selectedId === "motherboard") {
+    return (
+      <div className="relative h-full w-full overflow-hidden">
+        <MotherboardViewer mode="embedded" />
+        <HotspotHint label="Click a numbered hotspot to explore the motherboard." />
+      </div>
+    );
+  }
+
+  if (selectedId === "mouse") {
+    return (
+      <div className="relative h-full w-full overflow-hidden">
+        <MouseViewer mode="embedded" />
+        <HotspotHint label="Click a numbered hotspot to explore the mouse." />
+      </div>
+    );
+  }
+
+  if (selectedId === "monitor") {
+    return (
+      <div className="relative h-full w-full overflow-hidden">
+        <MonitorViewer mode="embedded" />
+        <HotspotHint label="Click a numbered hotspot to explore the monitor." />
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative h-full w-full overflow-hidden">
+      <ComponentViewer component={path} mode="embedded" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-4 z-20 flex justify-center">
+        <span className="rounded-full border border-line bg-surface/70 px-3.5 py-1.5 text-[11.5px] text-muted backdrop-blur-sm">
+          Select a component from the sidebar to explore it.
+        </span>
+      </div>
+    </div>
+  );
+}
