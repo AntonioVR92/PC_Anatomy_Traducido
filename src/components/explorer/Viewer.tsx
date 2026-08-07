@@ -17,26 +17,26 @@ function HotspotHint({ label }: { label: string }) {
   const prevHotspot = useExplorer((s) => s.prevHotspot);
 
   return (
-    <div className="absolute inset-x-0 bottom-4 z-20 flex items-center justify-center gap-2">
+    <div className="absolute inset-x-0 bottom-[128px] z-20 flex items-center justify-center gap-2 lg:bottom-4">
       <button
         type="button"
         aria-label="Previous hotspot"
         onClick={prevHotspot}
-        className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface/80 text-muted backdrop-blur-sm transition-colors hover:border-accent/40 hover:text-foreground"
+        className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface/80 text-muted backdrop-blur-sm transition-colors hover:border-accent/40 hover:text-foreground lg:h-9 lg:w-9"
       >
-        <ChevronLeft className="h-4 w-4" strokeWidth={1.8} />
+        <ChevronLeft className="h-5 w-5 lg:h-4 lg:w-4" strokeWidth={1.8} />
       </button>
       {/* Text label passed in from the parent explaining the hotspots. */}
-      <span className="rounded-full border border-line bg-surface/70 px-3.5 py-1.5 text-[11.5px] text-muted backdrop-blur-sm">
+      <span className="rounded-full border border-line bg-surface/70 px-3.5 py-2 text-[11.5px] text-muted backdrop-blur-sm lg:py-1.5">
         {label}
       </span>
       <button
         type="button"
         aria-label="Next hotspot"
         onClick={nextHotspot}
-        className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface/80 text-muted backdrop-blur-sm transition-colors hover:border-accent/40 hover:text-foreground"
+        className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface/80 text-muted backdrop-blur-sm transition-colors hover:border-accent/40 hover:text-foreground lg:h-9 lg:w-9"
       >
-        <ChevronRight className="h-4 w-4" strokeWidth={1.8} />
+        <ChevronRight className="h-5 w-5 lg:h-4 lg:w-4" strokeWidth={1.8} />
       </button>
     </div>
   );
@@ -179,8 +179,8 @@ export function Viewer() {
   return (
     <div className="relative h-full w-full overflow-hidden">
       <ComponentViewer component={path} mode="embedded" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-4 z-20 flex justify-center">
-        <span className="rounded-full border border-line bg-surface/70 px-3.5 py-1.5 text-[11.5px] text-muted backdrop-blur-sm">
+      <div className="pointer-events-none absolute inset-x-0 bottom-[128px] z-20 flex justify-center lg:bottom-4">
+        <span className="rounded-full border border-line bg-surface/70 px-3.5 py-2 text-[11.5px] text-muted backdrop-blur-sm lg:py-1.5">
           Select a component from the sidebar to explore it.
         </span>
       </div>

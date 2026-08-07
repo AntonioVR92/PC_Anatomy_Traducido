@@ -51,7 +51,7 @@ export function Sidebar() {
 
   return (
     // The fixed-width left column of the explorer.
-    <aside className="flex h-full w-[288px] shrink-0 flex-col border-r border-line bg-surface">
+    <aside className="flex h-full w-full flex-col border-r border-line bg-surface">
       {/* Header: subtle glow, logo image, app name/subtitle, and version badge. */}
       <div className="relative overflow-hidden px-5 pb-5 pt-6">
         <div

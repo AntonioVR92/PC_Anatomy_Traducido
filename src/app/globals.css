@@ -338,7 +338,45 @@ body {
   }
 }
 
-/* ---- Chat assistant markdown ---- */
+/* ---- Mobile / tablet explorer (below 1024px, matching lg breakpoint) ---- */
+
+@media (max-width: 1023px) {
+  /* Prevent any horizontal overflow on small screens. */
+  html,
+  body {
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Move the floating viewer toolbar to the top-right so it never sits
+     underneath (or overlaps) the bottom information sheet. */
+  .viewer-toolbar {
+    top: 0.75rem;
+    right: 0.75rem;
+    bottom: auto;
+  }
+
+  /* Slightly larger toolbar buttons for comfortable touch interaction. */
+  .viewer-toolbar button {
+    height: 2.5rem;
+    padding: 0 0.875rem;
+  }
+
+  /* Bigger, touch-friendly hotspot numbers and no hover labels on touch. */
+  .mobo-hotspot {
+    touch-action: manipulation;
+  }
+
+  .mobo-hotspot__num {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 15px;
+  }
+
+  .mobo-hotspot__label {
+    display: none;
+  }
+}
 
 /* Styles for the text that the chat assistant produces (formatted as markdown). */
 .assistant-md {
