@@ -341,13 +341,6 @@ body {
 /* ---- Mobile / tablet explorer (below 1024px, matching lg breakpoint) ---- */
 
 @media (max-width: 1023px) {
-  /* Prevent any horizontal overflow on small screens. */
-  html,
-  body {
-    overflow-x: hidden;
-    -webkit-tap-highlight-color: transparent;
-  }
-
   /* Move the floating viewer toolbar to the top-right so it never sits
      underneath (or overlaps) the bottom information sheet. */
   .viewer-toolbar {

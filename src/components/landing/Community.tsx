@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BookOpen, Cpu, GitPullRequest } from "lucide-react";
 import { Reveal, MagneticButton, EASE } from "@/components/landing/ui/primitives";
+import { DonateModal } from "@/components/landing/donate/DonateModal";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { GithubIcon } from "@/components/landing/ui/GithubIcon";
@@ -127,6 +128,9 @@ export function Community() {
         >
           Open source. Free to explore.
         </p>
+
+        {/* Buy Me a Coffee trigger + donation modal */}
+        <DonateModal />
       </div>
     </section>
   );
