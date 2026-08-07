@@ -15,13 +15,19 @@ import { Community } from "@/components/landing/Community";
 import { Footer } from "@/components/landing/Footer";
 import { HeroCanvas } from "@/components/landing/hero/HeroCanvas";
 
+// LandingPage: the main wrapper for the whole marketing page.
+// It sets up smooth scrolling and drives the 3D keyboard animations
+// that react to the user scrolling through the page.
 gsap.registerPlugin(ScrollTrigger);
 
 export function LandingPage() {
+  // How big the 3D model should be and where it starts in the scene
   const modelScale = 18;
   const modelPosition: [number, number, number] = [3, 1.5, -0.9];
+  // Refs let us reach into the 3D scene to animate the model and lights
   const modelRef = useRef<THREE.Group>(null);
   const keyLightRef = useRef<THREE.SpotLight>(null);
+  // Stores every 3D mesh so we can explode them apart during the final scene
   const meshesRef = useRef<
     | Array<{
         mesh: THREE.Mesh;
@@ -34,8 +40,10 @@ export function LandingPage() {
       }>
     | null
   >(null);
+  // Reference to the outermost page div, used as the scroll trigger
   const pageRef = useRef<HTMLDivElement>(null);
 
+  // Runs once when the page mounts to set up animations
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -51,6 +59,14 @@ export function LandingPage() {
 
     const timer = window.setInterval(() => {
       if (!modelRef.current || !pageRef.current) return;
+
+      // The explode data is filled in by KeyboardModel only after the GLB
+      // model finishes loading (async). Keep polling until it is ready,
+      // otherwise the explode scene would silently be left out of the
+      // timeline and the keyboard would never break apart.
+      const meshes = meshesRef.current;
+      if (!meshes || meshes.length === 0) return;
+
       window.clearInterval(timer);
 
       const model = modelRef.current;
@@ -123,8 +139,8 @@ export function LandingPage() {
       }
 
       // Scene 4 — explode: every mesh flies outward from the model center
-      const meshes = meshesRef.current;
-      if (meshes && meshes.length) {
+      // (meshes is guaranteed non-empty because we waited for it above)
+      if (meshes.length) {
         const targets = meshes.map((m) => {
           const rand = 0.35;
           const dist = Math.hypot(m.baseX, m.baseY, m.baseZ);
@@ -174,6 +190,7 @@ export function LandingPage() {
       }
     }, 100);
 
+    // Cleanup: stop animations and smooth scrolling when the page unmounts
     return () => {
       window.clearInterval(timer);
       gsap.ticker.remove(raf);
@@ -182,6 +199,7 @@ export function LandingPage() {
     };
   }, []);
 
+  // Memoized renderer for the fixed 3D background scene
   const renderScene = useCallback(
     () => (
       <HeroCanvas
@@ -196,6 +214,7 @@ export function LandingPage() {
   );
 
   return (
+    // Main page shell: the 3D scene sits fixed behind everything
     <div ref={pageRef} className="relative min-h-screen bg-background text-foreground">
       {/* Fixed global 3D background */}
       <div aria-hidden="true" className="fixed inset-0 z-0">

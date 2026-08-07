@@ -1,5 +1,10 @@
 "use client";
 
+// Sidebar.tsx: A sliding detail panel that appears when a motherboard part is
+// selected. It shows the part's name, description, function, importance, and
+// interesting facts, along with prev/next buttons to browse parts and a button
+// to reset the camera. It animates in and out with framer-motion.
+
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ChevronLeft,
@@ -12,6 +17,7 @@ import {
   X,
 } from "lucide-react";
 
+// The shape of the part info that this panel displays.
 export type SidebarComponent = {
   id: string;
   title: string;
@@ -43,8 +49,10 @@ export function Sidebar({
   onReset: () => void;
 }) {
   return (
+    // AnimatePresence lets the panel animate out when a part is deselected.
     <AnimatePresence>
       {component && (
+        // The sliding panel; animates in from the right and slides back out.
         <motion.aside
           key={component.id}
           initial={{ x: 420, opacity: 0 }}
@@ -55,8 +63,10 @@ export function Sidebar({
             mode === "embedded" ? "w-[300px]" : "w-[340px]"
           }`}
         >
+          {/* Header: part number badge, title, position "N of total", close button. */}
           <header className="flex items-center gap-3 border-b border-line px-5 py-4">
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/15 text-[15px] font-bold text-accent ring-1 ring-accent/30">
+              {/* The part's position number in the list. */}
               {index + 1}
             </span>
             <div className="flex min-w-0 flex-col gap-0.5">
@@ -67,6 +77,7 @@ export function Sidebar({
                 {index + 1} of {total} · {name}
               </p>
             </div>
+            {/* Close (deselect) the part. */}
             <button
               type="button"
               aria-label="Close panel"
@@ -77,7 +88,9 @@ export function Sidebar({
             </button>
           </header>
 
+          {/* Scrollable body with all the part's details. */}
           <div className="thin-scroll flex-1 space-y-5 overflow-y-auto px-5 py-5">
+            {/* Overview paragraph. */}
             <section className="space-y-1.5">
               <h4 className="flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-muted-2">
                 <Sparkles className="h-3 w-3 text-accent" strokeWidth={1.8} />
@@ -88,6 +101,7 @@ export function Sidebar({
               </p>
             </section>
 
+            {/* What the part does. */}
             <section className="space-y-1.5 rounded-xl border border-line bg-surface-2/60 p-3.5">
               <h4 className="flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-accent">
                 <MapPin className="h-3 w-3" strokeWidth={1.8} />
@@ -98,6 +112,7 @@ export function Sidebar({
               </p>
             </section>
 
+            {/* Why the part matters. */}
             <section className="space-y-1.5">
               <h4 className="flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-muted-2">
                 <Crosshair className="h-3 w-3 text-accent" strokeWidth={1.8} />
@@ -108,6 +123,7 @@ export function Sidebar({
               </p>
             </section>
 
+            {/* A bulleted list of fun facts. */}
             <section className="space-y-2">
               <h4 className="flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-muted-2">
                 <Lightbulb className="h-3 w-3 text-accent" strokeWidth={1.8} />
@@ -125,6 +141,7 @@ export function Sidebar({
             </section>
           </div>
 
+          {/* Footer: prev/next arrows and a "Reset Camera" button. */}
           <footer className="grid grid-cols-4 gap-2 border-t border-line p-3">
             <button
               type="button"

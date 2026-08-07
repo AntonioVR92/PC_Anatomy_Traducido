@@ -4,6 +4,7 @@ import { Database, Network, Workflow, Bot, BookOpen, Sparkle } from "lucide-reac
 import { Reveal, EASE } from "@/components/landing/ui/primitives";
 import { motion } from "framer-motion";
 
+// The four ordered steps of the learning journey, shown as a timeline
 const STEPS = [
   {
     icon: <BookOpen className="h-4.5 w-4.5" strokeWidth={1.8} />,
@@ -27,10 +28,13 @@ const STEPS = [
   },
 ];
 
+// LearningExperience: explains the step-by-step learning approach.
+// It pairs a "learn by doing" card with a timeline of the four steps.
 export function LearningExperience() {
   return (
     <section id="learning" className="relative scroll-mt-24 px-6 py-28 sm:py-32">
       <div className="mx-auto max-w-6xl">
+        {/* Section heading: eyebrow label, title, and subtitle */}
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-accent-bright">
             Learning Experience
@@ -44,7 +48,9 @@ export function LearningExperience() {
           </p>
         </Reveal>
 
+        {/* Two-column layout: left pitch card, right step timeline */}
         <div className="mt-16 grid gap-5 lg:grid-cols-2">
+          {/* "Learn by doing" pitch card with a subtle radial glow */}
           <Reveal className="relative overflow-hidden rounded-3xl border border-line bg-surface/40 p-8 backdrop-blur-md">
             <div
               aria-hidden="true"
@@ -68,12 +74,14 @@ export function LearningExperience() {
             </div>
           </Reveal>
 
+          {/* Card listing the STEPS timeline */}
           <div className="relative overflow-hidden rounded-3xl border border-line bg-surface/40 p-8 backdrop-blur-md">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 bg-[radial-gradient(400px_260px_at_90%_10%,rgba(23,120,200,0.12),transparent_60%)]"
             />
             <div className="relative space-y-0">
+              {/* Render each step, sliding in as it becomes visible */}
               {STEPS.map((step, i) => (
                 <motion.div
                   key={step.title}
@@ -83,6 +91,7 @@ export function LearningExperience() {
                   transition={{ duration: 0.5, ease: EASE, delay: i * 0.08 }}
                   className="relative flex gap-4 pb-8 last:pb-0"
                 >
+                  {/* Draw a vertical connector line between steps (except the last) */}
                   {i < STEPS.length - 1 && (
                     <span
                       aria-hidden="true"

@@ -1,18 +1,23 @@
+// This is the root layout. It wraps EVERY page in the app with the same outer HTML structure.
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ChatWidget } from "@/components/chat/ChatWidget";
 
+// Load the Geist font (the default design font) and expose it as CSS variables.
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
+// Load the Geist Mono font (for code / monospace text) as another CSS variable.
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
+// Site-wide metadata: default tab title, template for page titles, description, sharing cards, and icons.
 export const metadata: Metadata = {
   metadataBase: new URL("https://computer-anatomy.example.com"),
   title: {
@@ -44,6 +49,7 @@ export const metadata: Metadata = {
   },
 };
 
+// The layout component. It receives the page's children and puts them inside a full <html> + <body>.
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html

@@ -6,7 +6,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// HardwarePreview: a dramatic scrolling section that shows the words
+// "Zoom / Spin / Explore / Learn" one after another, then collapses them
+// into a final horizontal headline as the user scrolls the tall section.
 export function HardwarePreview() {
+  // Reference to the whole 300vh section (the scroll trigger)
   const sectionRef = useRef<HTMLElement | null>(null);
 
   const zoomRef = useRef<HTMLSpanElement | null>(null);
@@ -16,6 +20,7 @@ export function HardwarePreview() {
 
   const finalRowRef = useRef<HTMLDivElement | null>(null);
 
+  // Runs once to wire up the scroll-driven word animations
   useEffect(() => {
     const section = sectionRef.current;
     const zoom = zoomRef.current;
@@ -183,16 +188,19 @@ export function HardwarePreview() {
       ScrollTrigger.refresh();
     }, section);
 
+    // Clean up all GSAP animations on unmount
     return () => {
       ctx.revert();
     };
   }, []);
 
   return (
+    // The section is 300vh tall so there is plenty of scroll room for the timeline
     <section
       ref={sectionRef}
       className="relative h-[300vh] w-full"
     >
+      {/* Sticky box stays centered while the tall section scrolls past */}
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
         <div className="relative flex h-full w-full items-center justify-center px-6">
           {/* Individual animated words */}

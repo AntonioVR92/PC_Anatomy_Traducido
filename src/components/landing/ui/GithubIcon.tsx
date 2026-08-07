@@ -2,6 +2,8 @@
 
 import type { SVGProps } from "react";
 
+// GithubIcon: the GitHub mark as a simple inline SVG icon,
+// inheriting its color from the current text color.
 export function GithubIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg

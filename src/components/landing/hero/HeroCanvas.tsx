@@ -24,6 +24,8 @@ type HeroCanvasProps = {
   >;
 };
 
+// HeroCanvas: the fixed 3D background. It renders a WebGL canvas with
+// the keyboard model and all of the scene's lighting and reflections.
 export function HeroCanvas({
   modelScale,
   modelPosition,
@@ -32,6 +34,7 @@ export function HeroCanvas({
   meshesRef,
 }: HeroCanvasProps) {
   return (
+    // The R3F canvas; everything inside it is 3D scene content
     <Canvas
       className="!absolute inset-0"
       dpr={[1, 1.5]}
@@ -40,8 +43,9 @@ export function HeroCanvas({
       onCreated={({ gl }) => gl.setClearColor("#0b0f17", 0)}
     >
 
+      {/* Suspense shows nothing until the 3D model finishes loading */}
       <Suspense fallback={null}>
-        {/* Cinematic lighting */}
+        {/* Base ambient light so nothing is fully black */}
         <ambientLight intensity={0.5} />
         <hemisphereLight intensity={0.4} color="#dce9ff" groundColor="#0a1120" />
 
@@ -71,6 +75,7 @@ export function HeroCanvas({
           <Lightformer intensity={3} position={[0, 0, -6]} scale={[6, 4, 1]} color="#3b82f6" />
         </Environment>
 
+        {/* The 3D keyboard model, passed its scale, position and refs */}
         <KeyboardModel scale={modelScale} position={modelPosition} modelRef={modelRef} meshesRef={meshesRef} />
       </Suspense>
 

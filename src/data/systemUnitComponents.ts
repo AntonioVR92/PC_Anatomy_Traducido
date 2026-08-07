@@ -1,3 +1,7 @@
+// Data describing the parts of a system unit (the computer case with everything inside)
+// that can be explored in 3D. Each part is a clickable hotspot on the model.
+
+// Describes one system unit part: which 3D mesh it belongs to, where it is, and the text about it.
 export type SystemUnitPart = {
   id: string;
   number: number;
@@ -13,8 +17,10 @@ export type SystemUnitPart = {
   facts: string[];
 };
 
+// The system unit part type is the same as the general part type (kept as a named alias for clarity).
 export type SystemUnitComponent = SystemUnitPart;
 
+// The full list of system unit parts, each with its own learning text.
 export const SYSTEM_UNIT_PARTS: SystemUnitPart[] = [
   {
     id: "case",

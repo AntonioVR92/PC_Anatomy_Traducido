@@ -1,3 +1,7 @@
+// Data describing the parts of a mouse that can be explored in 3D.
+// Each part is a clickable hotspot on the mouse (buttons, wheel, sensor, body, cable, etc.).
+
+// Describes one mouse part: its 3D position on the model and the text about it.
 export type MousePart = {
   id: string;
   number: number;
@@ -11,6 +15,7 @@ export type MousePart = {
   facts: string[];
 };
 
+// The full list of mouse parts, each with its own learning text.
 export const MOUSE_PARTS: MousePart[] = [
   {
     id: "left-button",

@@ -1,3 +1,6 @@
+// This file lists the AI models used by the chat assistant.
+
+// Describes one AI model: its API id, a readable name, the provider, and whether it's free.
 export type ChatModel = {
   id: string;
   label: string;

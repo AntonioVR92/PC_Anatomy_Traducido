@@ -1,5 +1,10 @@
 "use client";
 
+// This file is a client component (runs in the browser).
+// ChatWidget is the floating AI assistant chat. It shows a launcher
+// button, an expandable chat window with quick prompts, multi-chat
+// threads, and markdown-rendered AI replies. Chats persist to
+// localStorage and text replies are animated in with a typewriter.
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
@@ -8,18 +13,21 @@ import { Plus, Send, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ChatHead } from "@/components/chat/ChatHead";
 
+// A single message in a chat thread (sent by either the user or assistant).
 type Message = {
   id: number;
   role: "user" | "assistant";
   text: string;
 };
 
+// A conversation thread: an id, a short title, and its messages.
 type ChatThread = {
   id: string;
   title: string;
   messages: Message[];
 };
 
+// Pre-written example questions shown as quick-prompt chips.
 const QUICK_PROMPTS = [
   "What is a GPU?",
   "How does RAM work?",
@@ -27,6 +35,7 @@ const QUICK_PROMPTS = [
   "How do I build a PC?",
 ];
 
+// Rotating invite messages shown on the launcher when the chat is closed.
 const INVITE_PROMPTS = [
   "Hey, ask me anything!",
   "Want to ask something?",
@@ -34,17 +43,23 @@ const INVITE_PROMPTS = [
   "Explore PC hardware with me!",
 ];
 
+// The assistant's opening greeting used to start each new chat.
 const GREETING =
   "Hi! I'm the Computer Anatomy assistant. Ask me about any component — GPU, RAM, CPU, and more.";
 
+// How many previous messages to send to the AI for context.
 const MAX_HISTORY = 12;
+// localStorage key where saved chat threads are stored.
 const STORAGE_KEY = "computer-anatomy-chats";
 
+// Shortens a message into a chat thread title (max ~30 chars).
 function truncateTitle(text: string): string {
   const clean = text.replace(/\s+/g, " ").trim();
   return clean.length > 30 ? `${clean.slice(0, 30)}…` : clean;
 }
 
+// Renders a single message bubble. User text is plain; assistant replies
+// are rendered as Markdown (GFM enabled).
 function MessageText({ role, text }: { role: Message["role"]; text: string }) {
   if (role === "user") {
     return <span className="whitespace-pre-wrap">{text}</span>;
@@ -56,6 +71,9 @@ function MessageText({ role, text }: { role: Message["role"]; text: string }) {
   );
 }
 
+// Reveals a reply gradually like a typewriter animation, calling onTick
+// each character revealed (to keep the message list scrolled to bottom)
+// and onDone when finished.
 function Typewriter({
   text,
   onTick,
@@ -65,9 +83,12 @@ function Typewriter({
   onTick: () => void;
   onDone: () => void;
 }) {
+  // How many characters of `text` are currently visible.
   const [len, setLen] = useState(0);
   const finished = len >= text.length;
 
+  // Set up an interval that reveals characters one at a time. Longer
+  // text types faster (lower interval in ms).
   useEffect(() => {
     if (finished) return;
     const rate = text.length > 1200 ? 4 : text.length > 500 ? 6 : 10;
@@ -79,12 +100,14 @@ function Typewriter({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text, finished]);
 
+  // Notify the parent once the whole text has been revealed.
   useEffect(() => {
     if (finished) onDone();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [finished]);
 
   return (
+    // Render only the revealed portion so it looks like typing.
     <div className="assistant-md">
       <ReactMarkdown remarkPlugins={[remarkGfm]}>{text.slice(0, len)}</ReactMarkdown>
       <span className="typing-caret" aria-hidden="true" />
@@ -93,10 +116,15 @@ function Typewriter({
 }
 
 export function ChatWidget() {
+  // Whether the chat window is open/closed.
   const [open, setOpen] = useState(false);
+  // Current text typed in the input box.
   const [input, setInput] = useState("");
+  // True while waiting for the assistant's reply.
   const [pending, setPending] = useState(false);
+  // Id of the message currently being typed out (null when none).
   const [animatingId, setAnimatingId] = useState<number | null>(null);
+  // All saved chat threads (starts with one default "New chat").
   const [chats, setChats] = useState<ChatThread[]>([
     {
       id: "chat-initial",
@@ -104,18 +132,27 @@ export function ChatWidget() {
       messages: [{ id: 0, role: "assistant", text: GREETING }],
     },
   ]);
+  // Id of the chat thread currently shown.
   const [activeChatId, setActiveChatId] = useState("chat-initial");
 
+  // idRef generates the next unique message id.
   const idRef = useRef(1);
+  // scrollRef targets the message list so we can auto-scroll to bottom.
   const scrollRef = useRef<HTMLDivElement>(null);
+  // inputRef targets the text input so we can focus it when opening.
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // The active thread (falls back to the first thread if not found).
   const activeChat = chats.find((c) => c.id === activeChatId) ?? chats[0];
+  // Convenience alias for the active thread's messages.
   const messages = activeChat.messages;
 
+  // Rotating invite prompt state: which one is shown and whether it shows.
   const [promptIdx, setPromptIdx] = useState(0);
   const [showPrompt, setShowPrompt] = useState(true);
 
+  // While the chat is closed, cycle the launcher invite message: hide the
+  // current one briefly, then switch to the next invite prompt.
   useEffect(() => {
     if (open) return;
     const visible = showPrompt;
@@ -133,6 +170,8 @@ export function ChatWidget() {
     return () => window.clearTimeout(id);
   }, [open, showPrompt]);
 
+  // On mount: try to load saved chats from localStorage (after 0ms) and
+  // restore the active thread. Guard against outdated/missing data.
   useEffect(() => {
     let cancelled = false;
     const id = window.setTimeout(() => {
@@ -162,6 +201,7 @@ export function ChatWidget() {
     };
   }, []);
 
+  // Persist the active chat + all threads to localStorage whenever they change.
   useEffect(() => {
     try {
       window.localStorage.setItem(
@@ -173,19 +213,23 @@ export function ChatWidget() {
     }
   }, [chats, activeChatId]);
 
+  // Focus the input whenever the chat window opens.
   useEffect(() => {
     if (open) inputRef.current?.focus();
   }, [open]);
 
+  // Scroll the message list all the way down (to the newest message).
   const scrollToBottom = () => {
     const el = scrollRef.current;
     if (el) el.scrollTop = el.scrollHeight;
   };
 
+  // Keep the list scrolled to the bottom on relevant changes.
   useEffect(() => {
     scrollToBottom();
   }, [messages, pending, animatingId, open]);
 
+  // Starts a fresh chat thread with the greeting and switches to it.
   const newChat = () => {
     const chat: ChatThread = {
       id: `chat-${Date.now()}`,
@@ -198,6 +242,8 @@ export function ChatWidget() {
     setAnimatingId(null);
   };
 
+  // Sends a message (typed or from a quick prompt) to the chat API and
+  // appends the assistant's reply to the active thread.
   const send = async (text?: string) => {
     const value = (text ?? input).trim();
     if (!value || pending) return;
@@ -206,6 +252,7 @@ export function ChatWidget() {
     setInput("");
     setPending(true);
 
+    // The first user message in a thread becomes the chat's title.
     const isFirstUserMsg = messages.filter((m) => m.role === "user").length === 0;
     setChats((prev) =>
       prev.map((c) =>
@@ -219,11 +266,14 @@ export function ChatWidget() {
       )
     );
 
+    // Send the recent conversation as context (capped by MAX_HISTORY)
+    // plus the new user message to the chat API endpoint.
     const history: { role: "user" | "assistant"; content: string }[] = [
       ...messages.slice(-(MAX_HISTORY - 1)).map((m) => ({ role: m.role, content: m.text })),
       { role: "user", content: value },
     ];
 
+    // Call the API; fall back to a friendly message if it fails.
     let reply = "";
     let isError = false;
     try {
@@ -240,6 +290,7 @@ export function ChatWidget() {
       isError = true;
     }
 
+    // Append the assistant's reply to the active thread.
     const assistantMsg: Message = { id: idRef.current++, role: "assistant", text: reply };
     setChats((prev) =>
       prev.map((c) =>
@@ -247,10 +298,12 @@ export function ChatWidget() {
       )
     );
     setPending(false);
+    // Trigger the typewriter animation on the newly added reply.
     if (!isError) setAnimatingId(assistantMsg.id);
   };
 
   return (
+    // Fixed launcher + window anchored to the bottom-right corner.
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
       <AnimatePresence>
         {open && (
@@ -269,6 +322,8 @@ export function ChatWidget() {
               aria-hidden="true"
               className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-accent/8 to-transparent"
             />
+            {/* Window header: chat head avatar, active thread title, and
+                new-chat/close buttons. */}
             <header className="relative flex items-center gap-2 border-b border-line bg-surface-2/60 px-4 py-3.5">
               <span className="relative flex aspect-[682/902] h-12 shrink-0 items-center justify-center overflow-hidden rounded-lg">
                 <ChatHead />
@@ -297,6 +352,7 @@ export function ChatWidget() {
               </button>
             </header>
 
+            {/* Scrollable list of messages for the active thread. */}
             <div className="thin-scroll flex-1 space-y-3 overflow-y-auto px-4 py-4" ref={scrollRef}>
               {messages.map((m) => (
                 <div
@@ -314,6 +370,8 @@ export function ChatWidget() {
                         : "rounded-bl-md border border-line bg-surface-2 text-foreground/90"
                     )}
                   >
+                    {/* Animate the newest reply with the typewriter,
+                        and keep auto-scrolling while it types. */}
                     {m.id === animatingId ? (
                       <Typewriter
                         key={m.id}
@@ -327,28 +385,38 @@ export function ChatWidget() {
                   </div>
                 </div>
               ))}
-              {pending && (
-                <div className="flex justify-start">
-                  <div className="flex items-center gap-1 rounded-2xl rounded-bl-md border border-line bg-surface-2 px-3.5 py-3">
-                    {[0, 1, 2].map((i) => (
-                      <motion.span
-                        key={i}
-                        animate={{ opacity: [0.25, 1, 0.25] }}
-                        transition={{
-                          duration: 1,
-                          repeat: Infinity,
-                          delay: i * 0.18,
-                        }}
-                        className="h-1.5 w-1.5 rounded-full bg-muted"
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
+              {/* Minimal loading state while waiting for a reply;
+                      disappears as soon as the response arrives. */}
+                  {pending && (
+                    <div className="flex justify-start">
+                      <div className="flex items-center gap-2.5 rounded-2xl rounded-bl-md border border-line bg-surface-2 px-3.5 py-3">
+                        {/* Small pulsing dots as an animated loading indicator. */}
+                        <span className="flex items-center gap-1">
+                          {[0, 1, 2].map((i) => (
+                            <motion.span
+                              key={i}
+                              animate={{ opacity: [0.25, 1, 0.25] }}
+                              transition={{
+                                duration: 1,
+                                repeat: Infinity,
+                                delay: i * 0.18,
+                              }}
+                              className="h-1.5 w-1.5 rounded-full bg-muted"
+                            />
+                          ))}
+                        </span>
+                        <span className="text-[12.5px] text-muted">
+                          Analyzing your request…
+                        </span>
+                      </div>
+                    </div>
+                  )}
             </div>
 
+{/* Bottom input area: quick prompts, text field, and send button. */}
             <div className="border-t border-line px-3 pt-2.5">
               <div className="mb-2.5 flex gap-1.5 overflow-x-auto">
+                {/* Clicking a quick prompt sends it directly as a message. */}
                 {QUICK_PROMPTS.map((q) => (
                   <button
                     key={q}
@@ -361,6 +429,7 @@ export function ChatWidget() {
                 ))}
               </div>
               <div className="flex items-center gap-2 pb-3">
+                {/* Text input that sends the message on Enter. */}
                 <input
                   ref={inputRef}
                   value={input}
@@ -369,6 +438,7 @@ export function ChatWidget() {
                   placeholder="Ask about a component…"
                   className="h-10 flex-1 rounded-xl border border-line bg-surface-2 px-3.5 text-[13px] text-foreground outline-none transition-colors placeholder:text-muted-2 focus:border-accent/50"
                 />
+                {/* Send button, disabled while empty or awaiting a reply. */}
                 <button
                   type="button"
                   aria-label="Send message"
@@ -384,9 +454,11 @@ export function ChatWidget() {
         )}
       </AnimatePresence>
 
+      {/* Launcher row shown when the window is closed. */}
       <div className="flex items-center gap-3">
         {!open && (
           <AnimatePresence>
+            {/* Rotating invite bubble; clicking it opens the chat. */}
             {showPrompt && (
               <motion.button
                 type="button"
@@ -406,6 +478,7 @@ export function ChatWidget() {
             )}
           </AnimatePresence>
         )}
+        {/* Toggle button (the chat head avatar) to open/close the chat. */}
         <motion.button
           type="button"
           aria-label="Open AI assistant"

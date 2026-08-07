@@ -1,5 +1,10 @@
+// This file contains all the information about the computer components shown in the app:
+// the 3D models to display, the text for each part, specs, common problems, and more.
+
+// A single row in a component's spec list (e.g. "Speed" -> "3.7 – 5.2 GHz").
 export type SpecRow = { label: string; value: string };
 
+// The shape of all the data stored for one component (CPU, GPU, RAM, etc.).
 export type ComponentInfo = {
   id: string;
   index: string;
@@ -23,10 +28,13 @@ export type ComponentInfo = {
   credits?: string;
 };
 
+// The 3D model file used for the System Unit, and the model used when no other model exists.
 export const SYSTEM_UNIT_MODEL = "/models/system_unit_update.glb";
 export const FALLBACK_MODEL = SYSTEM_UNIT_MODEL;
 
+// The full list of components that can be explored in the app.
 export const COMPONENTS: ComponentInfo[] = [
+  // --- System Unit (the computer case) ---
   {
     id: "case",
     index: "01",
@@ -66,6 +74,7 @@ export const COMPONENTS: ComponentInfo[] = [
     credits:
       "\"Dream Computer Setup\" (https://skfb.ly/6QW96) by Daniel Cardona is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
   },
+  // --- CPU (Central Processing Unit) ---
   {
     id: "cpu",
     index: "02",
@@ -105,6 +114,7 @@ export const COMPONENTS: ComponentInfo[] = [
     credits:
       "\"CPU Ryzen 5 3600\" (https://skfb.ly/on9Ao) by Fochdog is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
   },
+  // --- Motherboard ---
   {
     id: "motherboard",
     index: "03",
@@ -144,6 +154,7 @@ export const COMPONENTS: ComponentInfo[] = [
     credits:
       "\"PC motherboard ASUS Prime H510M-K\" (https://skfb.ly/oFrRt) by zhigulinsky is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
   },
+  // --- RAM (working memory) ---
   {
     id: "ram",
     index: "04",
@@ -183,6 +194,7 @@ export const COMPONENTS: ComponentInfo[] = [
     credits:
       "\"[RAM DDR4] G.Skill Trident Z NEO\" (https://skfb.ly/6WOrn) by Zon Digital is licensed under CC Attribution-NonCommercial-NoDerivs (http://creativecommons.org/licenses/by-nc-nd/4.0/).",
   },
+  // --- GPU (graphics card) ---
   {
     id: "gpu",
     index: "05",
@@ -222,6 +234,7 @@ export const COMPONENTS: ComponentInfo[] = [
     credits:
       "\"MSI GeForce RTX 3080 Gaming X Trio | Now Free!\" (https://skfb.ly/ow8HY) by M E U is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
   },
+  // --- SSD (SATA solid state drive) ---
   {
     id: "ssd",
     index: "06",
@@ -261,6 +274,7 @@ export const COMPONENTS: ComponentInfo[] = [
     credits:
       "\"(SSD) Solid State Drive\" (https://skfb.ly/otSKU) by MarkCP is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
   },
+  // --- M.2 SSD (NVMe solid state drive) ---
   {
     id: "m2-ssd",
     index: "07",
@@ -300,6 +314,7 @@ export const COMPONENTS: ComponentInfo[] = [
     credits:
       "\"M.2 SSD (Free)\" (https://skfb.ly/pJZv8) by PolyDavid is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
   },
+  // --- HDD (hard disk drive) ---
   {
     id: "hdd",
     index: "08",
@@ -339,6 +354,7 @@ export const COMPONENTS: ComponentInfo[] = [
     credits:
       "\"WD Green 1TB Hard Disk HDD\" (https://skfb.ly/oESOn) by MajdyModels is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
   },
+  // --- PSU (power supply unit) ---
   {
     id: "psu",
     index: "09",
@@ -378,6 +394,7 @@ export const COMPONENTS: ComponentInfo[] = [
     credits:
       "\"PSU Power Supply Unit\" (https://skfb.ly/oBPC9) by Groovex is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
   },
+  // --- CPU cooler ---
   {
     id: "cpu-cooler",
     index: "10",
@@ -417,6 +434,7 @@ export const COMPONENTS: ComponentInfo[] = [
     credits:
       "\"(Free) AMD Wraith Stealth CPU Cooler\" (https://skfb.ly/pJXNM) by PolyDavid is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
   },
+  // --- Case fans ---
   {
     id: "case-fans",
     index: "11",
@@ -456,6 +474,7 @@ export const COMPONENTS: ComponentInfo[] = [
     credits:
       "\"CPU_fan SOGUTUCU\" (https://skfb.ly/6S8JV) by sinemmbagcioglu is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
   },
+  // --- Keyboard ---
   {
     id: "keyboard",
     index: "12",
@@ -495,6 +514,7 @@ export const COMPONENTS: ComponentInfo[] = [
     credits:
       "\"keyboard\" (https://skfb.ly/6UFI8) by 45P3R4 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
   },
+  // --- Mouse ---
   {
     id: "mouse",
     index: "13",
@@ -534,6 +554,7 @@ export const COMPONENTS: ComponentInfo[] = [
     credits:
       "\"Low poly - Computer Mouse [FREE] Download\" (https://skfb.ly/pM8xn) by IQINISO is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
   },
+  // --- Monitor ---
   {
     id: "monitor",
     index: "14",
@@ -573,6 +594,7 @@ export const COMPONENTS: ComponentInfo[] = [
     credits:
       "\"Acer monitor\" (https://skfb.ly/o8vT7) by Turtle_Flipper is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
   },
+  // --- UPS (uninterruptible power supply) ---
   {
     id: "ups",
     index: "15",
@@ -612,6 +634,7 @@ export const COMPONENTS: ComponentInfo[] = [
     credits:
       "\"APC Battery Backup UPS\" (https://sketchfab.com/3d-models/apc-battery-backup-ups-b5c5af44c00848d3bad02327e3cec236) by Graham Rust is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
   },
+  // --- AVR (automatic voltage regulator) ---
   {
     id: "avr",
     index: "16",
@@ -653,6 +676,7 @@ export const COMPONENTS: ComponentInfo[] = [
   },
 ];
 
+// Look up a single component by its id. Returns undefined if no matching component exists.
 export function getComponent(id: string): ComponentInfo | undefined {
   return COMPONENTS.find((c) => c.id === id);
 }

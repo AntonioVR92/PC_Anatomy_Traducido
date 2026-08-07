@@ -10,13 +10,17 @@ type FeatureItemProps = {
   active: boolean;
 };
 
+// FeatureItem: shows one feature's number, title, and description.
+// When "active", the text animates in; otherwise it stays faded out.
 export function FeatureItem({ index, title, description, active }: FeatureItemProps) {
+  // Split the title into words so each can be animated separately
   const words = title.split(" ");
 
   return (
     <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 md:grid-cols-1 lg:px-0">
       <div>
         {/* Feature number */}
+{/* Feature number, e.g. "Feature 01", fades in when active */}
         <motion.p
           initial={false}
           animate={{ opacity: active ? 1 : 0, y: active ? 0 : 14 }}
@@ -27,6 +31,7 @@ export function FeatureItem({ index, title, description, active }: FeatureItemPr
         </motion.p>
 
         {/* Heading — word by word */}
+        {/* Title, with each word sliding up in sequence when active */}
         <h2 className="mt-6 max-w-xl text-balance text-3xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
           {words.map((word, i) => (
             <span key={i} className="inline-block overflow-hidden pb-1 align-top">
@@ -43,7 +48,7 @@ export function FeatureItem({ index, title, description, active }: FeatureItemPr
           ))}
         </h2>
 
-        {/* Description */}
+        {/* Description, fades in after the title */}
         <motion.p
           initial={false}
           animate={{ opacity: active ? 1 : 0, y: active ? 0 : 20 }}

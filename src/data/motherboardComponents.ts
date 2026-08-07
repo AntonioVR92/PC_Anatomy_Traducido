@@ -1,3 +1,7 @@
+// Data describing the parts of a motherboard that can be explored in 3D.
+// Each part is a clickable hotspot on the board (CPU socket, RAM slots, ports, etc.).
+
+// Describes one motherboard part: which 3D mesh it belongs to, where it is, and the text about it.
 export type MotherboardPart = {
   id: string;
   number: number;
@@ -13,8 +17,10 @@ export type MotherboardPart = {
   facts: string[];
 };
 
+// The motherboard part type is the same as the general part type (kept as a named alias for clarity).
 export type MotherboardComponent = MotherboardPart;
 
+// The full list of motherboard parts, each with its own learning text.
 export const MOTHERBOARD_PARTS: MotherboardPart[] = [
   {
     id: "cpu-socket",

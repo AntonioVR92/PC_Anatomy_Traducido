@@ -1,3 +1,7 @@
+// Data describing the parts of a monitor that can be explored in 3D.
+// Each part is a clickable hotspot on the model (screen, ports, buttons, stand, etc.).
+
+// Describes one monitor part: which 3D mesh it belongs to, where it is, and the text about it.
 export type MonitorPart = {
   id: string;
   number: number;
@@ -14,6 +18,7 @@ export type MonitorPart = {
   facts: string[];
 };
 
+// The full list of monitor parts, each with its own learning text.
 export const MONITOR_PARTS: MonitorPart[] = [
   {
     id: "screen",

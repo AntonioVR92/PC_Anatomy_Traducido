@@ -1,5 +1,10 @@
 "use client";
 
+// DetailView.tsx: The detail page for a single component. It shows a 3D viewer
+// for that component on one side (choosing the right viewer based on which
+// component it is) and an information panel on the other side with tabs
+// (overview/details/etc.), the component's description, and model credits.
+
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -12,11 +17,13 @@ import { ComponentIcon } from "@/components/icons";
 import { ModelCredits } from "@/components/viewer/ModelCredits";
 import { MotherboardViewer } from "@/components/motherboard/MotherboardViewer";
 
+// Lazy-load the simple component viewer (only on the client, since it needs WebGL).
 const ComponentViewer = dynamic(
   () =>
     import("@/components/viewer/ComponentViewer").then((m) => m.ComponentViewer),
   {
     ssr: false,
+    // Show a spinner while the viewer code is loading.
     loading: () => (
       <div className="flex h-full w-full items-center justify-center">
         <div className="h-8 w-8 animate-spin rounded-full border-2 border-line-strong border-t-accent" />
@@ -25,6 +32,7 @@ const ComponentViewer = dynamic(
   }
 );
 
+// Lazy-load the interactive mouse viewer (client-side only for WebGL).
 const MouseViewer = dynamic(
   () => import("@/components/mouse/MouseViewer").then((m) => m.MouseViewer),
   {
@@ -37,6 +45,7 @@ const MouseViewer = dynamic(
   }
 );
 
+// Lazy-load the interactive monitor viewer (client-side only for WebGL).
 const MonitorViewer = dynamic(
   () => import("@/components/monitor/MonitorViewer").then((m) => m.MonitorViewer),
   {
@@ -50,10 +59,12 @@ const MonitorViewer = dynamic(
 );
 
 export function DetailView({ component }: { component: ComponentInfo }) {
+  // Which tab is currently shown in the info panel.
   const [tab, setTab] = useState<TabId>("overview");
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
+      {/* Page header with a "Back to Explorer" link and the site logo. */}
       <header className="flex items-center justify-between border-b border-line bg-surface px-6 py-4">
         <Link
           href="/"
@@ -76,6 +87,9 @@ export function DetailView({ component }: { component: ComponentInfo }) {
       </header>
 
       <main className="flex flex-1 flex-col gap-5 p-6 xl:flex-row">
+        {/* Pick the right 3D viewer for the component type.
+            Motherboard, mouse, and monitor get their own interactive viewers;
+            everything else uses the generic model viewer. */}
         {component.id === "motherboard" ? (
           <section className="min-h-[560px] flex-[3] overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_20px_60px_rgba(2,6,16,0.45)]">
             <MotherboardViewer mode="fullscreen" />
@@ -94,7 +108,9 @@ export function DetailView({ component }: { component: ComponentInfo }) {
           </section>
         )}
 
+        {/* The info panel beside the viewer. */}
         <section className="flex w-full flex-col overflow-hidden rounded-2xl border border-line bg-surface xl:max-w-[520px]">
+          {/* Header: icon, name, tagline, and index number. */}
           <div className="border-b border-line px-6 py-5">
             <div className="flex items-center gap-4">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-line bg-surface-2">
@@ -112,8 +128,10 @@ export function DetailView({ component }: { component: ComponentInfo }) {
             </div>
           </div>
 
+          {/* Tab switcher (overview / details, etc.). */}
           <TabBar tab={tab} onChange={setTab} />
 
+          {/* Scrollable tab content plus model credits at the bottom. */}
           <div className="thin-scroll max-h-[520px] flex-1 overflow-y-auto px-6 py-5">
             <TabContent tab={tab} component={component} />
             <ModelCredits

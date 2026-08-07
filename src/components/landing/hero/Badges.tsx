@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 
+// The technology stack shown as small pill badges in the hero
 const TECH_BADGES = [
   "Open Source",
   "Next.js",
@@ -11,6 +12,7 @@ const TECH_BADGES = [
   "Tailwind CSS",
 ];
 
+// Badges: a row of tech badges that fades in, each popping in after the previous
 export function Badges() {
   return (
     <motion.div
@@ -19,6 +21,7 @@ export function Badges() {
       transition={{ duration: 0.8, delay: 0.7 }}
       className="mt-9 flex flex-wrap items-center justify-start gap-2"
     >
+      {/* One pill per tech, each with a slightly longer delay */}
       {TECH_BADGES.map((badge) => (
         <motion.span
           key={badge}

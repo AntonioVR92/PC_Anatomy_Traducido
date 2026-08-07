@@ -1,11 +1,18 @@
 "use client";
 
+// This file is a client component (runs in the browser).
+
+// Imports for dynamically loading 3D viewers on demand.
 import dynamic from "next/dynamic";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+// Helpers/utilities and global state store for the explorer.
 import { FALLBACK_MODEL, getComponent } from "@/lib/components";
 import { useExplorer } from "@/lib/store";
 
+// Renders the prev/next hotspot navigation bar shown at the bottom of
+// the viewer for components with numbered hotspots.
 function HotspotHint({ label }: { label: string }) {
+  // Pull the store actions that skip to the previous/next hotspot.
   const nextHotspot = useExplorer((s) => s.nextHotspot);
   const prevHotspot = useExplorer((s) => s.prevHotspot);
 
@@ -19,6 +26,7 @@ function HotspotHint({ label }: { label: string }) {
       >
         <ChevronLeft className="h-4 w-4" strokeWidth={1.8} />
       </button>
+      {/* Text label passed in from the parent explaining the hotspots. */}
       <span className="rounded-full border border-line bg-surface/70 px-3.5 py-1.5 text-[11.5px] text-muted backdrop-blur-sm">
         {label}
       </span>
@@ -34,6 +42,9 @@ function HotspotHint({ label }: { label: string }) {
   );
 }
 
+// Each viewer is lazy-loaded (dynamic import) so the 3D code only loads
+// when its model is actually shown. ssr:false keeps them client-only,
+// and a loading spinner/text is shown while the model is downloading.
 const ComponentViewer = dynamic(
   () =>
     import("@/components/viewer/ComponentViewer").then((m) => m.ComponentViewer),
@@ -116,10 +127,15 @@ const MonitorViewer = dynamic(
   }
 );
 
+// Main viewer. Renders the 3D model for whichever component is selected
+// in the explorer, choosing the right viewer + hotspot hint per component.
 export function Viewer() {
+  // Read the currently selected component id from the global store.
   const selectedId = useExplorer((s) => s.selectedId);
+  // Resolve the model path for the selected component, falling back to a default.
   const path = getComponent(selectedId)?.model ?? FALLBACK_MODEL;
 
+  // The system unit/case model uses its own dedicated viewer with hotspots.
   if (selectedId === "case") {
     return (
       <div className="relative h-full w-full overflow-hidden">
@@ -129,6 +145,7 @@ export function Viewer() {
     );
   }
 
+  // The motherboard model uses its own dedicated viewer with hotspots.
   if (selectedId === "motherboard") {
     return (
       <div className="relative h-full w-full overflow-hidden">
@@ -138,6 +155,7 @@ export function Viewer() {
     );
   }
 
+  // The mouse model uses its own dedicated viewer with hotspots.
   if (selectedId === "mouse") {
     return (
       <div className="relative h-full w-full overflow-hidden">
@@ -147,6 +165,7 @@ export function Viewer() {
     );
   }
 
+  // The monitor model uses its own dedicated viewer with hotspots.
   if (selectedId === "monitor") {
     return (
       <div className="relative h-full w-full overflow-hidden">
@@ -156,6 +175,7 @@ export function Viewer() {
     );
   }
 
+  // Default case: use the generic component viewer for any other selection.
   return (
     <div className="relative h-full w-full overflow-hidden">
       <ComponentViewer component={path} mode="embedded" />

@@ -12,8 +12,10 @@ import {
 } from "framer-motion";
 import { cn } from "@/lib/utils";
 
+// Common smooth easing curve used across landing animations
 export const EASE = [0.22, 1, 0.36, 1] as const;
 
+// Standard fade-up variants; accepts an index to stagger items
 export const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: (i: number = 0) => ({
@@ -23,6 +25,7 @@ export const fadeUp: Variants = {
   }),
 };
 
+// Reveal: wraps children and fades them up the first time they scroll into view
 export function Reveal({
   children,
   delay = 0,
@@ -46,6 +49,8 @@ export function Reveal({
   );
 }
 
+// MagneticButton: a button wrapper that gently pulls toward the cursor,
+// then springs back to place when the mouse leaves.
 export function MagneticButton({
   children,
   className,
@@ -56,11 +61,13 @@ export function MagneticButton({
   strength?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  // Cursor offset in pixels, smoothed by a spring
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const sx = useSpring(x, { stiffness: 180, damping: 18, mass: 0.6 });
   const sy = useSpring(y, { stiffness: 180, damping: 18, mass: 0.6 });
 
+  // On mouse move, push the button toward the cursor from its center
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = ref.current;
     if (!el) return;
@@ -69,6 +76,7 @@ export function MagneticButton({
     y.set((e.clientY - rect.top - rect.height / 2) * strength);
   };
 
+  // When the mouse leaves, snap the button back to the center
   const onMouseLeave = () => {
     x.set(0);
     y.set(0);
@@ -87,6 +95,8 @@ export function MagneticButton({
   );
 }
 
+// AnimatedCounter: counts from 0 to `to` when it scrolls into view,
+// showing the animated number with optional prefix/suffix text.
 export function AnimatedCounter({
   to,
   prefix = "",
@@ -99,11 +109,13 @@ export function AnimatedCounter({
   className?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
+  // Only start counting once the number becomes visible
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const count = useMotionValue(0);
   const spring = useSpring(count, { stiffness: 70, damping: 24 });
   const displayed = useTransform(spring, (v) => String(Math.round(v)));
 
+  // Kick off the animation when the element enters the viewport
   useEffect(() => {
     if (!inView) return;
     const controls = animate(count, to, {
@@ -113,6 +125,7 @@ export function AnimatedCounter({
     return controls.stop;
   }, [inView, to, count]);
 
+  // Push each changing value into the DOM as text
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -124,11 +137,13 @@ export function AnimatedCounter({
 
   return (
     <span ref={ref} className={cn("font-mono tabular-nums", className)}>
+      {/* Live number (updated by JS) */}
       <span aria-hidden="true">
         {prefix}
         {Math.round(count.get())}
         {suffix}
       </span>
+      {/* Screen-reader friendly final value */}
       <span className="sr-only">
         {prefix}
         {to}

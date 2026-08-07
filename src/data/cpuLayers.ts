@@ -1,3 +1,7 @@
+// Data describing the layers of a CPU that can be "peeled" apart in 3D.
+// Each layer is one physical part of the chip (heat spreader, die, pins, etc.).
+
+// Describes one CPU layer: its 3D mesh, position, colors, and the learning text about it.
 export type CPULayer = {
   id: string;
   number: number;
@@ -13,8 +17,10 @@ export type CPULayer = {
   problems: string[];
 };
 
+// The full, ordered list of CPU layers, from the top of the chip down to the pins.
 export const CPU_LAYERS: CPULayer[] = [
   {
+    // The metal lid on top of the CPU.
     id: "ihs",
     number: 1,
     meshName: "Integrated Heat Spreader",
@@ -37,6 +43,7 @@ export const CPU_LAYERS: CPULayer[] = [
     ],
   },
   {
+    // The layer of thermal paste between the die and the heat spreader.
     id: "tim",
     number: 2,
     meshName: "Thermal Interface Material",
@@ -60,6 +67,7 @@ export const CPU_LAYERS: CPULayer[] = [
     ],
   },
   {
+    // The silicon chip inside the CPU that does all the computing.
     id: "die",
     number: 3,
     meshName: "Silicon Die",
@@ -82,6 +90,7 @@ export const CPU_LAYERS: CPULayer[] = [
     ],
   },
   {
+    // The green circuit board that the die sits on.
     id: "substrate",
     number: 4,
     meshName: "Substrate",
@@ -104,6 +113,7 @@ export const CPU_LAYERS: CPULayer[] = [
     ],
   },
   {
+    // The gold contacts at the bottom of the CPU that plug into the motherboard.
     id: "pins",
     number: 5,
     meshName: "Contact Pins",

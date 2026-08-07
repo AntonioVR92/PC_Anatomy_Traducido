@@ -9,8 +9,10 @@ import { Reveal } from "@/components/landing/ui/primitives";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// The status a roadmap milestone can be in
 type Phase = "completed" | "in-progress" | "planned" | "future";
 
+// Data for every milestone shown on the roadmap line
 const ROADMAP = [
   {
     index: "01",
@@ -70,6 +72,7 @@ const ROADMAP = [
   },
 ];
 
+// Border/ring styling for the timeline node, chosen by phase
 const NODE_RING: Record<Phase, string> = {
   completed: "border-accent/60",
   "in-progress": "border-accent-bright",
@@ -77,6 +80,7 @@ const NODE_RING: Record<Phase, string> = {
   future: "border-line",
 };
 
+// Core (inner dot) styling for the timeline node, chosen by phase
 const NODE_CORE: Record<Phase, string> = {
   completed: "bg-accent shadow-[0_0_14px_rgba(77,141,255,0.55)]",
   "in-progress": "bg-accent-bright shadow-[0_0_18px_rgba(111,164,255,0.7)]",
@@ -84,6 +88,7 @@ const NODE_CORE: Record<Phase, string> = {
   future: "bg-surface-2/40",
 };
 
+// Card background/border styling, chosen by phase
 const CARD: Record<Phase, string> = {
   completed: "border-line bg-surface/40",
   "in-progress": "border-accent/50 bg-accent/[0.06] shadow-[0_0_40px_-18px_rgba(77,141,255,0.4)]",
@@ -91,6 +96,7 @@ const CARD: Record<Phase, string> = {
   future: "border-line/70 bg-surface/20",
 };
 
+// Status badge styling, chosen by phase
 const STATUS_BADGE: Record<Phase, string> = {
   completed: "border-line-strong text-accent-bright",
   "in-progress": "border-accent/70 bg-accent/10 text-accent-bright",
@@ -98,6 +104,7 @@ const STATUS_BADGE: Record<Phase, string> = {
   future: "border-line text-muted-2",
 };
 
+// A single milestone dot on the spine; gentle pulsing when in progress
 function Node({ phase }: { phase: Phase }) {
   return (
     <span className="relative flex h-3.5 w-3.5 items-center justify-center">
@@ -111,24 +118,31 @@ function Node({ phase }: { phase: Phase }) {
   );
 }
 
+// Roadmap: shows the project plan as a vertical timeline that fills in
+// as the user scrolls, revealing each milestone node and its card.
 export function Roadmap() {
+  // Refs for the timeline wrapper, progress spine, nodes and cards
   const wrapRef = useRef<HTMLDivElement>(null);
   const spineRef = useRef<HTMLDivElement>(null);
   const nodeRefs = useRef<Array<HTMLSpanElement | null>>([]);
   const contentRefs = useRef<Array<HTMLDivElement | null>>([]);
 
+  // Runs once to wire up the scroll-driven reveal of the timeline
   useEffect(() => {
     const ctx = gsap.context(() => {
       const spine = spineRef.current;
       if (!spine) return;
+      // Only use node/card refs that are actually present in the DOM
       const nodes = nodeRefs.current.filter(Boolean) as HTMLElement[];
       const contents = contentRefs.current.filter(Boolean) as HTMLElement[];
       const n = ROADMAP.length;
       const segCount = n - 1;
 
+      // Nodes and cards start hidden
       gsap.set(contents, { autoAlpha: 0, y: 26 });
       gsap.set(nodes, { autoAlpha: 0, scale: 0.2 });
 
+      // The whole reveal is scrubbed against scrolling through the section
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: wrapRef.current,
@@ -138,6 +152,7 @@ export function Roadmap() {
         },
       });
 
+      // The progress spine grows from top to bottom across all segments
       tl.fromTo(
         spine,
         { scaleY: 0 },
@@ -145,6 +160,7 @@ export function Roadmap() {
         0
       );
 
+      // Each milestone pops in at its own position along the timeline
       ROADMAP.forEach((_, i) => {
         const at = i * (segCount / Math.max(segCount, 1));
         tl.fromTo(
@@ -164,12 +180,14 @@ export function Roadmap() {
       ScrollTrigger.refresh();
     }, wrapRef);
 
+    // Clean up all animations on unmount
     return () => ctx.revert();
   }, []);
 
   return (
     <section id="roadmap" className="relative scroll-mt-24 px-6 py-28 sm:py-32">
       <div className="mx-auto max-w-6xl">
+        {/* Section heading: eyebrow label, title, and subtitle */}
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-accent-bright">
             Project Roadmap
@@ -201,6 +219,7 @@ export function Roadmap() {
             className="absolute inset-y-0 left-5 -translate-x-1/2 w-[2px] origin-top scale-y-0 bg-gradient-to-b from-accent-bright via-accent to-accent-bright shadow-[0_0_12px_rgba(111,164,255,0.55)] md:left-1/2"
           />
 
+          {/* The timeline list; each item is a milestone */}
           <ol className="relative">
             {ROADMAP.map((item, i) => {
               const even = i % 2 === 0;
@@ -209,7 +228,7 @@ export function Roadmap() {
                   key={item.index}
                   className="relative mb-10 last:mb-0 md:mb-0 md:py-24 md:first:pt-8 grid grid-cols-[40px_minmax(0,1fr)] items-start md:grid-cols-[minmax(0,1fr)_48px_minmax(0,1fr)]"
                 >
-                  {/* Node on the spine */}
+                  {/* Node on the spine, registered so GSAP can animate it */}
                   <span
                     ref={(el) => {
                       nodeRefs.current[i] = el;
@@ -239,6 +258,7 @@ export function Roadmap() {
                     >
                       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
 
+                      {/* Row with the milestone number and its status badge */}
                       <div className="flex items-center justify-between gap-3">
                         <span className="font-mono text-xs tracking-widest text-muted-2">
                           {item.index}
@@ -266,6 +286,7 @@ export function Roadmap() {
                         {item.desc}
                       </p>
 
+                      {/* Bullet list of deliverables for this milestone */}
                       <ul className="mt-4 space-y-1.5">
                         {item.items.map((li) => (
                           <li key={li} className="flex items-start gap-2 text-[13px] leading-relaxed text-muted">

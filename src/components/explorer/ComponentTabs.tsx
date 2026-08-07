@@ -1,5 +1,9 @@
 "use client";
 
+// This file is a client component (runs in the browser).
+// These components provide the tabbed info view in the DetailPanel:
+// a TabBar with the tab selector plus TabContent that renders the
+// Overview / Functions / Common Issues sections for a component.
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -13,23 +17,27 @@ import type { ComponentInfo } from "@/lib/components";
 import type { TabId } from "@/lib/store";
 import { cn } from "@/lib/utils";
 
+// Definitions of the available tabs: id and displayed label.
 export const TAB_DEFS: { id: TabId; label: string }[] = [
   { id: "overview", label: "Overview" },
   { id: "functions", label: "Functions" },
   { id: "issues", label: "Common Issues" },
 ];
 
+// Horizontal selector row showing the tab buttons.
 export function TabBar({
   tab,
   onChange,
 }: {
-  tab: TabId;
-  onChange: (tab: TabId) => void;
+  tab: TabId; // currently active tab id
+  onChange: (tab: TabId) => void; // callback fired when a tab is clicked
 }) {
+  // Track which tab is hovered so we can show a hover indicator.
   const [hoverTab, setHoverTab] = useState<TabId | null>(null);
   return (
     <div className="flex gap-1 border-b border-line px-4 pt-3">
       {TAB_DEFS.map((t) => {
+        // True when this tab is the currently active one.
         const active = tab === t.id;
         return (
           <button
@@ -43,6 +51,7 @@ export function TabBar({
             )}
           >
             <span className="relative z-10">{t.label}</span>
+            {/* Animated underline indicator on the active tab. */}
             {active && (
               <motion.span
                 layoutId="detail-tab"
@@ -50,6 +59,7 @@ export function TabBar({
                 transition={{ type: "spring", stiffness: 500, damping: 40 }}
               />
             )}
+            {/* Muted underline on hover for inactive tabs. */}
             {hoverTab === t.id && !active && (
               <span className="absolute inset-x-1 -bottom-px h-[2px] rounded-full bg-line-strong" />
             )}
@@ -60,18 +70,20 @@ export function TabBar({
   );
 }
 
+// Selects which tab content component to render based on the current tab.
 export function TabContent({
   tab,
   component,
 }: {
-  tab: TabId;
-  component: ComponentInfo;
+  tab: TabId; // which info section to show
+  component: ComponentInfo; // the component being described
 }) {
   if (tab === "overview") return <OverviewTab component={component} />;
   if (tab === "functions") return <FunctionsTab component={component} />;
   return <IssuesTab component={component} />;
 }
 
+// Reusable uppercase title/label style used by the tab content sections.
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h3 className="mb-2 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-2">
@@ -80,6 +92,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   );
 }
 
+// Overview tab: description, real-world usage, and a highlighted fact.
 function OverviewTab({ component }: { component: ComponentInfo }) {
   return (
     <div className="space-y-5">
@@ -92,6 +105,7 @@ function OverviewTab({ component }: { component: ComponentInfo }) {
         </p>
       </div>
 
+      {/* Accent box for the interesting fact. */}
       <div className="rounded-xl border border-accent/25 bg-accent-soft p-4">
         <div className="mb-1.5 flex items-center gap-2">
           <Lightbulb className="h-3.5 w-3.5 text-accent" strokeWidth={1.8} />
@@ -107,6 +121,7 @@ function OverviewTab({ component }: { component: ComponentInfo }) {
   );
 }
 
+// Functions tab: list the component's responsibilities in checklist form.
 function FunctionsTab({ component }: { component: ComponentInfo }) {
   return (
     <div className="space-y-2.5">
@@ -131,6 +146,7 @@ function FunctionsTab({ component }: { component: ComponentInfo }) {
   );
 }
 
+// Common issues tab: list failure modes plus a closing maintenance note.
 function IssuesTab({ component }: { component: ComponentInfo }) {
   return (
     <div className="space-y-2.5">
@@ -147,6 +163,7 @@ function IssuesTab({ component }: { component: ComponentInfo }) {
           <span className="text-[13px] leading-relaxed text-foreground/90">{issue}</span>
         </div>
       ))}
+      {/* Closing information note. */}
       <div className="flex items-start gap-2.5 rounded-xl border border-line-strong bg-surface-2 px-4 py-3">
         <Info className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-2" strokeWidth={1.8} />
         <p className="text-[11.5px] leading-relaxed text-muted">
