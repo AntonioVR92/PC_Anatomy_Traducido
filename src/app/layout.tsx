@@ -14,10 +14,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Computer Anatomy — Learn Computer Hardware Interactively",
+  metadataBase: new URL("https://computer-anatomy.example.com"),
+  title: {
+    default: "Computer Anatomy — Learn Computer Hardware Like Never Before",
+    template: "%s — Computer Anatomy",
+  },
   description:
-    "Explore the inside of a computer in 3D. An interactive educational platform for learning computer hardware — the Human Anatomy Atlas for PC components.",
+    "An open-source, interactive 3D platform that teaches computer hardware. Peel apart the CPU, GPU, RAM, motherboard and more with cinematic WebGL visualizations.",
   manifest: "/site.webmanifest",
+  openGraph: {
+    title: "Computer Anatomy — Learn Computer Hardware Like Never Before",
+    description:
+      "Explore the inside of a computer in 3D. An interactive educational platform for learning computer hardware.",
+    type: "website",
+    images: [{ url: "/logo.png" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Computer Anatomy — Learn Computer Hardware",
+    description: "An interactive 3D atlas for learning computer hardware.",
+    images: ["/logo.png"],
+  },
   icons: {
     icon: [
       { url: "/logo.png", sizes: "any", type: "image/png" },

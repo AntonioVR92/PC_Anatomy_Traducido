@@ -11,6 +11,7 @@ const eslintConfig = defineConfig([
     files: [
       "src/components/**/{viewer,detail}/**/*.{ts,tsx}",
       "src/components/viewer/**/*.{ts,tsx}",
+      "src/components/landing/Starfield.tsx",
     ],
     rules: {
       "react-hooks/immutability": "off",
