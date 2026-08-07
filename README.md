@@ -1,523 +1,196 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-<div align="center">
-
-<img src="./public/logo.png" width="120" alt="Computer Anatomy Logo" />
-
-# Computer Anatomy
-
-### Learn Computer Hardware Like Never Before.
-
-An open-source interactive learning platform that helps students, educators, and enthusiasts understand computer hardware through immersive 3D visualization, educational animations, and hands-on exploration.
-
-<p>
-
-[![Website](https://img.shields.io/badge/Website-Live-blue?style=for-the-badge)](https://computeranatomy.dev)
-[![Documentation](https://img.shields.io/badge/Documentation-Read-green?style=for-the-badge)](#documentation)
-[![MIT License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)]
-[![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-success?style=for-the-badge)]
-[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-orange?style=for-the-badge)]
-
+<p align="center">
+  <img src="public/logo.png" alt="Computer Anatomy" width="96" height="96" />
 </p>
 
-</div>
+<h1 align="center">Computer Anatomy</h1>
+
+<p align="center">
+  <strong>An open-source, interactive 3D atlas of the computer on your desk.</strong><br />
+  Peel apart the CPU, spin the GPU, trace the motherboard — and actually understand
+  how your machine works.
+</p>
+
+<p align="center">
+  <a href="https://github.com/"><img src="https://img.shields.io/badge/Open_Source-100%25-4d8dff?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="Open Source" /></a>
+  <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js 16" /></a>
+  <a href="https://threejs.org/"><img src="https://img.shields.io/badge/Three.js-r185-7a5cff?style=for-the-badge&logo=threedotjs&logoColor=white" alt="Three.js" /></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" /></a>
+  <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS 4" /></a>
+</p>
+
+<p align="center">
+  <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-19-087ea4?style=for-the-badge&logo=react&logoColor=white" alt="React 19" /></a>
+  <a href="https://motion.dev/"><img src="https://img.shields.io/badge/Framer_Motion-13-8B5CF6?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" /></a>
+  <a href="https://www.mongodb.com/"><img src="https://img.shields.io/badge/Zustand-Simple_State-1E3A8A?style=for-the-badge" alt="Zustand" /></a>
+</p>
 
 ---
 
-```bash
-$ npx computer-anatomy
-
-Initializing Learning Environment...
-
-Loading Hardware Database...
-Loading 3D Engine...
-Loading Components...
-Preparing Interactive Experience...
-
-✓ Ready.
-
-Welcome to Computer Anatomy.
-```
+> **The Human Anatomy Atlas — for computers.** Most people use a computer every day but have
+> never seen inside one. Computer Anatomy fixes that: it is a fully interactive 3D journey
+> through every major component, explained in plain language and rendered in your browser.
 
 ---
 
-# Overview
+## ✨ What is Computer Anatomy?
 
-Computer Anatomy is a modern educational platform that transforms traditional computer hardware learning into an immersive interactive experience.
+Computer Anatomy is an **interactive 3D educational platform** that teaches computer hardware by letting you *touch it*. Instead of static diagrams and dry tables, you get:
 
-Instead of reading static diagrams, users can explore realistic 3D hardware models, inspect internal components, watch educational animations, and understand how every part works together inside a computer.
+- 🧠 **Life-sized 3D models** of CPUs, GPUs, motherboards, RAM, storage, PSUs and more.
+- 🔬 **Anatomical zoom** — peel a CPU down to its silicon die, or spin a motherboard like it's on a turntable.
+- 🖱️ **Click-to-learn hotspots** on every component, with clear explanations of *what it does* and *why it matters*.
+- 💬 **A built-in AI assistant** that answers your hardware questions in natural language.
+- 🧭 **Structured learning paths** that take you from first boot to full fluency.
 
-Whether you're a student, educator, PC builder, or technology enthusiast, Computer Anatomy provides an engaging way to learn modern computer architecture.
-
----
-
-# Why Computer Anatomy?
-
-Traditional learning often relies on textbooks and images.
-
-Computer Anatomy allows you to:
-
-- Explore computer hardware in 3D
-- Understand internal architecture visually
-- Learn through interaction instead of memorization
-- See how components communicate
-- Build practical hardware knowledge
+All of it is **100% open source** and free to use, fork, and learn from.
 
 ---
 
-# Features
+## ✨ Features
 
-## Current Features
-
-- Interactive Landing Page
-- Modern User Interface
-- Responsive Design
-- Hardware Information Pages
-- Educational Content
-- Smooth Animations
-- Open Source
-
----
-
-## Planned Features
-
-- Interactive Motherboard
-- CPU Exploration
-- RAM Visualization
-- GPU Anatomy
-- Storage Devices
-- Power Supply
-- Data Flow Animations
-- Exploded Computer View
-- Hardware Comparison
-- Interactive Quizzes
-- Progress Tracking
-- AI Learning Assistant
-- Search Components
-- Dark / Light Theme
-- Multi-language Support
-- Mobile PWA
+| Feature | Description |
+| --- | --- |
+| 🖥️ **Interactive 3D Explorer** | A full-screen WebGL viewer with orbit, zoom, and hotspot navigation — built on React Three Fiber. |
+| 🧩 **16+ Components** | System Unit, CPU + water block, Motherboard, RAM, GPU, M.2 SSD, SATA SSD, HDD, PSU, CPU Cooler, Case Fans, Keyboard, Mouse, Monitor, UPS, and AVR. |
+| 🔬 **CPU Layer Explosion** | Dissect the CPU layer by layer — heat spreader, TIM, die, substrate, and IHS — with lift animation. |
+| 💬 **AI Assistant** | A context-aware chat guide (OpenRouter) that answers hardware questions with Markdown tables, specs and friendly explanations. |
+| 🎬 **Landing Page** | A cinematic hero with a shader-based starfield, animated gradient headline, and glassmorphism — built with Framer Motion. |
+| ⚡ **Modern Stack** | Next.js 16 (App Router) + React 19 + TypeScript + Tailwind CSS 4 + Three.js on webGL. |
 
 ---
 
-# Screenshots
+## 🛠️ Tech Stack
 
-| Landing Page | Hardware Explorer |
-|--------------|------------------|
-| Coming Soon | Coming Soon |
-
-| Component Viewer | Educational Mode |
-|------------------|------------------|
-| Coming Soon | Coming Soon |
+| Layer | Technology |
+| --- | --- |
+| **Framework** | [Next.js 16](https://nextjs.org/) (App Router, Turbopack) |
+| **UI Library** | [React 19](https://react.dev/) |
+| **Language** | [TypeScript](https://www.typescriptlang.org/) |
+| **3D Rendering** | [Three.js](https://threejs.org/) + [React Three Fiber 9](https://docs.pmnd.rs/react-three-fiber) |
+| **3D Helpers** | [@react-three/drei](https://docs.pmnd.rs/drei) |
+| **Styling** | [Tailwind CSS 4](https://tailwindcss.com/) |
+| **Animations** | [Framer Motion](https://motion.dev/) + [GSAP](https://gsap.com/) + [Lenis](https://lenis.darkroom.engineering/) |
+| **State** | [Zustand](https://zustand.docs.pmnd.rs/) (persisted explorer state) |
+| **AI Chat** | [OpenRouter](https://openrouter.ai/) |
+| **Markdown** | [react-markdown](https://github.com/remarkjs/react-markdown) + [remark-gfm](https://github.com/remarkjs/remark-gfm) |
 
 ---
 
-# Live Demo
+## 📦 Project Structure
 
-Website
+A clean, colocated layout under `src/`:
 
 ```
-https://computeranatomy.dev
-```
-
-Documentation
-
-```
-https://computeranatomy.dev/docs
-```
-
-Roadmap
-
-```
-https://computeranatomy.dev/roadmap
-```
-
----
-
-# Tech Stack
-
-## Frontend
-
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
-
-## Animation
-
-- Framer Motion
-- GSAP
-- Lenis
-
-## 3D
-
-- Three.js
-- React Three Fiber
-- Drei
-
-## Development
-
-- ESLint
-- Prettier
-- Husky
-
-## Deployment
-
-- Vercel
-
----
-
-# Project Structure
-
-```text
-computer-anatomy/
-
+src/
 ├── app/
-│
+│   ├── api/
+│   │   └── chat/          # OpenRouter-backed AI assistant route
+│   ├── components/        # Per-component 3D pages (/components/[slug])
+│   ├── explore/           # Full-screen 3D explorer page
+│   ├── globals.css        # Tailwind + custom theme & utilities
+│   ├── layout.tsx         # Root layout, fonts, SEO metadata
+│   └── page.tsx           # Landing page
 ├── components/
-│   ├── common/
-│   ├── ui/
-│   ├── layout/
-│   └── sections/
-│
-├── features/
-│   ├── motherboard/
-│   ├── cpu/
-│   ├── ram/
-│   ├── gpu/
-│   ├── storage/
-│   ├── psu/
-│   └── cooling/
-│
-├── three/
-│
-├── hooks/
-│
-├── lib/
-│
-├── utils/
-│
-├── types/
-│
-├── styles/
-│
-├── docs/
-│
-├── public/
-│
-├── README.md
-│
-└── LICENSE
+│   ├── landing/           # Marketing page (hero, features, roadmap…)
+│   ├── explorer/          # Sidebar · Viewer · Detail panel
+│   ├── monitor / mouse / motherboard / systemunit / chat
+│   └── icons.tsx          # Central lucide-icon registry
+├── data/                  # Component content & CPU layer definitions
+├── hooks/                 # Reusable Three.js hooks
+├── lib/                   # Components catalog, store, chat models
+└── utils/                 # Focus-camera & mesh helpers
 ```
 
 ---
 
-# Getting Started
+## 🚀 Getting Started
 
-Clone the repository.
+### Prerequisites
+
+- **Node.js 20.9+** (LTS)
+- **npm**
+
+### 1. Clone & install
 
 ```bash
-git clone https://github.com/yourusername/computer-anatomy.git
-```
-
-Navigate into the project.
-
-```bash
+git clone https://github.com/your-user/computer-anatomy.git
 cd computer-anatomy
-```
-
-Install dependencies.
-
-```bash
 npm install
 ```
 
-Start the development server.
+### 2. Configure the AI assistant (optional)
+
+Copy the example env file and add an [OpenRouter](https://openrouter.ai/keys) key to enable the chat guide:
 
 ```bash
-npm run dev
+cp .env.example .env.local
 ```
-
-Open your browser.
-
-```
-http://localhost:3000
-```
-
----
-
-# Available Scripts
-
-```bash
-npm run dev
-```
-
-Runs the development server.
-
----
-
-```bash
-npm run build
-```
-
-Creates a production build.
-
----
-
-```bash
-npm run start
-```
-
-Starts the production server.
-
----
-
-```bash
-npm run lint
-```
-
-Runs ESLint.
-
----
-
-```bash
-npm run typecheck
-```
-
-Runs TypeScript checking.
-
----
-
-```bash
-npm run format
-```
-
-Formats code using Prettier.
-
----
-
-# Environment Variables
-
-Create a `.env.local` file.
 
 ```env
-NEXT_PUBLIC_APP_URL=
-
-NEXT_PUBLIC_SUPABASE_URL=
-
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
+OPENROUTER_API_KEY=your_key_here
+# OPENROUTER_MODEL=google/gemma-4-26b-a4b-it:free   # optional override
 ```
 
----
+> The assistant gracefully falls back through a built-in model list, so the app works even without a key.
 
-# Documentation
+### 3. Run the dev server
 
-Documentation is currently under development.
-
-Future documentation will include:
-
-- Installation
-- Components
-- 3D System
-- Educational API
-- Contributing Guide
-- Design System
-
----
-
-# Roadmap
-
-## Phase 1
-
-- Landing Page
-- Hero Section
-- Responsive UI
-- Documentation
-
-## Phase 2
-
-- Motherboard Module
-- CPU Module
-- RAM Module
-- GPU Module
-- Storage Module
-
-## Phase 3
-
-- Interactive 3D Viewer
-- Exploded View
-- Educational Animations
-- Search System
-
-## Phase 4
-
-- AI Tutor
-- Quizzes
-- Learning Progress
-- Achievements
-- Certificates
-
----
-
-# Contributing
-
-We welcome contributions from developers, designers, educators, and hardware enthusiasts.
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push your branch
-5. Open a Pull Request
-
-Please read **CONTRIBUTING.md** before contributing.
-
----
-
-# Code of Conduct
-
-This project follows an open and welcoming community.
-
-Please read **CODE_OF_CONDUCT.md** before participating.
-
----
-
-# Security
-
-If you discover a security vulnerability, please report it privately.
-
-Do **not** open a public issue.
-
-Contact:
-
-```
-security@computeranatomy.dev
+```bash
+npm run dev
 ```
 
----
-
-# Community
-
-Join the community.
-
-- GitHub Discussions
-- Discord
-- Issues
-- Feature Requests
+Open **http://localhost:3000** — the landing page greets you, and **Explore Components** takes you into the 3D viewer.
 
 ---
 
-# Open Source
+## 🧭 How to use the explorer
 
-Computer Anatomy is completely open source.
-
-Everyone is welcome to contribute regardless of experience.
-
-Whether you're fixing typos, improving documentation, building new features, or reporting bugs, every contribution helps make computer education more accessible.
-
-If you enjoy this project, consider giving it a ⭐ on GitHub.
+1. From the landing page, click **Explore Components**.
+2. Use the **left sidebar** to switch between 16+ interactive components.
+3. **Drag** to orbit, **scroll** to zoom, and **click a hotspot** to inspect a part in detail.
+4. In the **Detail Panel**, read the Overview, Functions, and common Issues for each part.
+5. For the CPU, use the **layer slider** to peel it apart anatomically.
 
 ---
 
-# Browser Support
+## 🤝 Contributing
 
-- Chrome
-- Edge
-- Firefox
-- Safari
+Contributions are what make open source such an amazing ecosystem. To get involved:
 
----
+1. 🍴 **Fork** the repository.
+2. 🧑‍💻 **Create** a feature branch (`git checkout -b feature/amazing-thing`).
+3. ✍️ **Commit** your changes (`git commit -m 'Add amazing thing'`).
+4. 🚀 **Push** to the branch.
+5. 🔁 Open a **Pull Request**.
 
-# Performance Goals
+Good places to start:
+- Tag a component that's missing.
+- Improve lesson content in `src/data/`.
+- Add a new model to `public/models/`.
+- Polish the landing page in `src/components/landing/`.
 
-- Lighthouse 100
-- Responsive
-- Accessible
-- SEO Optimized
-- GPU Accelerated
-- 60 FPS Animations
-
----
-
-# Accessibility
-
-Computer Anatomy is committed to accessibility.
-
-Goals include:
-
-- Keyboard Navigation
-- Screen Reader Support
-- Reduced Motion
-- High Contrast
-- Semantic HTML
+Please follow conventional commit style and run `npm run lint` before pushing.
 
 ---
 
-# Acknowledgements
+## 🗺️ Roadmap
 
-Special thanks to the amazing open-source community.
-
-Built with:
-
-- Next.js
-- React
-- Three.js
-- React Three Fiber
-- Drei
-- Tailwind CSS
-- Framer Motion
-- GSAP
-- Vercel
+- [x] Core interactive 3D viewer & hotspots
+- [x] CPU layer explosion
+- [ ] Full component library for all supported parts
+- [ ] Structured guided curriculum & quizzes
+- [ ] Classroom / self-hosted deployment guides
+- [ ] More localized (i18n) content
 
 ---
 
-# License
+## 📜 License
 
-Released under the MIT License.
-
-See the LICENSE file for more information.
+Distributed under the **MIT** license. See [`LICENSE`](#) for more information.
 
 ---
 
-<div align="center">
-
-## Learn. Explore. Build.
-
-Made with ❤️ by the Computer Anatomy Community.
-
-If this project helped you, consider giving it a ⭐ on GitHub.
-
-</div>
+<p align="center">
+  Made with 🖤 for curious minds.<br />
+  Star the repo, contribute a model, and help the world understand what's inside the box.
+</p>
