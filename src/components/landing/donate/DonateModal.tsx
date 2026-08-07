@@ -1,27 +1,22 @@
 "use client";
 
-// DonateModal.tsx: The "Buy Me a Coffee" donation modal. A trigger button
-// below the "Open source. Free to explore." footnote opens a centered dialog
-// (bottom-sheet on mobile) where the visitor picks a payment method:
-// GCash / GoTyme show an in-app QR view, Ko-fi opens the configured page.
+// DonateModal.tsx: The donation modal, opened by the "Buy Me a Coffee" trigger
+// button below the "Open source. Free to explore." footnote. It offers two
+// actions:
+//   • Generate QR — shows the donation QR code (a short "Generating QR code…"
+//     loader plays first, then the image from the environment).
+//   • Buy Me a Coffee — opens the configured Ko-fi page.
 //
-// It reuses the existing design system (dark glass panels, blue accent,
-// thin borders, framer-motion animations) so it feels native to the site.
+// It reuses the existing design system (dark glass panels, blue accent, thin
+// borders, framer-motion animations) so it feels native to the site.
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ArrowUpRight, X } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, QrCode, X } from "lucide-react";
 import { SUPPORT } from "@/lib/support";
 import { EASE } from "@/components/landing/ui/primitives";
-import { cn } from "@/lib/utils";
 
-type ViewId = "main" | "gcash" | "gotyme";
-
-const QR_METHODS: Record<"gcash" | "gotyme", { name: string; flag: string }> = {
-  gcash: { name: "GCash", flag: "🇵🇭" },
-  gotyme: { name: "GoTyme", flag: "🟢" },
-};
+type ViewId = "main" | "qr";
 
 // A friendly in-app stand-in for a QR code until the real image is added.
 function QrPlaceholder() {
@@ -59,7 +54,7 @@ function QrPlaceholder() {
   );
 }
 
-// Reusable circular close button.
+// Circular close button.
 function CloseButton({ onClick, label = "Close dialog" }: { onClick: () => void; label?: string }) {
   return (
     <button
@@ -73,6 +68,45 @@ function CloseButton({ onClick, label = "Close dialog" }: { onClick: () => void;
   );
 }
 
+// QR display: plays a short "Generating QR code…" loader first, then shows
+// the QR image from the environment (or a placeholder if none is configured).
+function QrCard() {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    setReady(false);
+    const t = window.setTimeout(() => setReady(true), 1500);
+    return () => window.clearTimeout(t);
+  }, []);
+
+  return (
+    <div className="mt-6 h-60 w-60 overflow-hidden rounded-2xl border border-line bg-surface-2/60 sm:h-64 sm:w-64">
+      {ready ? (
+        <div className="h-full w-full">
+          {SUPPORT.qr ? (
+            /* eslint-disable-next-line @next/next/no-img-element -- QR URL is a
+               configurable env value that may point to any host (e.g. Cloudinary). */
+            <img
+              src={SUPPORT.qr}
+              alt="Donation QR code"
+              width={256}
+              height={256}
+              className="h-full w-full rounded-2xl object-cover"
+            />
+          ) : (
+            <QrPlaceholder />
+          )}
+        </div>
+      ) : (
+        <div className="flex h-full w-full flex-col items-center justify-center gap-3 text-muted-2">
+          <span className="h-7 w-7 animate-spin rounded-full border-2 border-line-strong border-t-accent" />
+          <p className="text-[12.5px] font-medium text-muted">Generating QR code…</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function DonateModal() {
   const [open, setOpen] = useState(false);
   const [view, setView] = useState<ViewId>("main");
@@ -80,7 +114,7 @@ export function DonateModal() {
 
   const close = useCallback(() => {
     setOpen(false);
-    // Reset to the method picker so the next open starts fresh.
+    // Reset to the picker so the next open starts fresh.
     window.setTimeout(() => setView("main"), 250);
   }, []);
 
@@ -191,37 +225,23 @@ export function DonateModal() {
                       Help keep this project free and open-source.
                     </p>
 
-                    {/* Payment method options. */}
+                    {/* The two donation actions. */}
                     <div className="mt-6 space-y-2.5">
                       <button
                         type="button"
-                        onClick={() => setView("gcash")}
+                        onClick={() => setView("qr")}
                         className="group flex w-full items-center gap-3.5 rounded-xl border border-line bg-surface-2/60 px-4 py-3.5 text-left transition-colors duration-200 hover:border-accent/40 hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
                       >
-                        <span className="text-2xl leading-none" aria-hidden="true">🇵🇭</span>
-                        <span className="flex min-w-0 flex-1 flex-col">
-                          <span className="text-[14px] font-medium text-foreground">
-                            Support via GCash
-                          </span>
-                          <span className="text-[12px] text-muted-2">Scan a QR to donate</span>
+                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line bg-surface text-accent-bright">
+                          <QrCode className="h-5 w-5" strokeWidth={1.6} />
                         </span>
-                        <ArrowUpRight
-                          className="h-4 w-4 shrink-0 text-muted transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-bright"
-                          strokeWidth={1.8}
-                        />
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => setView("gotyme")}
-                        className="group flex w-full items-center gap-3.5 rounded-xl border border-line bg-surface-2/60 px-4 py-3.5 text-left transition-colors duration-200 hover:border-accent/40 hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
-                      >
-                        <span className="text-2xl leading-none" aria-hidden="true">🟢</span>
                         <span className="flex min-w-0 flex-1 flex-col">
                           <span className="text-[14px] font-medium text-foreground">
-                            Support via GoTyme
+                            Generate QR
                           </span>
-                          <span className="text-[12px] text-muted-2">Scan a QR to donate</span>
+                          <span className="text-[12px] text-muted-2">
+                            Scan to donate directly
+                          </span>
                         </span>
                         <ArrowUpRight
                           className="h-4 w-4 shrink-0 text-muted transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-bright"
@@ -238,7 +258,7 @@ export function DonateModal() {
                         <span className="text-2xl leading-none" aria-hidden="true">☕</span>
                         <span className="flex min-w-0 flex-1 flex-col">
                           <span className="text-[14px] font-medium text-foreground">
-                            Buy me a coffee
+                            Buy Me a Coffee
                           </span>
                           <span className="text-[12px] text-muted-2">Open the Ko-fi page</span>
                         </span>
@@ -255,7 +275,7 @@ export function DonateModal() {
                   </motion.div>
                 ) : (
                   <motion.div
-                    key={view}
+                    key="qr"
                     initial={{ opacity: 0, x: 16 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -12 }}
@@ -274,28 +294,13 @@ export function DonateModal() {
                       <CloseButton onClick={close} />
                     </header>
 
-                    <div className="mt-5 flex flex-col items-center text-center">
-                      <p className="text-3xl" aria-hidden="true">
-                        {QR_METHODS[view].flag}
-                      </p>
-                      <h2 className="mt-2 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-                        {QR_METHODS[view].name}
+                    <div className="mt-2 flex flex-col items-center text-center">
+                      <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+                        <span aria-hidden="true">☕</span> Support Computer Anatomy
                       </h2>
 
-                      {/* QR code (or placeholder while the real asset is pending). */}
-                      <div className="mt-5 h-60 w-60 sm:h-64 sm:w-64">
-                        {SUPPORT.qr[view] ? (
-                          <Image
-                            src={SUPPORT.qr[view]!}
-                            alt={`${QR_METHODS[view].name} QR code`}
-                            width={256}
-                            height={256}
-                            className="h-full w-full rounded-2xl border border-line object-cover"
-                          />
-                        ) : (
-                          <QrPlaceholder />
-                        )}
-                      </div>
+                      {/* QR code: loader first, then the image from the env. */}
+                      <QrCard />
 
                       <p className="mt-5 max-w-xs text-[13px] leading-relaxed text-muted">
                         Scan the QR code using your mobile banking app.
