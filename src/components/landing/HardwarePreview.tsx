@@ -1,95 +1,290 @@
 "use client";
 
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight, MousePointer2, RotateCw, Sparkles } from "lucide-react";
-import { Reveal, MagneticButton, EASE } from "@/components/landing/ui/primitives";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const HARDWARE = [
-  { name: "CPU", detail: "The brain", emoji: "processor" },
-  { name: "GPU", detail: "Visual firepower" },
-  { name: "RAM", detail: "Working memory" },
-  { name: "Motherboard", detail: "The nervous system" },
-  { name: "Storage", detail: "Long-term memory" },
-  { name: "Cooling", detail: "Thermal control" },
-];
+gsap.registerPlugin(ScrollTrigger);
 
 export function HardwarePreview() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  const zoomRef = useRef<HTMLSpanElement | null>(null);
+  const spinRef = useRef<HTMLSpanElement | null>(null);
+  const exploreRef = useRef<HTMLSpanElement | null>(null);
+  const learnRef = useRef<HTMLSpanElement | null>(null);
+
+  const finalRowRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const zoom = zoomRef.current;
+    const spin = spinRef.current;
+    const explore = exploreRef.current;
+    const learn = learnRef.current;
+    const finalRow = finalRowRef.current;
+
+    if (
+      !section ||
+      !zoom ||
+      !spin ||
+      !explore ||
+      !learn ||
+      !finalRow
+    ) {
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      /*
+       * Initial states
+       */
+      gsap.set([zoom, spin, explore, learn], {
+        opacity: 0,
+        y: 25,
+        filter: "blur(8px)",
+      });
+
+      gsap.set(finalRow, {
+        opacity: 0,
+      });
+
+      /*
+       * Scroll timeline
+       *
+       * IMPORTANT:
+       * This section is NOT pinned by ScrollTrigger.
+       *
+       * The section itself is 300vh tall and the content inside
+       * is sticky. This prevents it from competing with Features.
+       */
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.6,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      /*
+       * ZOOM
+       */
+      tl.to(zoom, {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 0.18,
+        ease: "power2.out",
+      });
+
+      tl.to(zoom, {
+        opacity: 0,
+        y: -20,
+        duration: 0.14,
+        ease: "power2.in",
+      });
+
+      /*
+       * SPIN
+       */
+      tl.to(spin, {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 0.18,
+        ease: "power2.out",
+      });
+
+      tl.to(spin, {
+        opacity: 0,
+        y: -20,
+        duration: 0.14,
+        ease: "power2.in",
+      });
+
+      /*
+       * EXPLORE
+       */
+      tl.to(explore, {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 0.18,
+        ease: "power2.out",
+      });
+
+      tl.to(explore, {
+        opacity: 0,
+        y: -20,
+        duration: 0.14,
+        ease: "power2.in",
+      });
+
+      /*
+       * LEARN
+       */
+      tl.to(learn, {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 0.2,
+        ease: "power2.out",
+      });
+
+      /*
+       * Small pause
+       */
+      tl.to({}, {
+        duration: 0.12,
+      });
+
+      /*
+       * FINAL TRANSFORMATION
+       *
+       * Learn moves to the right.
+       */
+      tl.to(learn, {
+        x: "32vw",
+        duration: 0.4,
+        ease: "power2.inOut",
+      });
+
+      /*
+       * Reveal final horizontal headline.
+       */
+      tl.to(
+        finalRow,
+        {
+          opacity: 1,
+          duration: 0.35,
+          ease: "power2.out",
+        },
+        "<0.15"
+      );
+
+      /*
+       * Hide the standalone Learn once final text is visible.
+       */
+      tl.to(
+        learn,
+        {
+          opacity: 0,
+          duration: 0.12,
+          ease: "power2.out",
+        },
+        ">-0.05"
+      );
+
+      /*
+       * Refresh after layout has settled.
+       */
+      ScrollTrigger.refresh();
+    }, section);
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+
   return (
-    <section id="preview" className="relative scroll-mt-24 px-6 py-28 sm:py-32">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
-            <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-accent-bright">
-              Interactive Preview
-            </p>
-            <h2 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-5xl">
-              Spin, zoom, and take hardware apart
-            </h2>
-            <p className="mt-5 max-w-lg text-pretty text-base leading-relaxed text-muted sm:text-lg">
-              Choose a component and manipulate it in realtime. Orbit the camera, split it into
-              layers, and trace the path of data through silicon, board, and bus.
-            </p>
+    <section
+      ref={sectionRef}
+      className="relative h-[300vh] w-full"
+    >
+      <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
+        <div className="relative flex h-full w-full items-center justify-center px-6">
+          {/* Individual animated words */}
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+            <span
+              ref={zoomRef}
+              className="
+                absolute
+                whitespace-nowrap
+                text-[clamp(4rem,10vw,9rem)]
+                font-semibold
+                tracking-[-0.06em]
+                text-white
+                will-change-transform
+              "
+            >
+              Zoom
+            </span>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center gap-2 rounded-xl border border-line bg-surface/60 px-3.5 py-2 text-[13px] text-muted">
-                <MousePointer2 className="h-4 w-4 text-accent-bright" strokeWidth={1.8} />
-                Click to select
-              </div>
-              <div className="inline-flex items-center gap-2 rounded-xl border border-line bg-surface/60 px-3.5 py-2 text-[13px] text-muted">
-                <RotateCw className="h-4 w-4 text-accent-bright" strokeWidth={1.8} />
-                Drag to orbit
-              </div>
-              <div className="inline-flex items-center gap-2 rounded-xl border border-line bg-surface/60 px-3.5 py-2 text-[13px] text-muted">
-                <Sparkles className="h-4 w-4 text-accent-bright" strokeWidth={1.8} />
-                Peel layers apart
-              </div>
-            </div>
+            <span
+              ref={spinRef}
+              className="
+                absolute
+                whitespace-nowrap
+                text-[clamp(4rem,10vw,9rem)]
+                font-semibold
+                tracking-[-0.06em]
+                text-white
+                will-change-transform
+              "
+            >
+              Spin
+            </span>
 
-            <Reveal delay={0.2} className="mt-10">
-              <MagneticButton>
-                <Link
-                  href="/explore"
-                  className="group inline-flex h-12 items-center gap-2 rounded-xl border border-line bg-surface/60 px-6 text-[15px] font-medium text-foreground backdrop-blur-md transition-all hover:border-accent/40 hover:bg-surface-2"
-                >
-                  Explore Components
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" strokeWidth={2} />
-                </Link>
-              </MagneticButton>
-            </Reveal>
-          </Reveal>
+            <span
+              ref={exploreRef}
+              className="
+                absolute
+                whitespace-nowrap
+                text-[clamp(4rem,10vw,9rem)]
+                font-semibold
+                tracking-[-0.06em]
+                text-white
+                will-change-transform
+              "
+            >
+              Explore
+            </span>
 
-          <Reveal delay={0.1}>
-            <div className="relative overflow-hidden rounded-3xl border border-line bg-surface/40 p-2 backdrop-blur-md">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(500px_320px_at_50%_20%,rgba(45,90,190,0.14),transparent_60%)]"
-              />
-              <div className="grid grid-cols-3 gap-2">
-                {HARDWARE.map((item, i) => (
-                  <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, scale: 0.92 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true, margin: "-40px" }}
-                    transition={{ duration: 0.5, ease: EASE, delay: i * 0.06 }}
-                    className="group relative flex aspect-square items-center justify-center overflow-hidden rounded-2xl border border-line bg-surface-2/60 p-3 transition-all hover:border-accent/40 hover:shadow-[0_0_24px_rgba(77,141,255,0.15)]"
-                  >
-                    <span className="pointer-events-none absolute inset-0 bg-gradient-to-b from-accent/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                    <div className="flex flex-col items-center gap-1.5">
-                      <div className="text-[13px] font-medium text-accent-bright">0{i + 1}</div>
-                      <div className="text-center text-[13px] font-semibold leading-tight text-foreground">
-                        {item.name}
-                      </div>
-                      <div className="text-center text-[11px] leading-tight text-muted">
-                        {item.detail}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
+            <span
+              ref={learnRef}
+              className="
+                absolute
+                whitespace-nowrap
+                text-[clamp(4rem,10vw,9rem)]
+                font-semibold
+                tracking-[-0.06em]
+                text-white
+                will-change-transform
+              "
+            >
+              Learn
+            </span>
+          </div>
+
+          {/* Final horizontal headline */}
+          <div
+            ref={finalRowRef}
+            className="
+              pointer-events-none
+              relative
+              z-10
+              flex
+              w-full
+              items-center
+              justify-center
+              whitespace-nowrap
+              text-center
+              text-[clamp(2.2rem,5.5vw,6rem)]
+              font-semibold
+              tracking-[-0.055em]
+              text-white
+            "
+          >
+            <span>Zoom</span>
+            <span>,&nbsp;</span>
+            <span>Spin</span>
+            <span>,&nbsp;</span>
+            <span>Explore</span>
+            <span>&nbsp;and&nbsp;</span>
+            <span>Learn</span>
+          </div>
         </div>
       </div>
     </section>
