@@ -11,9 +11,26 @@ type HeroCanvasProps = {
   modelPosition: [number, number, number];
   modelRef: React.RefObject<THREE.Group | null>;
   keyLightRef?: React.RefObject<THREE.SpotLight | null>;
+  meshesRef?: React.RefObject<
+    Array<{
+      mesh: THREE.Mesh;
+      baseX: number;
+      baseY: number;
+      baseZ: number;
+      dirX: number;
+      dirY: number;
+      dirZ: number;
+    }> | null
+  >;
 };
 
-export function HeroCanvas({ modelScale, modelPosition, modelRef, keyLightRef }: HeroCanvasProps) {
+export function HeroCanvas({
+  modelScale,
+  modelPosition,
+  modelRef,
+  keyLightRef,
+  meshesRef,
+}: HeroCanvasProps) {
   return (
     <Canvas
       className="!absolute inset-0"
@@ -54,7 +71,7 @@ export function HeroCanvas({ modelScale, modelPosition, modelRef, keyLightRef }:
           <Lightformer intensity={3} position={[0, 0, -6]} scale={[6, 4, 1]} color="#3b82f6" />
         </Environment>
 
-        <KeyboardModel scale={modelScale} position={modelPosition} modelRef={modelRef} />
+        <KeyboardModel scale={modelScale} position={modelPosition} modelRef={modelRef} meshesRef={meshesRef} />
       </Suspense>
 
       

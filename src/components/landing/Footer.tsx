@@ -110,6 +110,28 @@ export function Footer() {
             for curious minds
           </p>
         </div>
+
+        <p className="mt-6 text-center text-[12px] leading-relaxed text-muted-2">
+          "Keyboard"
+          <a
+            href="https://skfb.ly/oCTyv"
+            target="_blank"
+            rel="noreferrer"
+            className="text-muted underline decoration-line underline-offset-2 transition-colors hover:text-foreground"
+          >
+            (https://skfb.ly/oCTyv)
+          </a>
+          {" "}by Umut Calim is licensed under Creative Commons Attribution (
+          <a
+            href="http://creativecommons.org/licenses/by/4.0/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-muted underline decoration-line underline-offset-2 transition-colors hover:text-foreground"
+          >
+            http://creativecommons.org/licenses/by/4.0/
+          </a>
+          ).
+        </p>
       </div>
     </footer>
   );

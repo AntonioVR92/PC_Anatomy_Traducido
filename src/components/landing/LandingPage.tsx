@@ -3,6 +3,7 @@
 import { Suspense, useCallback, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "lenis";
 import * as THREE from "three";
 import { Header } from "@/components/landing/hero/Header";
 import { Hero } from "@/components/landing/Hero";
@@ -21,10 +22,32 @@ export function LandingPage() {
   const modelPosition: [number, number, number] = [3, 1.5, -0.9];
   const modelRef = useRef<THREE.Group>(null);
   const keyLightRef = useRef<THREE.SpotLight>(null);
+  const meshesRef = useRef<
+    | Array<{
+        mesh: THREE.Mesh;
+        baseX: number;
+        baseY: number;
+        baseZ: number;
+        dirX: number;
+        dirY: number;
+        dirZ: number;
+      }>
+    | null
+  >(null);
   const pageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+
+    // Smooth scrolling via Lenis, synced with GSAP ScrollTrigger
+    const lenis = new Lenis({
+      lerp: 0.1,
+      smoothWheel: true,
+    });
+    lenis.on("scroll", ScrollTrigger.update);
+    const raf = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(raf);
+    gsap.ticker.lagSmoothing(0);
 
     const timer = window.setInterval(() => {
       if (!modelRef.current || !pageRef.current) return;
@@ -98,11 +121,64 @@ export function LandingPage() {
           2
         );
       }
+
+      // Scene 4 — explode: every mesh flies outward from the model center
+      const meshes = meshesRef.current;
+      if (meshes && meshes.length) {
+        const targets = meshes.map((m) => {
+          const rand = 0.35;
+          const dist = Math.hypot(m.baseX, m.baseY, m.baseZ);
+          const explode = dist * 2.5 + 0.6;
+          const dir = new THREE.Vector3(m.dirX, m.dirY, m.dirZ).lerp(
+            new THREE.Vector3(
+              (Math.random() - 0.5) * rand,
+              (Math.random() - 0.5) * rand,
+              (Math.random() - 0.5) * rand
+            ),
+            0.35
+          );
+          return {
+            mesh: m.mesh,
+            x: m.baseX + dir.x * explode,
+            y: m.baseY + dir.y * explode,
+            z: m.baseZ + dir.z * explode,
+            rx: (Math.random() - 0.5) * 2,
+            ry: (Math.random() - 0.5) * 2,
+            rz: (Math.random() - 0.5) * 2,
+          };
+        });
+
+        tl.to(
+          targets.map((t) => t.mesh.position),
+          {
+            x: (i) => targets[i].x,
+            y: (i) => targets[i].y,
+            z: (i) => targets[i].z,
+            duration: 1,
+            ease: "power3.inOut",
+          },
+          3
+        );
+
+        tl.to(
+          targets.map((t) => t.mesh.rotation),
+          {
+            x: (i) => targets[i].rx,
+            y: (i) => targets[i].ry,
+            z: (i) => targets[i].rz,
+            duration: 1,
+            ease: "power3.inOut",
+          },
+          3
+        );
+      }
     }, 100);
 
     return () => {
       window.clearInterval(timer);
+      gsap.ticker.remove(raf);
       ScrollTrigger.getAll().forEach((st) => st.kill());
+      lenis.destroy();
     };
   }, []);
 
@@ -113,6 +189,7 @@ export function LandingPage() {
         modelPosition={modelPosition}
         modelRef={modelRef}
         keyLightRef={keyLightRef}
+        meshesRef={meshesRef}
       />
     ),
     []
@@ -137,8 +214,6 @@ export function LandingPage() {
         <main>
           <Hero />
           <Features />
-          <HardwarePreview />
-          <LearningExperience />
           <Roadmap />
           <Community />
         </main>

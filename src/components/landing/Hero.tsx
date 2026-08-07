@@ -3,7 +3,6 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Buttons } from "@/components/landing/hero/Buttons";
-import { Badges } from "@/components/landing/hero/Badges";
 import { Stats } from "@/components/landing/hero/Stats";
 import { useViewport } from "@/components/landing/hooks/useViewport";
 
@@ -13,19 +12,6 @@ export function Hero() {
   return (
     <section className="relative flex min-h-screen items-center px-6 pb-24 pt-32">
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-start text-left">
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-[13px] font-medium text-neutral-400 backdrop-blur-md"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-          </span>
-          Open-source education for computer hardware
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
@@ -48,7 +34,6 @@ export function Hero() {
         </motion.p>
 
         <Buttons />
-        <Badges />
         <Stats />
       </div>
     </section>
