@@ -18,10 +18,19 @@ export function Controls({ autoRotate, frame }: { autoRotate: boolean; frame: Fr
     return { min: base * 0.2, max: base * 5 };
   }, [frame]);
 
+  // Two-finger pan is only enabled on touch devices so mobile users can pan
+  // the model. Desktop keeps its original behavior (pan disabled).
+  const isTouch = useMemo(
+    () =>
+      typeof window !== "undefined" &&
+      ("ontouchstart" in window || navigator.maxTouchPoints > 0),
+    []
+  );
+
   return (
     <OrbitControls
       makeDefault
-      enablePan={false}
+      enablePan={isTouch}
       enableDamping
       dampingFactor={0.08}
       autoRotate={autoRotate}
