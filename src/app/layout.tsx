@@ -69,6 +69,9 @@ export const metadata: Metadata = {
     },
   },
   manifest: "/site.webmanifest",
+  verification: {
+    google: "uUb5qAwcGgKAqrJoIj2F5XOR95JcojIScal50On1foc",
+  },
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
     title: SITE_TITLE,
