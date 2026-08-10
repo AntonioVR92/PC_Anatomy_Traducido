@@ -44,7 +44,7 @@ export const useExplorer = create<ExplorerState>()(
 
       return {
         // Default state: the System Unit is selected, and the overview tab is open.
-        selectedId: "case",
+        selectedId: "pc-case",
         tab: "overview",
         hotspotActive: false,
         hotspotPart: null,

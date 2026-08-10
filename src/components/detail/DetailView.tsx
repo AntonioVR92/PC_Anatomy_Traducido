@@ -117,9 +117,9 @@ export function DetailView({ component }: { component: ComponentInfo }) {
                 <ComponentIcon name={component.icon} className="h-5 w-5 text-accent" />
               </span>
               <div className="flex flex-col gap-0.5">
-                <h1 className="text-[22px] font-semibold leading-tight tracking-tight text-foreground">
+                <div className="text-[22px] font-semibold leading-tight tracking-tight text-foreground">
                   {component.name}
-                </h1>
+                </div>
                 <p className="text-[12.5px] text-muted">{component.tagline}</p>
               </div>
               <span className="ml-auto font-mono text-[13px] font-medium text-accent">

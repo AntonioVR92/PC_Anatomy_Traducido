@@ -1,17 +1,17 @@
 <p align="center">
-  <img src="public/logo.png" alt="Computer Anatomy" width="96" height="96" />
+  <img src="public/logo.png" alt="PC Anatomy logo" width="96" height="96" />
 </p>
 
-<h1 align="center">Computer Anatomy</h1>
+<h1 align="center">PC Anatomy</h1>
 
 <p align="center">
-  <strong>An open-source, interactive 3D atlas of the computer on your desk.</strong><br />
+  <strong>Explore Computer Anatomy — an open-source, interactive 3D atlas of the computer on your desk.</strong><br />
   Peel apart the CPU, spin the GPU, trace the motherboard — and actually understand
   how your machine works.
 </p>
 
 <p align="center">
-  <a href="https://github.com/"><img src="https://img.shields.io/badge/Open_Source-100%25-4d8dff?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="Open Source" /></a>
+  <a href="https://github.com/brickshow/pc-anatomy"><img src="https://img.shields.io/badge/Open_Source-100%25-4d8dff?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="Open Source" /></a>
   <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js 16" /></a>
   <a href="https://threejs.org/"><img src="https://img.shields.io/badge/Three.js-r185-7a5cff?style=for-the-badge&logo=threedotjs&logoColor=white" alt="Three.js" /></a>
   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" /></a>
@@ -21,26 +21,40 @@
 <p align="center">
   <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-19-087ea4?style=for-the-badge&logo=react&logoColor=white" alt="React 19" /></a>
   <a href="https://motion.dev/"><img src="https://img.shields.io/badge/Framer_Motion-13-8B5CF6?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" /></a>
-  <a href="https://www.mongodb.com/"><img src="https://img.shields.io/badge/Zustand-Simple_State-1E3A8A?style=for-the-badge" alt="Zustand" /></a>
+  <a href="https://zustand.docs.pmnd.rs/"><img src="https://img.shields.io/badge/Zustand-Simple_State-1E3A8A?style=for-the-badge" alt="Zustand" /></a>
 </p>
 
 ---
 
 > **The Human Anatomy Atlas — for computers.** Most people use a computer every day but have
-> never seen inside one. Computer Anatomy fixes that: it is a fully interactive 3D journey
+> never seen inside one. PC Anatomy fixes that: it is a fully interactive 3D journey
 > through every major component, explained in plain language and rendered in your browser.
 
 ---
 
-## ✨ What is Computer Anatomy?
+## 🚀 Live Demo
 
-Computer Anatomy is an **interactive 3D educational platform** that teaches computer hardware by letting you *touch it*. Instead of static diagrams and dry tables, you get:
+> **https://pc-anatomy.brickshow.site** — the production domain is set via the
+> `NEXT_PUBLIC_SITE_URL` environment variable (it drives canonical URLs, Open
+> Graph tags, sitemap.xml, and robots.txt). The default in the code matches the
+> live domain.
+
+- Landing page with cinematic 3D hero: `/`
+- Interactive 3D component explorer: `/explore`
+- Step-by-step PC assembly guide: `/assembly`
+- Educational component pages: `/components/cpu`, `/components/ram`, `/components/motherboard`, `/components/gpu`, `/components/storage`, `/components/power-supply`, `/components/cpu-cooler`, `/components/pc-case`, and more
+
+---
+
+## ✨ What is PC Anatomy?
+
+PC Anatomy is an **interactive 3D educational platform** that teaches computer hardware by letting you *touch it*. Instead of static diagrams and dry tables, you get:
 
 - 🧠 **Life-sized 3D models** of CPUs, GPUs, motherboards, RAM, storage, PSUs and more.
 - 🔬 **Anatomical zoom** — peel a CPU down to its silicon die, or spin a motherboard like it's on a turntable.
 - 🖱️ **Click-to-learn hotspots** on every component, with clear explanations of *what it does* and *why it matters*.
+- 📚 **Crawlable educational articles** on every component page — written answers, key specs, FAQs, and related-component links that work even without WebGL.
 - 💬 **A built-in AI assistant** that answers your hardware questions in natural language.
-- 🧭 **Structured learning paths** that take you from first boot to full fluency.
 
 All of it is **100% open source** and free to use, fork, and learn from.
 
@@ -51,11 +65,13 @@ All of it is **100% open source** and free to use, fork, and learn from.
 | Feature | Description |
 | --- | --- |
 | 🖥️ **Interactive 3D Explorer** | A full-screen WebGL viewer with orbit, zoom, and hotspot navigation — built on React Three Fiber. |
-| 🧩 **16+ Components** | System Unit, CPU + water block, Motherboard, RAM, GPU, M.2 SSD, SATA SSD, HDD, PSU, CPU Cooler, Case Fans, Keyboard, Mouse, Monitor, UPS, and AVR. |
+| 🧩 **16+ Components** | PC Case, CPU + water block, Motherboard, RAM, GPU, M.2 SSD, SATA SSD, HDD, PSU, CPU Cooler, Case Fans, Keyboard, Mouse, Monitor, UPS, and AVR. |
 | 🔬 **CPU Layer Explosion** | Dissect the CPU layer by layer — heat spreader, TIM, die, substrate, and IHS — with lift animation. |
+| 🔍 **SEO + AI Answer Engines** | Every component page is a full educational article with FAQ structured data, breadcrumbs, canonicals, sitemap, and robots — readable by Google, Bing, ChatGPT, Perplexity, and Gemini. |
+| 🛠️ **PC Assembly Guide** | A step-by-step `/assembly` guide connecting every step to the relevant component page and 3D model. |
 | 💬 **AI Assistant** | A context-aware chat guide (OpenRouter) that answers hardware questions with Markdown tables, specs and friendly explanations. |
 | 🎬 **Landing Page** | A cinematic hero with a shader-based starfield, animated gradient headline, and glassmorphism — built with Framer Motion. |
-| ⚡ **Modern Stack** | Next.js 16 (App Router) + React 19 + TypeScript + Tailwind CSS 4 + Three.js on webGL. |
+| ⚡ **Modern Stack** | Next.js 16 (App Router) + React 19 + TypeScript + Tailwind CSS 4 + Three.js on WebGL. |
 
 ---
 
@@ -73,6 +89,7 @@ All of it is **100% open source** and free to use, fork, and learn from.
 | **State** | [Zustand](https://zustand.docs.pmnd.rs/) (persisted explorer state) |
 | **AI Chat** | [OpenRouter](https://openrouter.ai/) |
 | **Markdown** | [react-markdown](https://github.com/remarkjs/react-markdown) + [remark-gfm](https://github.com/remarkjs/remark-gfm) |
+| **SEO** | App Router metadata, `sitemap.ts`, `robots.ts`, Schema.org JSON-LD (no extra dependencies) |
 
 ---
 
@@ -85,20 +102,34 @@ src/
 ├── app/
 │   ├── api/
 │   │   └── chat/          # OpenRouter-backed AI assistant route
-│   ├── components/        # Per-component 3D pages (/components/[slug])
+│   ├── assembly/          # Step-by-step PC assembly guide
+│   ├── components/
+│   │   ├── [slug]/        # Per-component SEO pages (/components/[slug])
+│   │   └── storage/       # Computer storage topic page
 │   ├── explore/           # Full-screen 3D explorer page
+│   ├── error.tsx          # Friendly error boundary (no stack traces)
 │   ├── globals.css        # Tailwind + custom theme & utilities
-│   ├── layout.tsx         # Root layout, fonts, SEO metadata
-│   └── page.tsx           # Landing page
+│   ├── layout.tsx         # Global metadata, JSON-LD, fonts
+│   ├── loading.tsx        # Global loading spinner
+│   ├── not-found.tsx      # Custom 404 page
+│   ├── page.tsx           # Landing page
+│   ├── robots.ts          # robots.txt
+│   └── sitemap.ts         # sitemap.xml
 ├── components/
-│   ├── landing/           # Marketing page (hero, features, roadmap…)
-│   ├── explorer/          # Sidebar · Viewer · Detail panel
-│   ├── monitor / mouse / motherboard / systemunit / chat
-│   └── icons.tsx          # Central lucide-icon registry
-├── data/                  # Component content & CPU layer definitions
-├── hooks/                 # Reusable Three.js hooks
-├── lib/                   # Components catalog, store, chat models
-└── utils/                 # Focus-camera & mesh helpers
+│   ├── chat/              # AI assistant chat UI
+│   ├── detail/            # Component detail panel (specs, hotspots)
+│   ├── explorer/          # 3D explorer layout & viewer
+│   ├── landing/           # Hero, info sections, footer
+│   ├── seo/               # JSON-LD renderer, breadcrumbs, article
+│   └── viewer/            # Lazy-loaded 3D model viewer sections
+├── data/
+│   ├── seo.ts             # Per-component educational content (FAQ, etc.)
+│   └── components.ts      # Component metadata & 3D model paths
+├── lib/
+│   ├── site.ts            # Site identity & absolute URL helpers
+│   ├── store.ts           # Explorer state (selected component, etc.)
+│   └── support.ts         # Support links & donate QR config
+└── styles/
 ```
 
 ---
@@ -107,90 +138,86 @@ src/
 
 ### Prerequisites
 
-- **Node.js 20.9+** (LTS)
-- **npm**
+- [Node.js](https://nodejs.org/) 20+ (or 22+ for some features)
+- A browser with **WebGL** support
+- An [OpenRouter](https://openrouter.ai/) API key *(optional, for the AI assistant)*
 
-### 1. Clone & install
+### Setup
 
 ```bash
-git clone https://github.com/your-user/computer-anatomy.git
-cd computer-anatomy
+git clone https://github.com/brickshow/pc-anatomy.git
+cd pc-anatomy
 npm install
+cp .env.example .env.local  # optional
 ```
 
-### 2. Configure the AI assistant (optional)
-
-Copy the example env file and add an [OpenRouter](https://openrouter.ai/keys) key to enable the chat guide:
+### Run
 
 ```bash
-cp .env.example .env.local
+npm run dev        # start dev server at http://localhost:3000
 ```
 
-```env
-OPENROUTER_API_KEY=your_key_here
-# OPENROUTER_MODEL=google/gemma-4-26b-a4b-it:free   # optional override
-```
-
-> The assistant gracefully falls back through a built-in model list, so the app works even without a key.
-
-### 3. Run the dev server
+### Build
 
 ```bash
-npm run dev
+npm run build      # production build
+npm run start      # serve the production build
 ```
-
-Open **http://localhost:3000** — the landing page greets you, and **Explore Components** takes you into the 3D viewer.
 
 ---
 
-## 🧭 How to use the explorer
+## 🌍 Environment Variables
 
-1. From the landing page, click **Explore Components**.
-2. Use the **left sidebar** to switch between 16+ interactive components.
-3. **Drag** to orbit, **scroll** to zoom, and **click a hotspot** to inspect a part in detail.
-4. In the **Detail Panel**, read the Overview, Functions, and common Issues for each part.
-5. For the CPU, use the **layer slider** to peel it apart anatomically.
+| Variable | Required | Description |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | No* | Production URL for canonical URLs, OG tags, `sitemap.xml`, `robots.txt`. Defaults to `https://pc-anatomy.example.com` in development. *Required for production SEO.* |
+| `OPENROUTER_API_KEY` | No | Enables the AI assistant. Without it, the chat explains it is not configured. |
+| `OPENROUTER_MODEL` | No | Overrides the default chat model (e.g. `google/gemma-4-26b-a4b-it:free`). |
+| `NEXT_PUBLIC_DONATE_QR_URL` | No | Path to a donation QR code image shown in the support panel. |
+
+> ⚠️ **Never commit real secrets.** `.env.local` is git-ignored. The deployed app reads these from the hosting platform's environment.
+
+---
+
+## 🔍 SEO & AI Answer Engines
+
+PC Anatomy is built to be found — by humans *and* by AI answer engines:
+
+- **Server-rendered educational articles** on every component page, written in a "direct answer first" style that AI assistants extract from.
+- **Schema.org JSON-LD**: `WebSite`, `Organization`, `EducationalApplication`, `TechArticle`, `FAQPage`, `BreadcrumbList`.
+- **Canonical URLs, Open Graph, Twitter cards** on every page, with a global 1200×630 OG image.
+- **`sitemap.xml`** covering every route and **`robots.txt`** with the sitemap reference.
+- **No index/no follow hygiene** on error pages and the `/api` surface.
+- **Semantic internal linking** between component pages (related parts), the assembly guide, and the storage topic hub.
+
+---
+
+## 🛡️ Security
+
+- Client components never log API keys; the `OPENROUTER_API_KEY` lives server-side only.
+- The API route strips instructions and keeps prompts contextual, without echoing secrets.
+- No tracking scripts, no analytics on by default, no external requests except the 3D models and fonts you opt into.
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are what make open source such an amazing ecosystem. To get involved:
+PC Anatomy is a community project — contributions are welcome! Help with 3D models, hotmaps, articles, translations, or code:
 
-1. 🍴 **Fork** the repository.
-2. 🧑‍💻 **Create** a feature branch (`git checkout -b feature/amazing-thing`).
-3. ✍️ **Commit** your changes (`git commit -m 'Add amazing thing'`).
-4. 🚀 **Push** to the branch.
-5. 🔁 Open a **Pull Request**.
-
-Good places to start:
-- Tag a component that's missing.
-- Improve lesson content in `src/data/`.
-- Add a new model to `public/models/`.
-- Polish the landing page in `src/components/landing/`.
-
-Please follow conventional commit style and run `npm run lint` before pushing.
-
----
-
-## 🗺️ Roadmap
-
-- [x] Core interactive 3D viewer & hotspots
-- [x] CPU layer explosion
-- [ ] Full component library for all supported parts
-- [ ] Structured guided curriculum & quizzes
-- [ ] Classroom / self-hosted deployment guides
-- [ ] More localized (i18n) content
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feature/your-idea`
+3. Commit your changes: `git commit -m "Add your feature"`
+4. Push to the branch: `git push origin feature/your-idea`
+5. Open a pull request.
 
 ---
 
 ## 📜 License
 
-Distributed under the **MIT** license. See [`LICENSE`](#) for more information.
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 ---
 
-<p align="center">
-  Made with 🖤 for curious minds.<br />
-  Star the repo, contribute a model, and help the world understand what's inside the box.
-</p>
+## 🔖 Topics
+
+`computer-anatomy` · `computer-hardware` · `pc-assembly` · `threejs` · `react` · `nextjs` · `webgl` · `education` · `3d` · `seo`
