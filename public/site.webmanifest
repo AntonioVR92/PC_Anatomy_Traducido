@@ -1,1 +1,21 @@
-{"name":"Computer Anatomy","short_name":"Computer Anatomy","icons":[{"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},{"src":"/android-chrome-512x512.png","sizes":"512x512","type":"image/png"}],"theme_color":"#0a0f1a","background_color":"#0a0f1a","display":"standalone"}
+{
+  "name": "PC Anatomy — Explore Computer Hardware in 3D",
+  "short_name": "PC Anatomy",
+  "description": "Open-source interactive 3D educational platform for learning computer hardware, computer components, and PC assembly.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0f1a",
+  "theme_color": "#0a0f1a",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

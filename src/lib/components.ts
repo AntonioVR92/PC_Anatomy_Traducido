@@ -34,17 +34,17 @@ export const FALLBACK_MODEL = SYSTEM_UNIT_MODEL;
 
 // The full list of components that can be explored in the app.
 export const COMPONENTS: ComponentInfo[] = [
-  // --- System Unit (the computer case) ---
+  // --- PC Case (the computer case / system unit) ---
   {
-    id: "case",
+    id: "pc-case",
     index: "01",
-    name: "System Unit",
+    name: "PC Case",
     tagline: "The Complete System Chassis",
     short: "The shell that houses, cools, and protects every internal component.",
     icon: "Box",
     overview: {
       description:
-        "The System Unit is the structural home of the computer. Beyond looks, it provides mounting for every component, guided airflow, cable management, and protection from dust, static, and physical damage.",
+        "The PC case (also called the system unit or chassis) is the structural home of the computer. Beyond looks, it provides mounting for every component, guided airflow, cable management, and protection from dust, static, and physical damage.",
       realWorld:
         "Chassis choice shapes the whole build: an airy mesh front feeds the fans, tempered glass shows off the interior, and drive bays determine how much storage you can install.",
       fact:
@@ -356,7 +356,7 @@ export const COMPONENTS: ComponentInfo[] = [
   },
   // --- PSU (power supply unit) ---
   {
-    id: "psu",
+    id: "power-supply",
     index: "09",
     name: "PSU",
     tagline: "Power Supply Unit",

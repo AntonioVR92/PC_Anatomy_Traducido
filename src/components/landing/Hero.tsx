@@ -22,8 +22,8 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="mt-8 text-balance text-[2.5rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl"
         >
-          Learn Computer Hardware{" "}
-          <span className="hero-gradient">Like Never Before.</span>
+          Explore Computer Anatomy{" "}
+          <span className="hero-gradient">in 3D.</span>
         </motion.h1>
 
         {/* Tagline describing what the platform offers */}
@@ -33,9 +33,10 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
           className="mt-6 max-w-2xl text-balance text-base leading-relaxed text-neutral-400 sm:text-lg"
         >
-          Computer Anatomy is an open-source educational platform that helps students explore
-          computer hardware through immersive 3D visualization, educational animations, and
-          interactive learning experiences.
+          PC Anatomy is an open-source educational platform that teaches computer
+          hardware through immersive 3D visualization. Explore the CPU, RAM,
+          motherboard, GPU, storage, and power supply — learn what each part
+          does and how to assemble a PC, in plain language.
         </motion.p>
 
         {/* Call-to-action buttons */}

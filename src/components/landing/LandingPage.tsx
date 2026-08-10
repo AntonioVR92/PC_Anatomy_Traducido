@@ -20,7 +20,7 @@ import { HeroCanvas } from "@/components/landing/hero/HeroCanvas";
 // that react to the user scrolling through the page.
 gsap.registerPlugin(ScrollTrigger);
 
-export function LandingPage() {
+export function LandingPage({ children }: { children?: React.ReactNode }) {
   // How big the 3D model should be and where it starts in the scene
   const modelScale = 18;
   const modelPosition: [number, number, number] = [3, 1.5, -0.9];
@@ -237,6 +237,7 @@ export function LandingPage() {
           <Community />
         </main>
         <Footer />
+        {children}
       </div>
     </div>
   );

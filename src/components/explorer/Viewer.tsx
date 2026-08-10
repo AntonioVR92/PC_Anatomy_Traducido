@@ -136,7 +136,7 @@ export function Viewer() {
   const path = getComponent(selectedId)?.model ?? FALLBACK_MODEL;
 
   // The system unit/case model uses its own dedicated viewer with hotspots.
-  if (selectedId === "case") {
+  if (selectedId === "pc-case") {
     return (
       <div className="relative h-full w-full overflow-hidden">
         <SystemUnitViewer mode="embedded" />
