@@ -22,8 +22,8 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="mt-8 text-balance text-[2.5rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl"
         >
-          Explore Computer Anatomy{" "}
-          <span className="hero-gradient">in 3D.</span>
+          Learn Computer Hardware{" "}
+          <span className="hero-gradient">Like Never Before.</span>
         </motion.h1>
 
         {/* Tagline describing what the platform offers */}

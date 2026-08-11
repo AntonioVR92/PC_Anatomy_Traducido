@@ -5,7 +5,6 @@
 // with a search box, a logo header, and a hint footer. Clicking a
 // component selects it so the Viewer can display its 3D model.
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { ChevronRight, Search, Sparkles, X } from "lucide-react";
 // COMPONENTS holds the master list of hardware components.
 import { COMPONENTS } from "@/lib/components";
@@ -52,44 +51,9 @@ export function Sidebar() {
   return (
     // The fixed-width left column of the explorer.
     <aside className="flex h-full w-full flex-col border-r border-line bg-surface">
-      {/* Header: subtle glow, logo image, app name/subtitle, and version badge. */}
-      <div className="relative overflow-hidden px-5 pb-5 pt-6">
-        <div
-          className="pointer-events-none absolute inset-x-0 -top-10 h-28 opacity-80"
-          style={{
-            background:
-              "radial-gradient(60% 100% at 50% 0%, rgba(77,141,255,0.16), transparent 70%)",
-          }}
-        />
-        <div className="relative flex items-center gap-3">
-          <div className="relative shrink-0">
-            <div className="absolute -inset-1 rounded-2xl bg-accent/25 blur-md" />
-            <Image
-              src="/logo.png"
-              alt="Computer Anatomy logo"
-              width={512}
-              height={512}
-              priority
-              className="relative h-10 w-10 rounded-xl object-cover"
-            />
-          </div>
-          <div className="flex min-w-0 flex-col">
-            <span className="text-[15px] font-semibold leading-tight tracking-tight text-foreground">
-              Computer Anatomy
-            </span>
-            <span className="truncate text-[11px] leading-tight text-muted-2">
-              Learn Computer Hardware Interactively
-            </span>
-          </div>
-          <span className="ml-auto shrink-0 rounded-full border border-line bg-surface-2 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-muted-2">
-            v0.1
-          </span>
-        </div>
-      </div>
-
       {/* Search box: magnifying-glass icon, input, and a clear/x button
           (or the "/" shortcut hint when the input is empty). */}
-      <div className="px-4 pb-3">
+      <div className="px-4 pb-3 pt-4">
         <div className="relative">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-2" />
           <input

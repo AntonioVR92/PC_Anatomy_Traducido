@@ -13,7 +13,7 @@ import { Sidebar } from "./Sidebar";
 import { Viewer } from "./Viewer";
 import { DetailPanel } from "./DetailPanel";
 import { ExploreLoader } from "./ExploreLoader";
-import { MobileHeader } from "./MobileHeader";
+import { ExploreHeader } from "./ExploreHeader";
 import { MobileDrawer } from "./MobileDrawer";
 import { MobileInfoSheet } from "./MobileInfoSheet";
 
@@ -25,25 +25,27 @@ export function Explorer() {
     // Full-screen layout. A column on mobile/tablet, becoming the original
     // row layout (sidebar | viewer | detail panel) on lg+ screens. The loader
     // overlays everything on open.
-    <div className="flex h-dvh w-full flex-col overflow-hidden bg-background text-foreground lg:flex-row">
-      {/* Desktop sidebar: fixed 288px column, hidden on mobile/tablet. */}
-      <div className="hidden w-[288px] shrink-0 lg:flex">
-        <Sidebar />
-      </div>
+    <div className="flex h-dvh w-full flex-col overflow-hidden bg-background text-foreground">
+      {/* Top navigation bar with the brand and the PC Assembly button. */}
+      <ExploreHeader onOpenMenu={() => setDrawerOpen(true)} />
 
-      {/* Mobile/tablet top header (hidden on desktop). */}
-      <MobileHeader onOpenMenu={() => setDrawerOpen(true)} />
-
-      {/* The viewer fills the available space: full width on mobile, flex-1 on desktop. */}
-      <main className="relative flex min-h-0 min-w-0 flex-1 flex-col">
-        <div className="relative min-h-0 flex-1">
-          <Viewer />
+      <div className="flex min-h-0 min-w-0 flex-1 lg:flex-row">
+        {/* Desktop sidebar: fixed 288px column, hidden on mobile/tablet. */}
+        <div className="hidden w-[288px] shrink-0 lg:flex">
+          <Sidebar />
         </div>
-      </main>
 
-      {/* Desktop right detail panel (hidden on mobile/tablet). */}
-      <div className="hidden shrink-0 lg:flex">
-        <DetailPanel />
+        {/* The viewer fills the available space: full width on mobile, flex-1 on desktop. */}
+        <main className="relative flex min-h-0 min-w-0 flex-1 flex-col">
+          <div className="relative min-h-0 flex-1">
+            <Viewer />
+          </div>
+        </main>
+
+        {/* Desktop right detail panel (hidden on mobile/tablet). */}
+        <div className="hidden shrink-0 lg:flex">
+          <DetailPanel />
+        </div>
       </div>
 
       {/* Mobile/tablet bottom component-information sheet (hidden on desktop). */}
