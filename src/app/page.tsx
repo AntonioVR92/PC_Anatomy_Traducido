@@ -1,10 +1,7 @@
-// The home page of the site. It shows the opening / landing view plus a
-// server-rendered educational section that explains the project and links to
-// every component page (crawlable without JavaScript or WebGL).
+// The home page of the site. It shows the opening / landing view.
 
 import type { Metadata } from "next";
 import { LandingPage } from "@/components/landing/LandingPage";
-import { LandingInfoSection } from "@/components/landing/LandingInfoSection";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, absoluteUrl } from "@/lib/site";
 
 // Metadata is special Next.js information (title, description) used by the browser tab and search engines.
@@ -49,9 +46,5 @@ export const metadata: Metadata = {
 // This is the main component Next.js renders for the "/" URL. It just displays the LandingPage.
 // (Global structured data — WebSite, Organization, EducationalApplication — lives in layout.tsx.)
 export default function Home() {
-  return (
-    <LandingPage>
-      <LandingInfoSection />
-    </LandingPage>
-  );
+  return <LandingPage />;
 }
