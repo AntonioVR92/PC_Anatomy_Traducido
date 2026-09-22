@@ -19,9 +19,9 @@ import { cn } from "@/lib/utils";
 
 // Definitions of the available tabs: id and displayed label.
 export const TAB_DEFS: { id: TabId; label: string }[] = [
-  { id: "overview", label: "Overview" },
-  { id: "functions", label: "Functions" },
-  { id: "issues", label: "Common Issues" },
+  { id: "overview", label: "Resumen" },
+  { id: "functions", label: "Funciones" },
+  { id: "issues", label: "Problemas comunes" },
 ];
 
 // Horizontal selector row showing the tab buttons.
@@ -99,7 +99,7 @@ function OverviewTab({ component }: { component: ComponentInfo }) {
       <p className="text-[13.5px] leading-relaxed text-muted">{component.overview.description}</p>
 
       <div>
-        <SectionTitle>Real-World Usage</SectionTitle>
+        <SectionTitle>Uso en el mundo real</SectionTitle>
         <p className="text-[13px] leading-relaxed text-foreground/90">
           {component.overview.realWorld}
         </p>
@@ -110,7 +110,7 @@ function OverviewTab({ component }: { component: ComponentInfo }) {
         <div className="mb-1.5 flex items-center gap-2">
           <Lightbulb className="h-3.5 w-3.5 text-accent" strokeWidth={1.8} />
           <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-accent">
-            Interesting Fact
+            Dato interesante
           </span>
         </div>
         <p className="text-[12.5px] leading-relaxed text-foreground/85">
@@ -127,7 +127,7 @@ function FunctionsTab({ component }: { component: ComponentInfo }) {
     <div className="space-y-2.5">
       <SectionTitle>
         <CircleDot className="h-3 w-3" />
-        Responsibilities Inside a Computer
+        Responsabilidades dentro de un ordenador
       </SectionTitle>
       {component.functions.map((fn) => (
         <div
@@ -139,8 +139,8 @@ function FunctionsTab({ component }: { component: ComponentInfo }) {
         </div>
       ))}
       <p className="pt-2 text-[11.5px] text-muted-2">
-        Works alongside every other part — the motherboard routes its signals, RAM feeds
-        it data, and the PSU keeps it powered.
+        Trabaja junto al resto de componentes: la placa base enruta sus señales, la RAM le
+        suministra datos y la PSU lo mantiene alimentado.
       </p>
     </div>
   );
@@ -152,7 +152,7 @@ function IssuesTab({ component }: { component: ComponentInfo }) {
     <div className="space-y-2.5">
       <SectionTitle>
         <TriangleAlert className="h-3 w-3" />
-        What Usually Goes Wrong
+        Qué suele fallar
       </SectionTitle>
       {component.issues.map((issue) => (
         <div
@@ -167,8 +167,8 @@ function IssuesTab({ component }: { component: ComponentInfo }) {
       <div className="flex items-start gap-2.5 rounded-xl border border-line-strong bg-surface-2 px-4 py-3">
         <Info className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-2" strokeWidth={1.8} />
         <p className="text-[11.5px] leading-relaxed text-muted">
-          Understanding these failure modes helps you diagnose, maintain, and upgrade
-          hardware with confidence.
+          Conocer estos fallos te ayuda a diagnosticar, mantener y actualizar
+          el hardware con más seguridad.
         </p>
       </div>
     </div>

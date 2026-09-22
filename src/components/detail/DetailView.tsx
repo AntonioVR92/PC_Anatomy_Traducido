@@ -71,12 +71,12 @@ export function DetailView({ component }: { component: ComponentInfo }) {
           className="group flex items-center gap-2 text-[13px] font-medium text-muted transition-colors hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
-          Back to Explorer
+          Volver al explorador
         </Link>
         <div className="flex items-center gap-3">
           <Image
             src="/logo.png"
-            alt="Computer Anatomy logo"
+            alt="Logo de Computer Anatomy"
             width={512}
             height={512}
             priority

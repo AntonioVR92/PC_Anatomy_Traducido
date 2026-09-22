@@ -44,18 +44,18 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [
-    "computer anatomy",
+    "anatomía del PC",
     "PC anatomy",
-    "computer components",
-    "computer parts",
-    "PC components",
-    "computer hardware",
-    "PC assembly",
-    "PC building",
-    "learn computer hardware",
+    "componentes de ordenador",
+    "partes del PC",
+    "componentes de PC",
+    "hardware de ordenador",
+    "montaje de PC",
+    "armar un PC",
+    "aprender hardware",
   ],
-  authors: [{ name: "PC Anatomy Contributors" }],
-  creator: "PC Anatomy Contributors",
+  authors: [{ name: "Colaboradores de PC Anatomy" }],
+  creator: "Colaboradores de PC Anatomy",
   publisher: "PC Anatomy",
   robots: {
     index: true,
@@ -85,7 +85,7 @@ export const metadata: Metadata = {
         url: absoluteUrl("/og-image.png"),
         width: 1200,
         height: 630,
-        alt: "PC Anatomy — Explore Computer Hardware in 3D",
+        alt: "PC Anatomy — Explora el hardware del PC en 3D",
       },
     ],
   },
@@ -108,7 +108,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-background text-foreground">
@@ -143,7 +143,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               description: SITE_DESCRIPTION,
               applicationCategory: "EducationalApplication",
               educationalUse:
-                "Learn about computer hardware, computer components, and PC assembly",
+                "Aprende sobre hardware de ordenador, componentes de PC y montaje",
               operatingSystem: "Web",
             },
           ]}

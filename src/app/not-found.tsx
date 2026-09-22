@@ -7,16 +7,16 @@ import { ChevronRight } from "lucide-react";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Page Not Found",
-  description: "The page you are looking for could not be found.",
+  title: "Página no encontrada",
+  description: "No se ha podido encontrar la página que buscas.",
   robots: { index: false, follow: false },
   alternates: { canonical: absoluteUrl("/") },
 };
 
 const LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/explore", label: "Explore Computer Components in 3D" },
-  { href: "/assembly", label: "How to Assemble a PC" },
+  { href: "/", label: "Inicio" },
+  { href: "/explore", label: "Explorar componentes en 3D" },
+  { href: "/assembly", label: "Cómo montar un PC" },
 ];
 
 export default function NotFound() {
@@ -24,13 +24,13 @@ export default function NotFound() {
     <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6 py-20 text-center">
       <p className="font-mono text-sm tracking-widest text-accent">404</p>
       <h1 className="mt-4 text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-        Page Not Found
+        Página no encontrada
       </h1>
       <p className="mt-4 max-w-xl text-pretty text-[15px] leading-relaxed text-muted">
-        The page you are looking for does not exist, or it may have moved to a
-        new address. Try one of these instead:
+        La página que buscas no existe o puede haber cambiado de dirección.
+        Prueba una de estas opciones:
       </p>
-      <nav aria-label="Suggested pages" className="mt-8 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:justify-center">
+      <nav aria-label="Páginas sugeridas" className="mt-8 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:justify-center">
         {LINKS.map((link) => (
           <Link
             key={link.href}

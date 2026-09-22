@@ -27,7 +27,7 @@ export function FeatureItem({ index, title, description, active }: FeatureItemPr
           transition={{ duration: 0.6, ease: EASE }}
           className="text-[13px] font-semibold uppercase tracking-[0.28em] text-accent-bright"
         >
-          Feature {String(index + 1).padStart(2, "0")}
+          Función {String(index + 1).padStart(2, "0")}
         </motion.p>
 
         {/* Heading — word by word */}

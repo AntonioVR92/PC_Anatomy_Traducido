@@ -21,18 +21,18 @@ export default function Error({
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6 py-20 text-center">
       <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-        Something Went Wrong
+        Algo salió mal
       </h1>
       <p className="mt-4 max-w-xl text-pretty text-[15px] leading-relaxed text-muted">
-        An unexpected error occurred while loading this page. Please try again
-        — if the problem persists, refresh the page or come back later.
+        Ha ocurrido un error inesperado al cargar esta página. Inténtalo de
+        nuevo: si el problema continúa, recarga la página o vuelve más tarde.
       </p>
       <button
         type="button"
         onClick={reset}
         className="mt-8 rounded-full border border-line bg-surface px-6 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent/40 hover:bg-surface-2"
       >
-        Try Again
+        Reintentar
       </button>
     </div>
   );

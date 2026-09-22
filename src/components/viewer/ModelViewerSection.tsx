@@ -15,7 +15,7 @@ const ComponentViewer = dynamic(
       <div className="flex h-full w-full items-center justify-center">
         <div className="flex flex-col items-center gap-3">
           <div className="h-8 w-8 animate-spin rounded-full border-2 border-line-strong border-t-accent" />
-          <p className="text-[12px] text-muted-2">Loading interactive 3D model…</p>
+          <p className="text-[12px] text-muted-2">Cargando modelo 3D interactivo…</p>
         </div>
       </div>
     ),

@@ -9,10 +9,10 @@ export const SITE_URL: string = (
 ).replace(/\/+$/, "");
 
 export const SITE_NAME = "PC Anatomy";
-export const SITE_TITLE = "PC Anatomy — Explore Computer Hardware in 3D";
+export const SITE_TITLE = "PC Anatomy — Explora el hardware del PC en 3D";
 export const SITE_DESCRIPTION =
-  "Explore computer hardware through an interactive 3D PC Anatomy experience. Learn about CPUs, RAM, motherboards, GPUs, storage, power supplies, and PC assembly.";
-export const SITE_LANGUAGE = "en";
+  "Explora el hardware del ordenador con una experiencia interactiva 3D de PC Anatomy. Aprende sobre CPUs, RAM, placas base, GPUs, almacenamiento, fuentes de alimentación y montaje de PCs.";
+export const SITE_LANGUAGE = "es";
 
 // Public project repository (open source).
 export const GITHUB_URL = "https://github.com/brickshow/pc-anatomy";

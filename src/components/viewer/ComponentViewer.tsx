@@ -81,7 +81,7 @@ export function ComponentViewer({
         {/* Reset button: bumps resetSeq to move the camera back to the start. */}
         <button
           type="button"
-          aria-label="Reset camera"
+          aria-label="Resetear cámara"
           onClick={() => setResetSeq((n) => n + 1)}
         >
           {/* A small refresh/undo icon */}
@@ -95,12 +95,12 @@ export function ComponentViewer({
               d="M3 12a9 9 0 1 0 2.6-6.3M3 4v5h5"
             />
           </svg>
-          Reset
+          Resetear
         </button>
         {/* Pause / rotate button toggles auto-rotation. */}
         <button
           type="button"
-          aria-label={autoRotate ? "Pause rotation" : "Start rotation"}
+          aria-label={autoRotate ? "Pausar rotación" : "Iniciar rotación"}
           onClick={() => setAutoRotate((v) => !v)}
         >
           {/* Show a pause icon when rotating, else a play icon. */}
@@ -119,7 +119,7 @@ export function ComponentViewer({
               />
             </svg>
           )}
-          {autoRotate ? "Pause" : "Rotate"}
+          {autoRotate ? "Pausar" : "Rotar"}
         </button>
       </div>
     </div>

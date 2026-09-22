@@ -37,7 +37,7 @@ export function ExploreLoader() {
           >
             <Image
               src="/logo.png"
-              alt="Computer Anatomy logo"
+              alt="Logo de Computer Anatomy"
               width={64}
               height={64}
               className="h-16 w-16 rounded-xl"
@@ -51,7 +51,7 @@ export function ExploreLoader() {
 
           {/* Label + animated dots. */}
           <p className="text-sm text-muted">
-            Preparing workspace
+            Preparando el espacio de trabajo
             <span className="animate-pulse">…</span>
           </p>
         </motion.div>

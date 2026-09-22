@@ -20,7 +20,7 @@ function HotspotHint({ label }: { label: string }) {
     <div className="absolute inset-x-0 bottom-[128px] z-20 flex items-center justify-center gap-2 lg:bottom-4">
       <button
         type="button"
-        aria-label="Previous hotspot"
+        aria-label="Hotspot anterior"
         onClick={prevHotspot}
         className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface/80 text-muted backdrop-blur-sm transition-colors hover:border-accent/40 hover:text-foreground lg:h-9 lg:w-9"
       >
@@ -32,7 +32,7 @@ function HotspotHint({ label }: { label: string }) {
       </span>
       <button
         type="button"
-        aria-label="Next hotspot"
+        aria-label="Siguiente hotspot"
         onClick={nextHotspot}
         className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface/80 text-muted backdrop-blur-sm transition-colors hover:border-accent/40 hover:text-foreground lg:h-9 lg:w-9"
       >
@@ -54,7 +54,7 @@ const ComponentViewer = dynamic(
       <div className="flex h-full w-full items-center justify-center">
         <div className="flex flex-col items-center gap-3">
           <div className="h-8 w-8 animate-spin rounded-full border-2 border-line-strong border-t-accent" />
-          <p className="text-[12px] text-muted-2">Loading interactive 3D model…</p>
+          <p className="text-[12px] text-muted-2">Cargando modelo 3D interactivo…</p>
         </div>
       </div>
     ),
@@ -72,7 +72,7 @@ const MotherboardViewer = dynamic(
       <div className="flex h-full w-full items-center justify-center">
         <div className="flex flex-col items-center gap-3">
           <div className="h-8 w-8 animate-spin rounded-full border-2 border-line-strong border-t-accent" />
-          <p className="text-[12px] text-muted-2">Loading interactive model…</p>
+          <p className="text-[12px] text-muted-2">Cargando modelo interactivo…</p>
         </div>
       </div>
     ),
@@ -87,7 +87,7 @@ const MouseViewer = dynamic(
       <div className="flex h-full w-full items-center justify-center">
         <div className="flex flex-col items-center gap-3">
           <div className="h-8 w-8 animate-spin rounded-full border-2 border-line-strong border-t-accent" />
-          <p className="text-[12px] text-muted-2">Loading interactive model…</p>
+          <p className="text-[12px] text-muted-2">Cargando modelo interactivo…</p>
         </div>
       </div>
     ),
@@ -105,7 +105,7 @@ const SystemUnitViewer = dynamic(
       <div className="flex h-full w-full items-center justify-center">
         <div className="flex flex-col items-center gap-3">
           <div className="h-8 w-8 animate-spin rounded-full border-2 border-line-strong border-t-accent" />
-          <p className="text-[12px] text-muted-2">Loading interactive model…</p>
+          <p className="text-[12px] text-muted-2">Cargando modelo interactivo…</p>
         </div>
       </div>
     ),
@@ -120,7 +120,7 @@ const MonitorViewer = dynamic(
       <div className="flex h-full w-full items-center justify-center">
         <div className="flex flex-col items-center gap-3">
           <div className="h-8 w-8 animate-spin rounded-full border-2 border-line-strong border-t-accent" />
-          <p className="text-[12px] text-muted-2">Loading interactive model…</p>
+          <p className="text-[12px] text-muted-2">Cargando modelo interactivo…</p>
         </div>
       </div>
     ),
@@ -140,7 +140,7 @@ export function Viewer() {
     return (
       <div className="relative h-full w-full overflow-hidden">
         <SystemUnitViewer mode="embedded" />
-        <HotspotHint label="Click a numbered hotspot to explore the system unit." />
+        <HotspotHint label="Haz clic en un hotspot numerado para explorar la unidad del sistema." />
       </div>
     );
   }
@@ -150,7 +150,7 @@ export function Viewer() {
     return (
       <div className="relative h-full w-full overflow-hidden">
         <MotherboardViewer mode="embedded" />
-        <HotspotHint label="Click a numbered hotspot to explore the motherboard." />
+        <HotspotHint label="Haz clic en un hotspot numerado para explorar la placa base." />
       </div>
     );
   }
@@ -160,7 +160,7 @@ export function Viewer() {
     return (
       <div className="relative h-full w-full overflow-hidden">
         <MouseViewer mode="embedded" />
-        <HotspotHint label="Click a numbered hotspot to explore the mouse." />
+        <HotspotHint label="Haz clic en un hotspot numerado para explorar el ratón." />
       </div>
     );
   }
@@ -170,7 +170,7 @@ export function Viewer() {
     return (
       <div className="relative h-full w-full overflow-hidden">
         <MonitorViewer mode="embedded" />
-        <HotspotHint label="Click a numbered hotspot to explore the monitor." />
+        <HotspotHint label="Haz clic en un hotspot numerado para explorar el monitor." />
       </div>
     );
   }
@@ -181,7 +181,7 @@ export function Viewer() {
       <ComponentViewer component={path} mode="embedded" />
       <div className="pointer-events-none absolute inset-x-0 bottom-[128px] z-20 flex justify-center lg:bottom-4">
         <span className="rounded-full border border-line bg-surface/70 px-3.5 py-2 text-[11.5px] text-muted backdrop-blur-sm lg:py-1.5">
-          Select a component from the sidebar to explore it.
+          Selecciona un componente en la barra lateral para explorarlo.
         </span>
       </div>
     </div>

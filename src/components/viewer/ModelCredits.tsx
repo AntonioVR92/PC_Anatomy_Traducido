@@ -55,7 +55,7 @@ export function ModelCredits({ credit }: { credit?: string }) {
         </span>
         <div className="flex flex-col gap-1">
           <p className="text-[12px] font-semibold tracking-tight text-foreground">
-            Model credit
+            Crédito del modelo
           </p>
           {credit ? (
             <>
@@ -64,12 +64,12 @@ export function ModelCredits({ credit }: { credit?: string }) {
                 {renderCredit(credit)}
               </p>
               <p className="text-[10.5px] text-muted-2">
-                3D model sourced from Sketchfab
+                Modelo 3D procedente de Sketchfab
               </p>
             </>
           ) : (
             <p className="text-[11.5px] leading-relaxed text-muted">
-              3D model sourced from Sketchfab
+              Modelo 3D procedente de Sketchfab
             </p>
           )}
         </div>

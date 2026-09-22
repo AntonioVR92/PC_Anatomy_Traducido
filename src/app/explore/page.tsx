@@ -6,14 +6,14 @@ import { absoluteUrl } from "@/lib/site";
 
 // Next.js metadata for this page (tab title + search engine description).
 export const metadata: Metadata = {
-  title: "Explore Computer Components in 3D",
+  title: "Explora componentes de ordenador en 3D",
   description:
-    "Explore computer hardware components in interactive 3D. Rotate, inspect and learn about the CPU, GPU, RAM, motherboard, storage, power supply, and more.",
+    "Explora componentes de hardware de ordenador en 3D interactivo. Rota, inspecciona y aprende sobre la CPU, GPU, RAM, placa base, almacenamiento, fuente de alimentación y más.",
   alternates: { canonical: absoluteUrl("/explore") },
   openGraph: {
-    title: "Explore Computer Components in 3D",
+    title: "Explora componentes de ordenador en 3D",
     description:
-      "Explore computer hardware components in interactive 3D. Rotate, inspect and learn about the CPU, GPU, RAM, motherboard, and more.",
+      "Explora componentes de hardware de ordenador en 3D interactivo. Rota, inspecciona y aprende sobre la CPU, GPU, RAM, placa base y más.",
     url: absoluteUrl("/explore"),
     type: "website",
     images: [
@@ -21,15 +21,15 @@ export const metadata: Metadata = {
         url: absoluteUrl("/og-image.png"),
         width: 1200,
         height: 630,
-        alt: "PC Anatomy — Explore Computer Hardware in 3D",
+        alt: "PC Anatomy — Explora el hardware de ordenador en 3D",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Explore Computer Components in 3D",
+    title: "Explora componentes de ordenador en 3D",
     description:
-      "Explore computer hardware components in interactive 3D.",
+      "Explora componentes de hardware de ordenador en 3D interactivo.",
     images: [absoluteUrl("/og-image.png")],
   },
 };

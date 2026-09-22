@@ -24,7 +24,7 @@ export function WaitlistForm() {
     const trimmed = email.trim();
     if (!trimmed) {
       setStatus("error");
-      setMessage("Please enter your email address.");
+      setMessage("Introduce tu dirección de email.");
       return;
     }
 
@@ -40,12 +40,12 @@ export function WaitlistForm() {
       });
       // The server always replies with either a `message` or an `error`.
       const data = await res.json();
-      setMessage(data.message ?? data.error ?? "Something went wrong.");
+      setMessage(data.message ?? data.error ?? "Algo ha fallado.");
       setStatus(res.ok ? "done" : "error");
     } catch {
       // Network failure (offline, server down) — never surface internals.
       setStatus("error");
-      setMessage("Something went wrong. Please try again later.");
+      setMessage("Algo ha fallado. Inténtalo de nuevo más tarde.");
     }
   }
 
@@ -60,7 +60,7 @@ export function WaitlistForm() {
             htmlFor="waitlist-email"
             className="text-sm font-medium text-foreground"
           >
-            Join the waitlist and get notified when this feature is ready.
+            Únete a la lista de espera y te avisaremos cuando esta función esté lista.
           </label>
           <div className="flex flex-col gap-2.5 sm:flex-row">
             <input
@@ -70,7 +70,7 @@ export function WaitlistForm() {
               autoComplete="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              placeholder="email@example.com"
+              placeholder="email@ejemplo.com"
               className="w-full rounded-full border border-line bg-surface px-5 py-2.5 text-sm text-foreground placeholder:text-muted-2 focus:border-accent/40 focus:outline-none"
             />
             <button
@@ -78,7 +78,7 @@ export function WaitlistForm() {
               disabled={status === "sending"}
               className="shrink-0 rounded-full border border-line bg-surface px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent/40 hover:bg-surface-2 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {status === "sending" ? "Joining…" : "Join the Waitlist"}
+              {status === "sending" ? "Uniendo…" : "Unirme a la lista"}
             </button>
           </div>
           {status === "error" && message && (

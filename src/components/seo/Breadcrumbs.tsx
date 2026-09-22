@@ -15,7 +15,7 @@ export function Breadcrumbs({
   crumbs: Crumb[];
   className?: string;
 }) {
-  const items = [{ name: "Home", href: "/" }, ...crumbs];
+  const items = [{ name: "Inicio", href: "/" }, ...crumbs];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -29,7 +29,7 @@ export function Breadcrumbs({
   };
 
   return (
-    <nav aria-label="Breadcrumb" className={className}>
+    <nav aria-label="Miga de pan" className={className}>
       <ol className="flex flex-wrap items-center gap-1.5 text-[13px] text-muted">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;

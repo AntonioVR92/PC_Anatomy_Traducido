@@ -11,29 +11,29 @@ gsap.registerPlugin(ScrollTrigger);
 // Data for each feature shown in this section
 const FEATURES = [
   {
-    title: "Explore in 3D",
+    title: "Explora en 3D",
     description:
-      "Explore computer hardware in an interactive 3D environment. Select components, move around the system, and see where everything belongs.",
+      "Explora el hardware del ordenador en un entorno 3D interactivo. Selecciona componentes, muévete por el sistema y ve dónde encaja cada pieza.",
   },
   {
-    title: "Discover Every Component",
+    title: "Descubre cada componente",
     description:
-      "Explore 16 essential computer components, from the CPU and motherboard to storage, cooling, peripherals, and power protection.",
+      "Explora 16 componentes esenciales: desde la CPU y la placa base hasta el almacenamiento, la refrigeración, los periféricos y la protección eléctrica.",
   },
   {
-    title: "Learn the Details",
+    title: "Aprende los detalles",
     description:
-      "Understand what each component does, how it functions, and the common issues associated with it.",
+      "Entiende qué hace cada componente, cómo funciona y qué fallos suelen asociarse a él.",
   },
   {
-    title: "Connect It to the Real World",
+    title: "Conéctalo con el mundo real",
     description:
-      "Learn how computer components are used in real systems through practical explanations and interesting hardware facts.",
+      "Aprende cómo se usan los componentes en sistemas reales con explicaciones prácticas y datos curiosos de hardware.",
   },
   {
-    title: "Find What You're Looking For",
+    title: "Encuentra lo que buscas",
     description:
-      "Search through the component library and jump directly into the hardware you want to explore.",
+      "Busca en la biblioteca de componentes y salta directamente al hardware que quieres explorar.",
   },
 ];
 

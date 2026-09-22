@@ -29,23 +29,23 @@ type ChatThread = {
 
 // Pre-written example questions shown as quick-prompt chips.
 const QUICK_PROMPTS = [
-  "What is a GPU?",
-  "How does RAM work?",
-  "Explain the CPU",
-  "How do I build a PC?",
+  "¿Qué es una GPU?",
+  "¿Cómo funciona la RAM?",
+  "Explica la CPU",
+  "¿Cómo monto un PC?",
 ];
 
 // Rotating invite messages shown on the launcher when the chat is closed.
 const INVITE_PROMPTS = [
-  "Hey, ask me anything!",
-  "Want to ask something?",
-  "Curious about a component?",
-  "Explore PC hardware with me!",
+  "¡Hola! Pregúntame lo que quieras",
+  "¿Quieres preguntar algo?",
+  "¿Curioso por un componente?",
+  "¡Explora el hardware de PC conmigo!",
 ];
 
 // The assistant's opening greeting used to start each new chat.
 const GREETING =
-  "Hi! I'm the Computer Anatomy assistant. Ask me about any component — GPU, RAM, CPU, and more.";
+  "¡Hola! Soy el asistente de PC Anatomy. Pregúntame sobre cualquier componente: GPU, RAM, CPU y más.";
 
 // How many previous messages to send to the AI for context.
 const MAX_HISTORY = 12;
@@ -128,7 +128,7 @@ export function ChatWidget() {
   const [chats, setChats] = useState<ChatThread[]>([
     {
       id: "chat-initial",
-      title: "New chat",
+      title: "Nuevo chat",
       messages: [{ id: 0, role: "assistant", text: GREETING }],
     },
   ]);
@@ -233,7 +233,7 @@ export function ChatWidget() {
   const newChat = () => {
     const chat: ChatThread = {
       id: `chat-${Date.now()}`,
-      title: "New chat",
+      title: "Nuevo chat",
       messages: [{ id: idRef.current++, role: "assistant", text: GREETING }],
     };
     setChats((prev) => [...prev, chat]);
@@ -283,10 +283,10 @@ export function ChatWidget() {
         body: JSON.stringify({ messages: history }),
       });
       const data = await res.json().catch(() => null);
-      reply = data?.reply ?? data?.error ?? "Sorry, I couldn't get a response. Please try again.";
+      reply = data?.reply ?? data?.error ?? "Lo siento, no pude obtener una respuesta. Inténtalo de nuevo.";
       isError = !data?.reply;
     } catch {
-      reply = "Sorry, I couldn't reach the AI service. Please try again.";
+      reply = "Lo siento, no pude conectar con el servicio de IA. Inténtalo de nuevo.";
       isError = true;
     }
 
@@ -336,7 +336,7 @@ export function ChatWidget() {
               </div>
               <button
                 type="button"
-                aria-label="New chat"
+                aria-label="Nuevo chat"
                 onClick={newChat}
                 className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-muted transition-colors hover:bg-surface-2 hover:text-foreground"
               >
@@ -344,7 +344,7 @@ export function ChatWidget() {
               </button>
               <button
                 type="button"
-                aria-label="Close chat"
+                aria-label="Cerrar chat"
                 onClick={() => setOpen(false)}
                 className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-muted transition-colors hover:bg-surface-2 hover:text-foreground"
               >
@@ -406,7 +406,7 @@ export function ChatWidget() {
                           ))}
                         </span>
                         <span className="text-[12.5px] text-muted">
-                          Analyzing your request…
+                          Analizando tu consulta…
                         </span>
                       </div>
                     </div>
@@ -435,13 +435,13 @@ export function ChatWidget() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && send()}
-                  placeholder="Ask about a component…"
+                  placeholder="Pregunta sobre un componente…"
                   className="h-10 flex-1 rounded-xl border border-line bg-surface-2 px-3.5 text-[13px] text-foreground outline-none transition-colors placeholder:text-muted-2 focus:border-accent/50"
                 />
                 {/* Send button, disabled while empty or awaiting a reply. */}
                 <button
                   type="button"
-                  aria-label="Send message"
+                  aria-label="Enviar mensaje"
                   onClick={() => send()}
                   disabled={!input.trim() || pending}
                   className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent text-white transition-all hover:bg-accent-bright disabled:opacity-40"
@@ -462,7 +462,7 @@ export function ChatWidget() {
             {showPrompt && (
               <motion.button
                 type="button"
-                aria-label="Ask the assistant"
+                aria-label="Preguntar al asistente"
                 onClick={() => setOpen(true)}
                 initial={{ opacity: 0, y: 8, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -481,7 +481,7 @@ export function ChatWidget() {
         {/* Toggle button (the chat head avatar) to open/close the chat. */}
         <motion.button
           type="button"
-          aria-label="Open AI assistant"
+          aria-label="Abrir asistente de IA"
           onClick={() => setOpen((v) => !v)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}

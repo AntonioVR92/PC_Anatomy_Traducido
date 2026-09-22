@@ -23,7 +23,7 @@ export function Buttons() {
           className="group inline-flex h-12 items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-7 text-[15px] font-medium text-white backdrop-blur-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_8px_32px_rgba(77,141,255,0.15)] transition-all duration-300 hover:scale-[1.03] hover:border-accent/50 hover:bg-white/10 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_10px_44px_rgba(77,141,255,0.25)]"
         >
           <Cpu className="h-4 w-4" strokeWidth={1.8} />
-          Explore Components
+          Explorar componentes
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" strokeWidth={2} />
         </Link>
       </MagneticButton>
@@ -37,7 +37,7 @@ export function Buttons() {
           className="inline-flex h-12 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 text-[15px] font-medium text-neutral-100 backdrop-blur-md transition-all duration-300 hover:scale-[1.03] hover:border-white/20 hover:bg-white/10 hover:shadow-[0_0_24px_rgba(93,163,255,0.15)]"
         >
           <GithubIcon className="h-4 w-4" />
-          GitHub Repository
+          Repositorio en GitHub
         </a>
       </MagneticButton>
     </motion.div>

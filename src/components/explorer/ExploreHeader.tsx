@@ -14,7 +14,7 @@ export function ExploreHeader({ onOpenMenu }: { onOpenMenu: () => void }) {
       {/* Hamburger button opens the components drawer (mobile/tablet only). */}
       <button
         type="button"
-        aria-label="Open components list"
+        aria-label="Abrir lista de componentes"
         onClick={onOpenMenu}
         className="-ml-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-line bg-surface-2 text-foreground transition-colors active:bg-surface-3 lg:hidden"
       >
@@ -25,7 +25,7 @@ export function ExploreHeader({ onOpenMenu }: { onOpenMenu: () => void }) {
       <div className="relative shrink-0">
         <Image
           src="/logo.png"
-          alt="Computer Anatomy logo"
+          alt="Logo de PC Anatomy"
           width={128}
           height={128}
           priority
@@ -36,10 +36,10 @@ export function ExploreHeader({ onOpenMenu }: { onOpenMenu: () => void }) {
       {/* Name + short subtitle. */}
       <div className="flex min-w-0 flex-col">
         <span className="truncate text-[13.5px] font-semibold leading-tight tracking-tight text-foreground">
-          Computer Anatomy
+          PC Anatomy
         </span>
         <span className="hidden truncate text-[10.5px] leading-tight text-muted-2 sm:block">
-          Explore Components in 3D
+          Explora componentes en 3D
         </span>
       </div>
 
@@ -49,7 +49,7 @@ export function ExploreHeader({ onOpenMenu }: { onOpenMenu: () => void }) {
         className="ml-auto inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-line bg-surface-2 px-3 py-2 text-[12.5px] font-medium text-foreground transition-colors hover:border-accent/40 hover:bg-surface-3 hover:text-accent"
       >
         <Wrench className="h-3.5 w-3.5" strokeWidth={1.8} />
-        PC Assembly
+        Montaje de PC
       </Link>
 
       {/* Compact version badge (hidden on small screens). */}

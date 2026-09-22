@@ -49,7 +49,7 @@ export function MobileDrawer({
           {/* Dimmed backdrop; tapping it closes the drawer. */}
           <motion.button
             type="button"
-            aria-label="Close components list"
+            aria-label="Cerrar lista de componentes"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

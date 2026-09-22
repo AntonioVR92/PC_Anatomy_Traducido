@@ -9,13 +9,13 @@ import { WaitlistForm } from "@/components/assembly/WaitlistForm";
 import { SITE_DESCRIPTION, SITE_NAME, absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "PC Assembly — Coming Soon",
+  title: "Montaje de PC — Próximamente",
   description:
-    "An interactive, step-by-step PC assembly experience is on the way — install components, connect cables, and build a PC from the ground up in 3D. Meanwhile, explore every component in the interactive 3D explorer.",
+    "Una experiencia interactiva de montaje de PC paso a paso está en camino: instala componentes, conecta cables y construye un PC desde cero en 3D. Mientras tanto, explora cada componente en el explorador 3D interactivo.",
   alternates: { canonical: absoluteUrl("/assembly") },
   robots: { index: false, follow: true },
   openGraph: {
-    title: "PC Assembly — Coming Soon",
+    title: "Montaje de PC — Próximamente",
     description: SITE_DESCRIPTION,
     url: absoluteUrl("/assembly"),
     siteName: SITE_NAME,
@@ -25,13 +25,13 @@ export const metadata: Metadata = {
         url: absoluteUrl("/og-image.png"),
         width: 1200,
         height: 630,
-        alt: "PC Anatomy — Explore Computer Hardware in 3D",
+        alt: "PC Anatomy — Explora el hardware de ordenador en 3D",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "PC Assembly Guide — Coming Soon",
+    title: "Guía de montaje de PC — Próximamente",
     description: SITE_DESCRIPTION,
     images: [absoluteUrl("/og-image.png")],
   },
@@ -42,17 +42,17 @@ export default function AssemblyComingSoonPage() {
     <main className="flex min-h-screen flex-col items-center justify-center bg-background px-6 py-20 text-center">
       <ComingSoonAnimation />
       <h1 className="mt-8 text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-        PC Assembly Is Coming Soon
+        El montaje de PC llega pronto
       </h1>
       <div className="mx-auto mt-5 max-w-2xl space-y-4 text-pretty text-[15px] leading-relaxed text-muted">
         <p>
-          I&apos;m currently working on an interactive, step-by-step PC assembly
-          experience. Soon, you&apos;ll be able to install components, connect
-          cables, and build a PC from the ground up in 3D.
+          Estoy trabajando en una experiencia interactiva de montaje de PC
+          paso a paso. Pronto podrás instalar componentes, conectar
+          cables y construir un PC desde cero en 3D.
         </p>
         <p>
-          While it&apos;s in development, explore every component in the
-          interactive 3D explorer.
+          Mientras está en desarrollo, explora cada componente en el
+          explorador 3D interactivo.
         </p>
       </div>
       <WaitlistForm />
@@ -60,7 +60,7 @@ export default function AssemblyComingSoonPage() {
         href="/explore"
         className="group inline-flex items-center gap-1.5 mt-4 rounded-full border border-line bg-surface px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent/40 hover:bg-surface-2"
       >
-        Explore Components in 3D
+        Explorar componentes en 3D
       </Link>
     </main>
   );

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 // The technology stack shown as small pill badges in the hero
 const TECH_BADGES = [
-  "Open Source",
+  "Código abierto",
   "Next.js",
   "React Three Fiber",
   "Three.js",

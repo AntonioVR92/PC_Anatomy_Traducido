@@ -49,14 +49,14 @@ function HotspotContent() {
                 {hotspotPart.title}
               </h2>
               <p className="text-[13px] text-muted">
-                {hotspotIndex + 1} of {hotspotTotal} · {component.name}
+                {hotspotIndex + 1} de {hotspotTotal} · {component.name}
               </p>
             </div>
           </div>
           {/* Dismisses the hotspot panel. */}
           <button
             type="button"
-            aria-label="Close panel"
+            aria-label="Cerrar panel"
             onClick={closeHotspot}
             className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-muted transition-colors hover:bg-surface-2 hover:text-foreground"
           >
@@ -71,7 +71,7 @@ function HotspotContent() {
         <section className="space-y-1.5">
           <h4 className="flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-muted-2">
             <Sparkles className="h-3 w-3 text-accent" strokeWidth={1.8} />
-            Overview
+            Resumen
           </h4>
           <p className="text-[13px] leading-relaxed text-foreground/90">
             {hotspotPart.description}
@@ -82,7 +82,7 @@ function HotspotContent() {
         <section className="space-y-1.5 rounded-xl border border-line bg-surface-2/60 p-3.5">
           <h4 className="flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-accent">
             <MapPin className="h-3 w-3" strokeWidth={1.8} />
-            Primary Function
+            Función principal
           </h4>
           <p className="text-[12.5px] leading-relaxed text-foreground/85">
             {hotspotPart.function}
@@ -93,7 +93,7 @@ function HotspotContent() {
         <section className="space-y-1.5">
           <h4 className="flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-muted-2">
             <Crosshair className="h-3 w-3 text-accent" strokeWidth={1.8} />
-            Why It Is Important
+            Por qué es importante
           </h4>
           <p className="text-[12.5px] leading-relaxed text-foreground/85">
             {hotspotPart.importance}
@@ -104,7 +104,7 @@ function HotspotContent() {
         <section className="space-y-2">
           <h4 className="flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-muted-2">
             <Lightbulb className="h-3 w-3 text-accent" strokeWidth={1.8} />
-            Interesting Facts
+            Datos interesantes
           </h4>
           {hotspotPart.facts.map((fact) => (
             <div
@@ -126,7 +126,7 @@ function HotspotContent() {
           className="flex h-9 w-full items-center justify-center gap-1.5 rounded-xl bg-accent text-[12px] font-semibold text-white transition-colors hover:bg-accent-bright"
         >
           <RotateCcw className="h-3.5 w-3.5" strokeWidth={1.8} />
-          Reset Camera
+          Resetear cámara
         </button>
       </footer>
     </aside>

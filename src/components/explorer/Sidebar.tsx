@@ -60,7 +60,7 @@ export function Sidebar() {
             ref={searchRef}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search components…"
+            placeholder="Buscar componentes…"
             className="h-10 w-full rounded-xl border border-line bg-surface-2 pl-9 pr-9 text-[13px] text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] outline-none transition-all placeholder:text-muted-2 focus:border-accent/50 focus:bg-surface-2/80 focus:shadow-[0_0_0_3px_rgba(77,141,255,0.12)]"
           />
           {/* Show a clear button when there is text, otherwise show the "/" hint. */}
@@ -68,7 +68,7 @@ export function Sidebar() {
             <button
               type="button"
               onClick={() => setQuery("")}
-              aria-label="Clear search"
+              aria-label="Borrar búsqueda"
               className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-md p-0.5 text-muted-2 transition-colors hover:text-foreground"
             >
               <X className="h-3.5 w-3.5" />
@@ -86,7 +86,7 @@ export function Sidebar() {
         {/* Small section label with a live count of filtered items. */}
         <div className="flex items-center justify-between px-2 pb-2 pt-1">
           <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-muted-2">
-            Components
+            Componentes
           </p>
           <span className="rounded-full border border-line bg-surface-2 px-1.5 py-0.5 font-mono text-[10px] leading-none text-muted-2">
             {filtered.length}
@@ -149,13 +149,13 @@ export function Sidebar() {
             <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-surface-2 text-muted-2">
               <Search className="h-4 w-4" />
             </span>
-            <p className="text-[12.5px] text-muted">No components match “{query}”.</p>
+            <p className="text-[12.5px] text-muted">Ningún componente coincide con “{query}”.</p>
             <button
               type="button"
               onClick={() => setQuery("")}
               className="text-[12px] font-medium text-accent transition-colors hover:text-accent-bright"
             >
-              Clear search
+              Borrar búsqueda
             </button>
           </div>
         )}
@@ -170,11 +170,11 @@ export function Sidebar() {
             </span>
             <div className="flex min-w-0 flex-col gap-1">
               <p className="text-[11px] leading-relaxed text-muted">
-                <span className="font-medium text-foreground">Explore in 3D:</span>{" "}
-                select a component to frame it in the interactive viewer.
+                <span className="font-medium text-foreground">Explora en 3D:</span>{" "}
+                selecciona un componente para verlo en el visor interactivo.
               </p>
               <p className="font-mono text-[10px] text-muted-2">
-                {COMPONENTS.length} components · 3D interactive
+                {COMPONENTS.length} componentes · 3D interactivo
               </p>
             </div>
           </div>

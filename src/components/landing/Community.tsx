@@ -13,23 +13,23 @@ const CORE_PILLARS = [
   {
     icon: <Cpu className="h-5 w-5" strokeWidth={1.6} />,
     num: "01",
-    title: "Explore",
+    title: "Explorar",
     description:
-      "Discover interactive hardware components, 3D models, and detailed explanations.",
+      "Descubre componentes interactivos, modelos 3D y explicaciones detalladas.",
   },
   {
     icon: <BookOpen className="h-5 w-5" strokeWidth={1.6} />,
     num: "02",
-    title: "Learn",
+    title: "Aprender",
     description:
-      "Understand how components work together through visual explanations and structured learning content.",
+      "Entiende cómo trabajan juntos los componentes con explicaciones visuales y contenido estructurado.",
   },
   {
     icon: <GitPullRequest className="h-5 w-5" strokeWidth={1.6} />,
     num: "03",
-    title: "Contribute",
+    title: "Contribuir",
     description:
-      "Help improve the project by contributing models, documentation, corrections, ideas, and code.",
+      "Mejora el proyecto aportando modelos, documentación, correcciones, ideas y código.",
   },
 ];
 
@@ -42,14 +42,14 @@ export function Community() {
         {/* Section heading */}
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-accent-bright">
-            Open Source • Built to Learn
+            Código abierto • Hecho para aprender
           </p>
           <h2 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            Learn. Explore. Build Together.
+            Aprende. Explora. Construye juntos.
           </h2>
           <p className="mt-5 text-pretty text-base leading-relaxed text-muted sm:text-lg">
-            Computer Anatomy is an open-source learning platform for understanding computer
-            hardware, systems, and networking through interactive experiences.
+            PC Anatomy es una plataforma de aprendizaje de código abierto para
+            entender hardware, sistemas y redes con experiencias interactivas.
           </p>
         </Reveal>
 
@@ -100,7 +100,7 @@ export function Community() {
               href="/explore"
               className="group inline-flex h-12 items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-7 text-[15px] font-medium text-white backdrop-blur-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_8px_32px_rgba(77,141,255,0.15)] transition-all duration-300 hover:scale-[1.03] hover:border-accent/50 hover:bg-white/10 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_10px_44px_rgba(77,141,255,0.25)]"
             >
-              Explore Computer Anatomy
+              Explorar PC Anatomy
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" strokeWidth={2} />
             </Link>
           </MagneticButton>
@@ -113,7 +113,7 @@ export function Community() {
               className="group inline-flex h-12 items-center gap-2 rounded-full border border-line bg-surface/60 px-6 text-[15px] font-medium text-foreground backdrop-blur-md transition-all duration-300 hover:scale-[1.03] hover:border-line-strong hover:bg-surface-2"
             >
               <GithubIcon className="h-4 w-4" />
-              Star on GitHub
+              Dar estrella en GitHub
               <ArrowUpRight className="h-4 w-4 text-muted transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2} />
             </a>
           </MagneticButton>
@@ -126,7 +126,7 @@ export function Community() {
             "font-mono tracking-tight"
           )}
         >
-          Open source. Free to explore.
+          Código abierto. Gratis para explorar.
         </p>
 
         {/* Buy Me a Coffee trigger + donation modal */}

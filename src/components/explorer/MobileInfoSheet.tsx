@@ -108,7 +108,7 @@ export function MobileInfoSheet() {
   // What to show in the summary + (if a hotspot is active) expanded sections.
   const title = hotspotActive && hotspotPart ? hotspotPart.title : component.name;
   const meta = hotspotActive
-    ? `${hotspotIndex + 1} of ${hotspotTotal} · ${component.name}`
+    ? `${hotspotIndex + 1} de ${hotspotTotal} · ${component.name}`
     : component.tagline;
   const summary = hotspotActive
     ? hotspotPart?.description
@@ -126,7 +126,7 @@ export function MobileInfoSheet() {
         <button
           type="button"
           aria-expanded={expanded}
-          aria-label={expanded ? "Collapse details" : "Expand details"}
+          aria-label={expanded ? "Contraer detalles" : "Expandir detalles"}
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
@@ -167,7 +167,7 @@ export function MobileInfoSheet() {
                   <section className="space-y-1.5">
                     <SectionTitle>
                       <Sparkles className="h-3 w-3 text-accent" strokeWidth={1.8} />
-                      Overview
+                      Resumen
                     </SectionTitle>
                     <p className="text-[13px] leading-relaxed text-foreground/90">
                       {hotspotPart.description}
@@ -176,7 +176,7 @@ export function MobileInfoSheet() {
                   <section className="space-y-1.5 rounded-xl border border-line bg-surface-2/60 p-3.5">
                     <SectionTitle>
                       <MapPin className="h-3 w-3" strokeWidth={1.8} />
-                      Primary Function
+                      Función principal
                     </SectionTitle>
                     <p className="text-[12.5px] leading-relaxed text-foreground/85">
                       {hotspotPart.function}
@@ -185,7 +185,7 @@ export function MobileInfoSheet() {
                   <section className="space-y-1.5">
                     <SectionTitle>
                       <Crosshair className="h-3 w-3 text-accent" strokeWidth={1.8} />
-                      Why It Is Important
+                      Por qué es importante
                     </SectionTitle>
                     <p className="text-[12.5px] leading-relaxed text-foreground/85">
                       {hotspotPart.importance}
@@ -194,7 +194,7 @@ export function MobileInfoSheet() {
                   <section className="space-y-2">
                     <SectionTitle>
                       <Lightbulb className="h-3 w-3 text-accent" strokeWidth={1.8} />
-                      Interesting Facts
+                      Datos interesantes
                     </SectionTitle>
                     {hotspotPart.facts.map((fact) => (
                       <div
@@ -213,7 +213,7 @@ export function MobileInfoSheet() {
                   <section className="space-y-1.5">
                     <SectionTitle>
                       <Sparkles className="h-3 w-3 text-accent" strokeWidth={1.8} />
-                      Overview
+                      Resumen
                     </SectionTitle>
                     <p className="text-[13px] leading-relaxed text-foreground/90">
                       {component.overview.description}
@@ -226,7 +226,7 @@ export function MobileInfoSheet() {
                   <section className="space-y-2">
                     <SectionTitle>
                       <Sparkles className="h-3 w-3 text-accent" strokeWidth={1.8} />
-                      Functions
+                      Funciones
                     </SectionTitle>
                     {component.functions.map((fn) => (
                       <div
@@ -242,7 +242,7 @@ export function MobileInfoSheet() {
                   <section className="space-y-2">
                     <SectionTitle>
                       <Crosshair className="h-3 w-3 text-accent" strokeWidth={1.8} />
-                      Common Issues
+                      Problemas comunes
                     </SectionTitle>
                     {component.issues.map((issue) => (
                       <div
@@ -260,7 +260,7 @@ export function MobileInfoSheet() {
                     <div className="mb-1.5 flex items-center gap-2">
                       <Lightbulb className="h-3.5 w-3.5 text-accent" strokeWidth={1.8} />
                       <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-accent">
-                        Interesting Fact
+                        Dato interesante
                       </span>
                     </div>
                     <p className="text-[12.5px] leading-relaxed text-foreground/85">
@@ -279,20 +279,20 @@ export function MobileInfoSheet() {
             <div className="flex items-center justify-between gap-3 border-t border-line p-3">
               <button
                 type="button"
-                aria-label="Previous hotspot"
+                aria-label="Hotspot anterior"
                 onClick={prevHotspot}
                 className="flex h-11 items-center justify-center gap-1.5 rounded-xl border border-line bg-surface-2 px-4 text-[12px] font-medium text-foreground transition-colors active:bg-surface-3"
               >
                 <ChevronLeft className="h-4 w-4" strokeWidth={1.8} />
-                Previous
+                Anterior
               </button>
               <button
                 type="button"
-                aria-label="Next hotspot"
+                aria-label="Siguiente hotspot"
                 onClick={nextHotspot}
                 className="flex h-11 items-center justify-center gap-1.5 rounded-xl bg-accent px-4 text-[12px] font-semibold text-white transition-colors active:bg-accent-bright"
               >
-                Next
+                Siguiente
                 <ChevronRight className="h-4 w-4" strokeWidth={1.8} />
               </button>
             </div>

@@ -9,9 +9,9 @@ import { cn } from "@/lib/utils";
 
 // Nav links used in both the desktop bar and the mobile menu
 const NAV_LINKS = [
-  { label: "Features", href: "#features" },
-  { label: "Roadmap", href: "#roadmap" },
-  { label: "Community", href: "#community" },
+  { label: "Funciones", href: "#features" },
+  { label: "Hoja de ruta", href: "#roadmap" },
+  { label: "Comunidad", href: "#community" },
   { label: "GitHub", href: "https://github.com/brickshow/pc-anatomy", external: true },
 ];
 
@@ -47,12 +47,12 @@ export function Header() {
         )}
       >
         {/* Brand logo and name, linking back to the top of the page */}
-        <a href="#" className="flex items-center gap-2.5" aria-label="Computer Anatomy home">
+        <a href="#" className="flex items-center gap-2.5" aria-label="Inicio de PC Anatomy">
           <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/5">
-            <Image src="/logo.png" alt="Computer Anatomy logo" width={28} height={28} className="rounded-md" />
+            <Image src="/logo.png" alt="Logo de PC Anatomy" width={28} height={28} className="rounded-md" />
           </span>
           <span className="text-[14px] font-semibold tracking-tight text-white">
-            Computer Anatomy
+            PC Anatomy
           </span>
         </a>
 
@@ -87,7 +87,7 @@ export function Header() {
             href="/explore"
             className="group inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.06] px-4.5 py-2.5 text-[13.5px] font-medium text-white backdrop-blur-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition-all duration-300 hover:scale-[1.03] hover:border-accent/50 hover:bg-white/10"
           >
-            Explore Project
+            Explorar proyecto
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" strokeWidth={2} />
           </Link>
         </div>
@@ -95,7 +95,7 @@ export function Header() {
         {/* Hamburger button toggles the mobile menu */}
         <button
           type="button"
-          aria-label="Toggle menu"
+          aria-label="Abrir o cerrar menú"
           onClick={() => setOpen((v) => !v)}
           className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 md:hidden"
         >
@@ -132,7 +132,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               className="mt-1 flex items-center justify-center gap-1.5 rounded-xl border border-white/15 bg-white/[0.06] px-4 py-3 text-sm font-medium text-white backdrop-blur-xl"
             >
-              Explore Project
+              Explorar proyecto
               <ArrowRight className="h-4 w-4" strokeWidth={2} />
             </Link>
           </motion.div>

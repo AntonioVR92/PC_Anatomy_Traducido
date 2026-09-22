@@ -14,12 +14,12 @@ export function Footer() {
       {/* Copyright and license info, plus the friendly tagline */}
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
         <p className="text-[13px] text-muted-2">
-          © {new Date().getFullYear()} Computer Anatomy. Built in the open under MIT License.
+          © {new Date().getFullYear()} PC Anatomy. Hecho en abierto bajo licencia MIT.
         </p>
         <p className="flex items-center gap-1.5 text-[13px] text-muted-2">
-          Made with
+          Hecho con
           <Heart className="h-3.5 w-3.5 fill-accent text-accent" strokeWidth={1.6} />
-          for curious minds
+          para mentes curiosas
         </p>
       </div>
 
@@ -34,7 +34,7 @@ export function Footer() {
         >
           (https://skfb.ly/oCTyv)
         </a>
-        {" "}by Umut Calim is licensed under Creative Commons Attribution (
+        {" "}de Umut Calim está licenciado bajo Creative Commons Attribution (
         <a
           href="http://creativecommons.org/licenses/by/4.0/"
           target="_blank"

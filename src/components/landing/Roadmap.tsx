@@ -17,58 +17,58 @@ const ROADMAP = [
   {
     index: "01",
     phase: "completed" as Phase,
-    status: "Completed",
-    title: "Core Hardware Foundation",
-    desc: "The ground we started from — the core interactive viewer and the data layer that lets every component be explored.",
-    items: ["Interactive CPU & motherboard models", "Orbit controls & clickable hotspots", "Component data layer & labelling"],
+    status: "Completado",
+    title: "Base de hardware",
+    desc: "El punto de partida: el visor interactivo y la capa de datos que permite explorar cada componente.",
+    items: ["Modelos interactivos de CPU y placa base", "Controles de órbita y hotspots clicables", "Capa de datos y etiquetado de componentes"],
   },
   {
     index: "02",
     phase: "completed" as Phase,
-    status: "Completed",
-    title: "Interactive Exploration",
-    desc: "Turning a 3D model into something you can move through — select, break apart and inspect hardware for yourself.",
-    items: ["Component selection & camera focus", "Layer-by-layer system unit views", "Explosion & detail inspection"],
+    status: "Completado",
+    title: "Exploración interactiva",
+    desc: "Convertir un modelo 3D en algo que puedas recorrer: seleccionar, desmontar e inspeccionar el hardware.",
+    items: ["Selección de componentes y enfoque de cámara", "Vistas por capas de la unidad del sistema", "Explosión e inspección de detalle"],
   },
   {
     index: "03",
     phase: "in-progress" as Phase,
-    status: "In Progress",
-    title: "Complete Component Library",
-    desc: "Growing past the CPU to the full anatomy of a machine — every part, every function, every common problem.",
-    items: ["GPU internals", "PSU & cooling", "Storage & RAM modules"],
+    status: "En curso",
+    title: "Biblioteca completa de componentes",
+    desc: "Ir más allá de la CPU hacia la anatomía completa de una máquina: cada pieza, función y fallo habitual.",
+    items: ["Interior de la GPU", "Fuente y refrigeración", "Almacenamiento y módulos de RAM"],
   },
   {
     index: "04",
     phase: "planned" as Phase,
-    status: "Planned",
-    title: "Computer Systems",
-    desc: "Assembling whole systems so you can see how individual parts connect and work together as a single machine.",
-    items: ["Full system unit breakdowns", "Motherboard & interconnect anatomy", "Peripherals & connectivity"],
+    status: "Planificado",
+    title: "Sistemas de ordenador",
+    desc: "Montar sistemas enteros para ver cómo las piezas se conectan y trabajan juntas como una sola máquina.",
+    items: ["Despieces de la unidad completa", "Anatomía de placa base e interconexiones", "Periféricos y conectividad"],
   },
   {
     index: "05",
     phase: "planned" as Phase,
-    status: "Planned",
-    title: "Networking Fundamentals",
-    desc: "How computers talk to each other — the wires, switches, and protocols that sit between the machines we build.",
-    items: ["Router, switch & NIC modules", "Network topology & cabling", "Protocols & basic concepts"],
+    status: "Planificado",
+    title: "Fundamentos de redes",
+    desc: "Cómo se comunican los ordenadores: cables, switches y protocolos entre las máquinas que montamos.",
+    items: ["Módulos de router, switch y NIC", "Topología de red y cableado", "Protocolos y conceptos básicos"],
   },
   {
     index: "06",
     phase: "future" as Phase,
-    status: "Future",
-    title: "Interactive Learning",
-    desc: "A structured curriculum that brings everything together — guided paths, progress, and classroom support.",
-    items: ["Structured learning paths", "Quizzes & progress tracking", "Classroom & self-hosted mode"],
+    status: "Futuro",
+    title: "Aprendizaje interactivo",
+    desc: "Un currículo estructurado que lo une todo: rutas guiadas, progreso y soporte para aulas.",
+    items: ["Rutas de aprendizaje estructuradas", "Cuestionarios y seguimiento de progreso", "Modo aula y autoalojado"],
   },
   {
     index: "07",
     phase: "future" as Phase,
-    status: "Future",
-    title: "Community & Open Source",
-    desc: "Handing the project to the people — open contributions, user-built content, and a growing community around it.",
-    items: ["User-created models", "Worldwide contributor export", "Localization & i18n"],
+    status: "Futuro",
+    title: "Comunidad y código abierto",
+    desc: "Abrir el proyecto a la gente: contribuciones, contenido creado por usuarios y una comunidad creciente.",
+    items: ["Modelos creados por usuarios", "Exportación de colaboradores", "Localización e i18n"],
   },
 ];
 
@@ -190,14 +190,14 @@ export function Roadmap() {
         {/* Section heading: eyebrow label, title, and subtitle */}
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-accent-bright">
-            Project Roadmap
+            Hoja de ruta del proyecto
           </p>
           <h2 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            We started here. We&rsquo;re building this. And we&rsquo;re going further.
+            Empezamos aquí. Estamos construyendo esto. Y vamos a más.
           </h2>
           <p className="mt-5 text-pretty text-base leading-relaxed text-muted sm:text-lg">
-            An honest look at where the project is today and where it&rsquo;s heading — a continuous
-            descent through the anatomy of the computer, built in the open.
+            Una mirada sincera a dónde está el proyecto hoy y hacia dónde va: un
+            recorrido continuo por la anatomía del ordenador, hecho en abierto.
           </p>
         </Reveal>
 

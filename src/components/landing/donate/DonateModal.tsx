@@ -55,7 +55,7 @@ function QrPlaceholder() {
 }
 
 // Circular close button.
-function CloseButton({ onClick, label = "Close dialog" }: { onClick: () => void; label?: string }) {
+function CloseButton({ onClick, label = "Cerrar diálogo" }: { onClick: () => void; label?: string }) {
   return (
     <button
       type="button"
@@ -88,7 +88,7 @@ function QrCard() {
                configurable env value that may point to any host (e.g. Cloudinary). */
             <img
               src={SUPPORT.qr}
-              alt="Donation QR code"
+              alt="Código QR de donación"
               width={256}
               height={256}
               className="h-full w-full rounded-2xl object-cover"
@@ -100,7 +100,7 @@ function QrCard() {
       ) : (
         <div className="flex h-full w-full flex-col items-center justify-center gap-3 text-muted-2">
           <span className="h-7 w-7 animate-spin rounded-full border-2 border-line-strong border-t-accent" />
-          <p className="text-[12.5px] font-medium text-muted">Generating QR code…</p>
+          <p className="text-[12.5px] font-medium text-muted">Generando código QR…</p>
         </div>
       )}
     </div>
@@ -174,7 +174,7 @@ export function DonateModal() {
             {/* Backdrop — clicking it closes the dialog. */}
             <motion.button
               type="button"
-              aria-label="Close dialog"
+              aria-label="Cerrar diálogo"
               onClick={close}
               className="absolute inset-0 h-full w-full cursor-default bg-black/60 backdrop-blur-sm"
             />
@@ -184,7 +184,7 @@ export function DonateModal() {
               ref={panelRef}
               role="dialog"
               aria-modal="true"
-              aria-label="Support Computer Anatomy"
+              aria-label="Apoyar PC Anatomy"
               tabIndex={-1}
               initial={{ opacity: 0, y: 32, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -212,17 +212,17 @@ export function DonateModal() {
                     <header className="flex items-start justify-between gap-4">
                       <div className="flex min-w-0 flex-col gap-1.5">
                         <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-bright">
-                          Support
+                          Apoyo
                         </p>
                         <h2 className="text-balance text-xl font-semibold leading-tight tracking-tight text-foreground sm:text-2xl">
-                          <span aria-hidden="true">☕</span> Support Computer Anatomy
+                          <span aria-hidden="true">☕</span> Apoya PC Anatomy
                         </h2>
                       </div>
                       <CloseButton onClick={close} />
                     </header>
 
                     <p className="mt-3 text-pretty text-[13.5px] leading-relaxed text-muted">
-                      Help keep this project free and open-source.
+                      Ayuda a mantener este proyecto gratis y de código abierto.
                     </p>
 
                     {/* The two donation actions. */}
@@ -237,10 +237,10 @@ export function DonateModal() {
                         </span>
                         <span className="flex min-w-0 flex-1 flex-col">
                           <span className="text-[14px] font-medium text-foreground">
-                            Generate QR
+                            Generar QR
                           </span>
                           <span className="text-[12px] text-muted-2">
-                            Scan to donate directly
+                            Escanea para donar directamente
                           </span>
                         </span>
                         <ArrowUpRight
@@ -260,7 +260,7 @@ export function DonateModal() {
                           <span className="text-[14px] font-medium text-foreground">
                             Buy Me a Coffee
                           </span>
-                          <span className="text-[12px] text-muted-2">Open the Ko-fi page</span>
+                          <span className="text-[12px] text-muted-2">Abrir la página de Ko-fi</span>
                         </span>
                         <ArrowUpRight
                           className="h-4 w-4 shrink-0 text-muted transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-bright"
@@ -270,7 +270,7 @@ export function DonateModal() {
                     </div>
 
                     <p className="mt-5 font-mono text-[10px] leading-relaxed tracking-tight text-muted-2">
-                      Your support keeps every lesson free for everyone.
+                      Tu apoyo mantiene cada lección gratis para todos.
                     </p>
                   </motion.div>
                 ) : (
@@ -289,21 +289,21 @@ export function DonateModal() {
                         className="inline-flex h-10 items-center gap-1.5 rounded-lg border border-line bg-surface-2 px-3 text-[12.5px] font-medium text-muted transition-colors hover:border-line-strong hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
                       >
                         <ArrowLeft className="h-4 w-4" strokeWidth={1.8} />
-                        Back
+                        Volver
                       </button>
                       <CloseButton onClick={close} />
                     </header>
 
                     <div className="mt-2 flex flex-col items-center text-center">
                       <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-                        <span aria-hidden="true">☕</span> Support Computer Anatomy
+                        <span aria-hidden="true">☕</span> Apoya PC Anatomy
                       </h2>
 
                       {/* QR code: loader first, then the image from the env. */}
                       <QrCard />
 
                       <p className="mt-5 max-w-xs text-[13px] leading-relaxed text-muted">
-                        Scan the QR code using your mobile banking app.
+                        Escanea el código QR con la app de tu banco.
                       </p>
                     </div>
                   </motion.div>
