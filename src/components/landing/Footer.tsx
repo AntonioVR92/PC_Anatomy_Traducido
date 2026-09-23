@@ -23,6 +23,30 @@ export function Footer() {
         </p>
       </div>
 
+      {/* Educational use + MIT attribution for the Spanish fork */}
+      <p className="mx-auto mt-6 max-w-3xl text-center text-[12px] leading-relaxed text-muted-2">
+        Uso educativo — versión en español para enseñar las partes de un PC.
+        Basado en{" "}
+        <a
+          href="https://github.com/brickshow/pc-anatomy"
+          target="_blank"
+          rel="noreferrer"
+          className="text-muted underline decoration-line underline-offset-2 transition-colors hover:text-foreground"
+        >
+          PC Anatomy
+        </a>{" "}
+        de brickshow, publicado bajo{" "}
+        <a
+          href="https://opensource.org/licenses/MIT"
+          target="_blank"
+          rel="noreferrer"
+          className="text-muted underline decoration-line underline-offset-2 transition-colors hover:text-foreground"
+        >
+          licencia MIT
+        </a>
+        .
+      </p>
+
       {/* Attribution required by the keyboard model's Creative Commons license */}
       <p className="mt-8 text-center text-[12px] leading-relaxed text-muted-2">
         &ldquo;Keyboard&rdquo;
