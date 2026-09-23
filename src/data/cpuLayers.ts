@@ -27,19 +27,19 @@ export const CPU_LAYERS: CPULayer[] = [
     hotspotOffset: [0.32, 0.12, 0.12],
     lift: 0.28,
     color: "#d7dde6",
-    title: "Integrated Heat Spreader",
+    title: "Difusor de calor integrado (IHS)",
     description:
-      "The polished nickel lid that caps the processor. It spreads heat evenly across the whole chip surface and gives the cooler a flat, reliable mounting point — while protecting the fragile silicon beneath.",
+      "La tapa de níquel pulido que corona el procesador. Distribuye el calor de forma uniforme por toda la superficie del chip y ofrece al disipador un punto de montaje plano y fiable — a la vez que protege el silicio frágil que hay debajo.",
     purpose:
-      "Conducts heat from the die across its full surface and provides the smooth contact face the CPU cooler presses against.",
+      "Conduce el calor del die por toda su superficie y proporciona la cara de contacto lisa contra la que presiona el disipador de la CPU.",
     facts: [
-      "Most IHSs are nickel-plated copper — plating trades a little thermal performance for corrosion resistance and a clean finish.",
-      "The IHS carries the CPU's branding because it is the only part of the chip you normally ever see.",
-      "The IHS is only a couple of millimetres thick, yet it must spread the heat of a die that can exceed 250 W.",
+      "La mayoría de IHS son cobre niquelado: el baño cambia un poco de rendimiento térmico por resistencia a la corrosión y un acabado limpio.",
+      "El IHS lleva la marca de la CPU porque es la única parte del chip que normalmente se ve.",
+      "El IHS solo mide un par de milímetros de grosor, y aun así debe repartir el calor de un die que puede superar los 250 W.",
     ],
     problems: [
-      "A warped or bowed IHS makes poor contact with the cooler, spiking temperatures even with good paste.",
-      "Delidding — removing the IHS to swap the internal paste — can crack the die if done carelessly.",
+      "Un IHS abombado o curvado hace mal contacto con el disipador, disparando las temperaturas incluso con buena pasta.",
+      "El delidding — quitar el IHS para cambiar la pasta interna — puede agrietar el die si se hace con descuido.",
     ],
   },
   {
@@ -51,19 +51,19 @@ export const CPU_LAYERS: CPULayer[] = [
     lift: 0.2,
     fadeIn: true,
     color: "#cfe0ff",
-    title: "Thermal Interface Material",
+    title: "Material de interfaz térmica (TIM)",
     description:
-      "The thermal interface material is a thin layer of paste squeezed between the silicon die and the heat spreader. It fills the microscopic air gaps that would otherwise trap heat and insulate the silicon.",
+      "El material de interfaz térmica es una capa fina de pasta comprimida entre el die de silicio y el difusor de calor. Rellena los huecos de aire microscópicos que, de lo contrario, atraparían el calor y aislarían el silicio.",
     purpose:
-      "Maximises heat transfer by eliminating the tiny air pockets between the die and the IHS, letting heat flow into the cooler.",
+      "Maximiza la transferencia de calor eliminando las minúsculas bolsas de aire entre el die y el IHS, dejando que el calor fluya hacia el disipador.",
     facts: [
-      "High-end pastes use silver or boron-nitride fillers to push thermal conductivity far beyond ordinary white paste.",
-      "Paste dries and 'pumps out' over years of thermal cycling — which is why repasting an old CPU can dramatically lower temperatures.",
-      "Liquid-metal TIMs conduct heat even better, but they can dissolve aluminium cooler bases if they leak.",
+      "Las pastas de gama alta usan rellenos de plata o nitruro de boro para empujar la conductividad térmica mucho más allá de la pasta blanca corriente.",
+      "La pasta se seca y «se bombea» (pump-out) tras años de ciclos térmicos: por eso reaplicar pasta a una CPU antigua puede bajar drásticamente las temperaturas.",
+      "Los TIM de metal líquido conducen el calor aún mejor, pero pueden disolver las bases de aluminio del disipador si se derraman.",
     ],
     problems: [
-      "Too little paste leaves dry spots; too much spills over the die edge and can short nearby components.",
-      "Dried-out thermal paste is the most common reason old CPUs suddenly start running hot.",
+      "Demasiado poca pasta deja puntos secos; demasiada se desborda por el borde del die y puede cortocircuitar componentes cercanos.",
+      "La pasta térmica reseca es la razón más habitual de que las CPUs antiguas empiecen de pronto a calentarse.",
     ],
   },
   {
@@ -74,19 +74,19 @@ export const CPU_LAYERS: CPULayer[] = [
     hotspotOffset: [0.32, -0.02, -0.1],
     lift: 0.1,
     color: "#9fb0c6",
-    title: "Silicon Die",
+    title: "Die de silicio",
     description:
-      "The silicon die is the processor itself — billions of transistors etched into a wafer-thin slice of silicon that performs every calculation your computer makes.",
+      "El die de silicio es el procesador en sí: miles de millones de transistores grabados en una lámina finísima de silicio que realiza cada cálculo de tu ordenador.",
     purpose:
-      "Executes instructions, performs arithmetic, and moves data through the system at billions of operations per second.",
+      "Ejecuta instrucciones, realiza operaciones aritméticas y mueve datos por el sistema a miles de millones de operaciones por segundo.",
     facts: [
-      "A modern die packs more than 8 billion transistors into a few square centimetres — each one smaller than a virus.",
-      "Die features are measured in nanometres: a 5 nm transistor is roughly 20 atoms wide.",
-      "The die is only a fraction of a millimetre thick, yet it concentrates enormous heat into a tiny area.",
+      "Un die moderno agrupa más de 8.000 millones de transistores en unos pocos centímetros cuadrados — cada uno más pequeño que un virus.",
+      "Las características del die se miden en nanómetros: un transistor de 5 nm tiene unos 20 átomos de ancho.",
+      "El die solo tiene una fracción de milímetro de grosor, y aun así concentra un calor enorme en una zona minúscula.",
     ],
     problems: [
-      "Silicon can degrade over years of high voltage, slowly reducing overclocking headroom.",
-      "A cracked die — usually from mounting pressure or a botched delid — destroys the CPU instantly.",
+      "El silicio puede degradarse tras años de alto voltaje, reduciendo poco a poco el margen de overclocking.",
+      "Un die agrietado — normalmente por presión de montaje o un delid fallido — destruye la CPU al instante.",
     ],
   },
   {
@@ -97,19 +97,19 @@ export const CPU_LAYERS: CPULayer[] = [
     hotspotOffset: [-0.32, -0.05, 0.15],
     lift: -0.14,
     color: "#2f6b34",
-    title: "Substrate",
+    title: "Sustrato",
     description:
-      "The green circuit board that carries the die and connects it to the motherboard. Thousands of microscopic traces fan the die's signals out to the pins that plug into the socket.",
+      "La placa de circuito verde que lleva el die y lo conecta a la placa base. Miles de pistas microscópicas expanden las señales del die hacia los pines que se enchufan en el zócalo.",
     purpose:
-      "Distributes power and routes every data signal between the silicon and the motherboard socket.",
+      "Distribuye la alimentación y enruta cada señal de datos entre el silicio y el zócalo de la placa base.",
     facts: [
-      "The substrate is a miniature PCB with dozens of thin layers, each no thicker than a human hair.",
-      "Every one of the CPU's external pins — often more than a thousand — terminates on this small board.",
-      "Its job is the reverse of the motherboard's: it gathers signals from the dense die and fans them out to the socket.",
+      "El sustrato es una PCB en miniatura con docenas de capas finas, cada una no más gruesa que un cabello humano.",
+      "Cada uno de los pines externos de la CPU — a menudo más de mil — termina en esta pequeña placa.",
+      "Su trabajo es el inverso al de la placa base: recoge señales del die denso y las expande hacia el zócalo.",
     ],
     problems: [
-      "Cracked solder joints between the die and substrate cause intermittent crashes and no-post issues.",
-      "Moisture or contamination on the substrate's contacts can cause boot failures and instability.",
+      "Las uniones de soldadura agrietadas entre el die y el sustrato provocan cuelgues intermitentes y fallos de POST.",
+      "La humedad o la contaminación en los contactos del sustrato pueden causar fallos de arranque e inestabilidad.",
     ],
   },
   {
@@ -120,19 +120,19 @@ export const CPU_LAYERS: CPULayer[] = [
     hotspotOffset: [0.32, -0.09, 0.05],
     lift: 0,
     color: "#d8b45a",
-    title: "Contact Pins",
+    title: "Pines de contacto",
     description:
-      "The gold contact pins that carry power and data between the CPU and the motherboard socket. On socketed desktop chips like this one, they are the only physical link between the processor and the rest of the system.",
+      "Los pines de contacto dorados que transportan alimentación y datos entre la CPU y el zócalo de la placa base. En chips de escritorio con zócalo como este, son el único enlace físico entre el procesador y el resto del sistema.",
     purpose:
-      "Provide the electrical and mechanical connection that seats the CPU into the socket and keeps it powered.",
+      "Proporcionan la conexión eléctrica y mecánica que asienta la CPU en el zócalo y la mantiene alimentada.",
     facts: [
-      "This AM4-style chip carries hundreds of gold pins, each of which must align perfectly with its socket hole.",
-      "The pins are gold-plated because gold resists the corrosion that would block the faint electrical signals.",
-      "On PGA sockets the pins live on the CPU itself, which is why a bent pin usually means a ruined processor.",
+      "Este chip estilo AM4 lleva cientos de pines dorados, cada uno de los cuales debe alinearse a la perfección con su agujero del zócalo.",
+      "Los pines están bañados en oro porque el oro resiste la corrosión que bloquearía las señales eléctricas débiles.",
+      "En zócalos PGA los pines viven en la propia CPU, por eso un pin doblado suele significar un procesador arruinado.",
     ],
     problems: [
-      "Bent or broken pins are the classic CPU killer — a single misaligned contact can stop the system from booting.",
-      "Dust or debris trapped between the pins and socket creates poor contacts and random failures.",
+      "Los pines doblados o rotos son el clásico asesino de CPUs: un solo contacto desalineado puede impedir que el sistema arranque.",
+      "El polvo o los restos atrapados entre los pines y el zócalo crean malos contactos y fallos aleatorios.",
     ],
   },
 ];
