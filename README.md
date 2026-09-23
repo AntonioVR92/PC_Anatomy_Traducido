@@ -2,26 +2,32 @@
   <img src="public/logo.png" alt="PC Anatomy logo" width="96" height="96" />
 </p>
 
-<h1 align="center">PC Anatomy</h1>
+<h1 align="center">PC Anatomy (traducción al español)</h1>
 
 <p align="center">
-  <strong>Explore Computer Anatomy — an open-source, interactive 3D atlas of the computer on your desk.</strong><br />
-  Peel apart the CPU, spin the GPU, trace the motherboard — and actually understand
-  how your machine works.
+  <strong>Versión en español de PC Anatomy</strong> — atlas 3D interactivo del hardware del PC, adaptada para uso educativo.
 </p>
 
+## 📌 Origen del proyecto
+
+Este repositorio es una **traducción al español** del proyecto original creado por **brickshow**.
+
+| | |
+| --- | --- |
+| **Proyecto original** | [https://github.com/brickshow/pc-anatomy](https://github.com/brickshow/pc-anatomy) |
+| **Autor original** | [brickshow](https://github.com/brickshow) |
+| **Esta traducción** | [https://github.com/AntonioVR92/PC_Anatomy_Traducido](https://github.com/AntonioVR92/PC_Anatomy_Traducido) |
+| **Licencia** | MIT (se mantiene el aviso de copyright del original) |
+
+El código, los modelos 3D y la idea del proyecto pertenecen a sus autores originales. Aquí solo se ha traducido la interfaz y el contenido visible para facilitar su uso en clase.
+
+---
+
 <p align="center">
-  <a href="https://github.com/brickshow/pc-anatomy"><img src="https://img.shields.io/badge/Open_Source-100%25-4d8dff?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="Open Source" /></a>
+  <a href="https://github.com/brickshow/pc-anatomy"><img src="https://img.shields.io/badge/Original-brickshow%2Fpc--anatomy-4d8dff?style=for-the-badge&logo=github&logoColor=white" alt="Original repo" /></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License" /></a>
   <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js 16" /></a>
   <a href="https://threejs.org/"><img src="https://img.shields.io/badge/Three.js-r185-7a5cff?style=for-the-badge&logo=threedotjs&logoColor=white" alt="Three.js" /></a>
-  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" /></a>
-  <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS 4" /></a>
-</p>
-
-<p align="center">
-  <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-19-087ea4?style=for-the-badge&logo=react&logoColor=white" alt="React 19" /></a>
-  <a href="https://motion.dev/"><img src="https://img.shields.io/badge/Framer_Motion-13-8B5CF6?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" /></a>
-  <a href="https://zustand.docs.pmnd.rs/"><img src="https://img.shields.io/badge/Zustand-Simple_State-1E3A8A?style=for-the-badge" alt="Zustand" /></a>
 </p>
 
 ---
@@ -34,15 +40,14 @@
 
 ## 🚀 Live Demo
 
-> **https://pc-anatomy.brickshow.site** — the production domain is set via the
-> `NEXT_PUBLIC_SITE_URL` environment variable (it drives canonical URLs, Open
-> Graph tags, sitemap.xml, and robots.txt). The default in the code matches the
-> live domain.
+> Demo original del autor: **https://pc-anatomy.brickshow.site**
+>
+> Repo original: **https://github.com/brickshow/pc-anatomy**
 
-- Landing page with cinematic 3D hero: `/`
-- Interactive 3D component explorer: `/explore`
-- Step-by-step PC assembly guide: `/assembly`
-- Educational component pages: `/components/cpu`, `/components/ram`, `/components/motherboard`, `/components/gpu`, `/components/storage`, `/components/power-supply`, `/components/cpu-cooler`, `/components/pc-case`, and more
+- Landing page: `/`
+- Explorador 3D: `/explore`
+- Guía de montaje: `/assembly`
+- Páginas de componentes: `/components/cpu`, `/components/ram`, etc.
 
 ---
 
@@ -145,8 +150,8 @@ src/
 ### Setup
 
 ```bash
-git clone https://github.com/brickshow/pc-anatomy.git
-cd pc-anatomy
+git clone https://github.com/AntonioVR92/PC_Anatomy_Traducido.git
+cd PC_Anatomy_Traducido
 npm install
 cp .env.example .env.local  # optional
 ```
@@ -215,6 +220,9 @@ PC Anatomy is a community project — contributions are welcome! Help with 3D mo
 ## 📜 License
 
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
+Original work © brickshow — [https://github.com/brickshow/pc-anatomy](https://github.com/brickshow/pc-anatomy).  
+This repository is a Spanish translation / educational fork of that project.
 
 ---
 
