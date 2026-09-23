@@ -1,6 +1,7 @@
 "use client";
 
 import { Heart } from "lucide-react";
+import { UPSTREAM_GITHUB_URL } from "@/lib/site";
 
 // Footer: the page ending. Shows the copyright line, a small "made with
 // love" message, and a credit for the open-source keyboard model.
@@ -28,7 +29,7 @@ export function Footer() {
         Uso educativo — versión en español para enseñar las partes de un PC.
         Basado en{" "}
         <a
-          href="https://github.com/brickshow/pc-anatomy"
+          href={UPSTREAM_GITHUB_URL}
           target="_blank"
           rel="noreferrer"
           className="text-muted underline decoration-line underline-offset-2 transition-colors hover:text-foreground"

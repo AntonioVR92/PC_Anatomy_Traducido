@@ -6,13 +6,14 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { GITHUB_URL } from "@/lib/site";
 
 // Nav links used in both the desktop bar and the mobile menu
 const NAV_LINKS = [
   { label: "Funciones", href: "#features" },
   { label: "Hoja de ruta", href: "#roadmap" },
   { label: "Comunidad", href: "#community" },
-  { label: "GitHub", href: "https://github.com/brickshow/pc-anatomy", external: true },
+  { label: "GitHub", href: GITHUB_URL, external: true },
 ];
 
 // Header: the fixed top navigation bar with a logo, section links, and a

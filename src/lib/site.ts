@@ -15,7 +15,8 @@ export const SITE_DESCRIPTION =
 export const SITE_LANGUAGE = "es";
 
 // Public project repository (open source).
-export const GITHUB_URL = "https://github.com/brickshow/pc-anatomy";
+export const GITHUB_URL = "https://github.com/AntonioVR92/PC_Anatomy_Traducido";
+export const UPSTREAM_GITHUB_URL = "https://github.com/brickshow/pc-anatomy";
 
 // Real dates derived from the repository history. The component library was
 // first published on 2026-08-06; the site was last revised when the SEO

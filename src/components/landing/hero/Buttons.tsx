@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Cpu } from "lucide-react";
 import { GithubIcon } from "@/components/landing/ui/GithubIcon";
 import { MagneticButton } from "@/components/landing/ui/primitives";
+import { GITHUB_URL } from "@/lib/site";
 
 // Buttons: the two main call-to-action buttons in the hero —
 // "Explore Components" and a link to the GitHub repository.
@@ -31,7 +32,7 @@ export function Buttons() {
       {/* Secondary button that opens the GitHub repo in a new tab */}
       <MagneticButton>
         <a
-          href="https://github.com/brickshow/pc-anatomy"
+          href={GITHUB_URL}
           target="_blank"
           rel="noreferrer"
           className="inline-flex h-12 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 text-[15px] font-medium text-neutral-100 backdrop-blur-md transition-all duration-300 hover:scale-[1.03] hover:border-white/20 hover:bg-white/10 hover:shadow-[0_0_24px_rgba(93,163,255,0.15)]"

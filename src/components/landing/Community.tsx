@@ -7,6 +7,7 @@ import { DonateModal } from "@/components/landing/donate/DonateModal";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { GithubIcon } from "@/components/landing/ui/GithubIcon";
+import { GITHUB_URL } from "@/lib/site";
 
 // The three core pillars of the community: explore, learn, contribute
 const CORE_PILLARS = [
@@ -107,7 +108,7 @@ export function Community() {
 
           <MagneticButton>
             <a
-              href="https://github.com/brickshow/pc-anatomy"
+              href={GITHUB_URL}
               target="_blank"
               rel="noreferrer"
               className="group inline-flex h-12 items-center gap-2 rounded-full border border-line bg-surface/60 px-6 text-[15px] font-medium text-foreground backdrop-blur-md transition-all duration-300 hover:scale-[1.03] hover:border-line-strong hover:bg-surface-2"
